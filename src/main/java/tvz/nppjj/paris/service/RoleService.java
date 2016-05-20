@@ -2,19 +2,10 @@ package tvz.nppjj.paris.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import tvz.nppjj.paris.model.Role;
-import tvz.nppjj.paris.repository.RoleRepository;
 
-@Service
-public class RoleService {
+public interface RoleService {
 
-	@Autowired
-	private RoleRepository roleRepository;
-	
-	public List<Role> getAllRoles() {
-		return roleRepository.findAll();
-	}
+	List<Role> getAllRoles();
+
 }

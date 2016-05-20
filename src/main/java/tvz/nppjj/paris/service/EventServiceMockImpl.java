@@ -14,7 +14,7 @@ import tvz.nppjj.paris.model.EventMock;
  *
  */
 @Service
-public class EventMockImpl implements EventServiceMock {
+public class EventServiceMockImpl implements EventServiceMock {
 
 	@Override
 	public List<EventMock> getAllEvents() {
