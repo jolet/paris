@@ -8,22 +8,22 @@
             <column name="CODE" value="1111hhhh1h26hih"/>
             <column name="PRICE" value="51.55"/>
             <column name="IS_VALIDATED" value="FALSE"/>
-            <column name="USER" value="3"/>
-            <column name="EVENT" value="1"/>
+            <column name="ID_USER" value="3"/>
+            <column name="ID_EVENT" value="1"/>
         </insert>
          <insert schemaName="${schema.paris}" tableName="TICKET">
             <column name="CODE" value="1111hhDSADASas"/>
             <column name="PRICE" value="11.51"/>
             <column name="IS_VALIDATED" value="FALSE"/>
-            <column name="USER" value="1"/>
-            <column name="EVENT" value="2"/>
+            <column name="ID_USER" value="1"/>
+            <column name="ID_EVENT" value="2"/>
         </insert>
           <insert schemaName="${schema.paris}" tableName="TICKET">
             <column name="CODE" value="1111hhh3211qqsdah1h26hih"/>
             <column name="PRICE" value="111.11"/>
             <column name="IS_VALIDATED" value="FALSE"/>
-            <column name="USER" value="1"/>
-            <column name="EVENT" value="3"/>
+            <column name="ID_USER" value="1"/>
+            <column name="ID_EVENT" value="3"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

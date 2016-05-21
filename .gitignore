@@ -21,3 +21,4 @@ src/main/webapp/static/bower_components/*
 
 # Hidden config
 src/main/resources/config/application.properties
+.idea/

@@ -6,23 +6,23 @@
     <changeSet id="20160519-1701" author="jp">
         <insert schemaName="${schema.paris}" tableName="USER">
             <column name="USERNAME" value="ejosip"/>
-            <column name="E_MAIL" value="ejosip93@gmail.com"/>
+            <column name="EMAIL" value="ejosip93@gmail.com"/>
             <column name="PASSWORD" value="lozinka"/>
-            <column name="ROLE" value="1"/>
+            <column name="ID_ROLE" value="1"/>
             <column name="PHONE_NUMBER" value="095-9999999"/>
         </insert>
         <insert schemaName="${schema.paris}" tableName="USER">
             <column name="USERNAME" value="dglad"/>
-            <column name="E_MAIL" value="dglad@gmail.com"/>
+            <column name="EMAIL" value="dglad@gmail.com"/>
             <column name="PASSWORD" value="drugalozinka"/>
-            <column name="ROLE" value="2"/>
+            <column name="ID_ROLE" value="2"/>
             <column name="PHONE_NUMBER" value="095-8888888"/>
         </insert>
         <insert schemaName="${schema.paris}" tableName="USER">
             <column name="USERNAME" value="jolek"/>
-            <column name="E_MAIL" value="jolek@gmail.com"/>
+            <column name="EMAIL" value="jolek@gmail.com"/>
             <column name="PASSWORD" value="trecalozinka"/>
-            <column name="ROLE" value="3"/>
+            <column name="ID_ROLE" value="3"/>
             <column name="PHONE_NUMBER" value="095-7777777"/>
         </insert>
     </changeSet>

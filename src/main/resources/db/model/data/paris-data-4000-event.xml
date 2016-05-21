@@ -8,27 +8,27 @@
             <column name="DATE" value="2016-06-10"/>
             <column name="CITY" value="Paris"/>
             <column name="ADDRESS" value="Stade de France"/>
-            <column name="CREATED_BY" value="1"/>
+            <column name="ID_USER" value="1"/>
             <column name="PICTURE" value="//"/>
-            <column name="CATEGORY" value="1"/>
+            <column name="ID_CATEGORY" value="1"/>
         </insert>
         <insert schemaName="${schema.paris}" tableName="EVENT">
             <column name="NAME" value="Humanitarni koncert"/>
             <column name="DATE" value="2016-06-21"/>
             <column name="CITY" value="Zagreb"/>
             <column name="ADDRESS" value="Slavonska avenija 7"/>
-            <column name="CREATED_BY" value="3"/>
+            <column name="ID_USER" value="3"/>
             <column name="PICTURE" value="//"/>
-            <column name="CATEGORY" value="2"/>
+            <column name="ID_CATEGORY" value="2"/>
         </insert>
          <insert schemaName="${schema.paris}" tableName="EVENT">
             <column name="NAME" value="Inception"/>
             <column name="DATE" value="2016-06-10"/>
             <column name="CITY" value="Zagreb"/>
             <column name="ADDRESS" value="Branimirova"/>
-            <column name="CREATED_BY" value="2"/>
+            <column name="ID_USER" value="2"/>
             <column name="PICTURE" value="//"/>
-            <column name="CATEGORY" value="3"/>
+            <column name="ID_CATEGORY" value="3"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

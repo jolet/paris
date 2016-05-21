@@ -18,13 +18,13 @@
    <column name="ADDRESS" type="VARCHAR(50)">
     <constraints nullable="true"/>
    </column>
-   <column name="CREATED_BY" type="BIGINT">
+   <column name="ID_USER" type="BIGINT">
     <constraints nullable="false" foreignKeyName="fk_EVENT_USER" references="${schema.paris}.USER(ID_USER)"/>
    </column>
    <column name="PICTURE" type="VARCHAR(255)">
     <constraints nullable="true"/>
    </column>
-   <column name="CATEGORY" type="BIGINT">
+   <column name="ID_CATEGORY" type="BIGINT">
     <constraints nullable="false" foreignKeyName="fk_EVENT_CATEGORY" references="${schema.paris}.CATEGORY(ID_CATEGORY)"/>
    </column>
   </createTable>
