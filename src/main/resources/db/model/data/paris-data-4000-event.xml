@@ -9,7 +9,7 @@
             <column name="CITY" value="Paris"/>
             <column name="ADDRESS" value="Stade de France"/>
             <column name="ID_USER" value="1"/>
-            <column name="PICTURE" value="//"/>
+   	        <column name="PICTURE" value="//"/>
             <column name="ID_CATEGORY" value="1"/>
         </insert>
         <insert schemaName="${schema.paris}" tableName="EVENT">
