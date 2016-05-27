@@ -20,7 +20,7 @@ public class EventServiceImpl implements EventService {
 		return (List<Event>) eventRepository.findAll();
 	}
 	
-	
+	@Override
 	public Event getEventById(Long id){
 		return eventRepository.findOne(id);
 	}

@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tvz.nppjj.paris.model.Event;
 import tvz.nppjj.paris.model.User;
-import tvz.nppjj.paris.repository.EventRepository;
 import tvz.nppjj.paris.repository.UserRepository;
+
+
 @Service
 public class UserServiceImpl implements UserService {
 	

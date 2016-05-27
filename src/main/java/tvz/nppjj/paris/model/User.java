@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-    @Column(name = "ID_EVENT")
+    @Column(name = "ID_USER")
     @GeneratedValue
 	private Long id;
 	
@@ -25,7 +25,7 @@ public class User {
 	private String password;
 	
 	@Column(name = "ID_ROLE")
-	private String id_role;
+	private Long id_role;
 	
 	@Column(name = "PHONE_NUMBER")
 	private String phone_number;
@@ -62,11 +62,11 @@ public class User {
 		this.password = password;
 	}
 
-	public String getId_role() {
+	public Long getId_role() {
 		return id_role;
 	}
 
-	public void setId_role(String id_role) {
+	public void setId_role(Long id_role) {
 		this.id_role = id_role;
 	}
 
