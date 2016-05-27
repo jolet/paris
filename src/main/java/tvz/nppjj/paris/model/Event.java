@@ -40,8 +40,12 @@ public class Event {
 	@Column(name="PRICE")
 	private BigDecimal price;
 	
+	@Column(name="PICTURE")
+	private String picture;
+	
 	
 
+	
 	// getters and setters
 	public Long getId() {
 		return id;
@@ -98,4 +102,13 @@ public class Event {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
 }
