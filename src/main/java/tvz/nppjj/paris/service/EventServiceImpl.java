@@ -19,5 +19,14 @@ public class EventServiceImpl implements EventService {
 	public List<Event> getAllEvents() {
 		return (List<Event>) eventRepository.findAll();
 	}
+	
+	
+	public Event getEventById(Long id){
+		return eventRepository.findOne(id);
+	}
 
+	@Override
+	public void saveEvent(Event event){
+		eventRepository.saveAndFlush(event);
+	}
 }
