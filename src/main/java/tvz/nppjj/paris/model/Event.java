@@ -34,8 +34,8 @@ public class Event {
 	@Column(name = "DATE")
 	private Date date;
 		
-//	@Column(name="DESCRIPTION")
-//	private String description;
+	@Column(name="DESCRIPTION")
+	private String description;
 	
 	@Column(name="PRICE")
 	private BigDecimal price;
@@ -79,13 +79,13 @@ public class Event {
 		this.date = date;
 	}
 	
-//	public String getDescription() {
-//		return description;
-//	}
+	public String getDescription() {
+		return description;
+	}
 
-//	public void setDescription(String description) {
-//		this.description = description;
-//	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	public BigDecimal getPrice() {
 		return price;
