@@ -1,0 +1,285 @@
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-with-addons.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/6.1.19/browser.js"></script>
+	<title>Codename Paris</title>
+</head>
+<body>
+	<div class="container">
+
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+						aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">Codename-Paris</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+		   		        <li><a href="/eventNew">Novi događaj</a></li>
+		        		<li><a href="/eventsAll">Svi događaji</a></li>
+						<li><a href="#">O Parisu</a></li>
+						<li><a href="#">Registracija</a></li>
+						<li><a href="#">Prijava</a></li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+
+		<!-- zavrsena navigacija -->
+
+
+		<div id="filter"></div>		
+
+		<hr/>
+
+		<div id="events"></div>
+		
+	</div>
+
+	<script type="text/javascript">
+		
+// 	var SingleEvent = React.createClass({
+// 		  render: function() {
+// 		    return (
+// 		      <div className="event-information">
+// 		        <div className="row">
+// 		          <div className="col-sm-2">
+// 		            <h2>04.</h2>
+// 		            <h4>Sijecnja</h4>
+// 		          </div>
+// 		          <div className="col-sm-3">
+// 		            <img src="https://consequenceofsound.files.wordpress.com/2013/12/ultrafrestannounce_thumb.jpg" />
+// 		          </div>
+// 		          <div className="col-sm-5">
+// 		            <h4><strong>Lorem Ipsum</strong></h4>
+// 		            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum mi eu orci auctor viverra. Phasellus ultrices viverra dui, vitae iaculis lorem. Vivamus pretium sit amet ligula eget hendrerit. Vestibulum commodo id ex a suscipit.</p>
+// 		            <a className="pull-right" href="#">Vise informacija</a>
+// 		          </div>
+// 		          <div className="col-sm-2">
+// 		            <h4>Cijena ulaznice:<br />555 kn</h4>
+// 		            <a className="btn btn-success btn-sm" href="#">Kupi ulaznicu</a>
+// 		          </div>					
+// 		        </div>
+// 		      </div>
+// 		    );
+// 		  }
+// 		});
+	
+// 	ReactDOM.render(<SingleEvent/>, document.getElementById('events'));
+
+// var FilterForm = React.createClass({
+//   render: function() {
+//     return (
+
+//       <form method="GET" action="#">
+//         <h4><strong>Filtriraj</strong></h4>
+//         <div className="form-group row">
+//           <label className="col-sm-2 form-control-label" htmlFor="name">Naziv događaja:</label>
+//           <div className="col-sm-4">
+//             <input type="text" name="name" id="name" className="form-control" />
+//           </div>
+//         </div>
+//         <div className="form-group row">
+//           <label className="col-sm-2 form-control-label" htmlFor="category">Naziv događaja:</label>
+//           <select className="c-select">
+//             <option selected>Odaberi</option>
+//             <option value="prvi">Prvi</option>
+//             <option value="drugi">Drugi</option>
+//           </select>
+//         </div>
+//         <div className="form-group row">
+//           <label className="col-sm-2 form-control-label" htmlFor="date">Datum:</label>
+//           <div className="col-sm-4">
+//             <input type="date" name="date" id="date" className="form-control" />
+//           </div>
+//         </div>
+//         <input type="submit" className="btn btn-primary" defaultValue="Filtriraj" />
+//       </form>
+//     );
+//   }
+// });
+
+"use strict";
+
+var SingleEvent = React.createClass({
+	displayName: "SingleEvent",
+
+	render: function render() {
+		return React.createElement(
+			"div",
+			{ className: "event-information" },
+			React.createElement(
+				"div",
+				{ className: "row" },
+				React.createElement(
+					"div",
+					{ className: "col-sm-2" },
+					React.createElement(
+						"h2",
+						null,
+						"04."
+					),
+					React.createElement(
+						"h4",
+						null,
+						"Sijecnja"
+					)
+				),
+				React.createElement(
+					"div",
+					{ className: "col-sm-3" },
+					React.createElement("img", { src: "https://consequenceofsound.files.wordpress.com/2013/12/ultrafrestannounce_thumb.jpg" })
+				),
+				React.createElement(
+					"div",
+					{ className: "col-sm-5" },
+					React.createElement(
+						"h4",
+						null,
+						React.createElement(
+							"strong",
+							null,
+							"Lorem Ipsum"
+						)
+					),
+					React.createElement(
+						"p",
+						null,
+						"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum mi eu orci auctor viverra. Phasellus ultrices viverra dui, vitae iaculis lorem. Vivamus pretium sit amet ligula eget hendrerit. Vestibulum commodo id ex a suscipit."
+					),
+					React.createElement(
+						"a",
+						{ className: "pull-right", href: "#" },
+						"Vise informacija"
+					)
+				),
+				React.createElement(
+					"div",
+					{ className: "col-sm-2" },
+					React.createElement(
+						"h4",
+						null,
+						"Cijena ulaznice:",
+						React.createElement("br", null),
+						"555 kn"
+					),
+					React.createElement(
+						"a",
+						{ className: "btn btn-success btn-sm", href: "#" },
+						"Kupi ulaznicu"
+					)
+				)
+			)
+		);
+	}
+});
+
+
+var FilterForm = React.createClass({
+	  displayName: "FilterForm",
+
+	  render: function render() {
+	    return React.createElement(
+	      "form",
+	      { method: "GET", action: "#" },
+	      React.createElement(
+	        "h4",
+	        null,
+	        React.createElement(
+	          "strong",
+	          null,
+	          "Filtriraj"
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "form-group row" },
+	        React.createElement(
+	          "label",
+	          { className: "col-sm-2 form-control-label", htmlFor: "name" },
+	          "Naziv događaja:"
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "col-sm-4" },
+	          React.createElement("input", { type: "text", name: "name", id: "name", className: "form-control" })
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "form-group row" },
+	        React.createElement(
+	          "label",
+	          { className: "col-sm-2 form-control-label", htmlFor: "category" },
+	          "Vrsta događaja:"
+	        ),
+	        React.createElement(
+	          "select",
+	          { name: "category", className: "col-sm-4 selectpicker" },
+	          React.createElement(
+	            "option",
+	            { defaultValue: true },
+	            "Odaberi"
+	          ),
+	          React.createElement(
+	            "option",
+	            { value: "prvi" },
+	            "Prvi"
+	          ),
+	          React.createElement(
+	            "option",
+	            { value: "drugi" },
+	            "Drugi"
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "form-group row" },
+	        React.createElement(
+	          "label",
+	          { className: "col-sm-2 form-control-label", htmlFor: "date" },
+	          "Datum:"
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "col-sm-4" },
+	          React.createElement("input", { type: "date", name: "date", id: "date", className: "form-control" })
+	        )
+	      ),
+	      React.createElement("input", { type: "submit", className: "btn btn-primary", defaultValue: "Filtriraj" })
+	    );
+	  }
+	});
+
+
+ReactDOM.render(React.createElement(FilterForm, null), document.getElementById('filter'));
+ReactDOM.render(React.createElement(SingleEvent, null), document.getElementById('events'));
+
+	
+	</script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+</body>
+</html>

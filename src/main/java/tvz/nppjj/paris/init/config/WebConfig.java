@@ -14,6 +14,10 @@ public class WebConfig {
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
                 registry.addViewController("/").setViewName("forward:/static/index.html");
+                
+                registry.addViewController("/eventsAll").setViewName("forward:/static/eventsAll.html");
+                
+                registry.addViewController("/eventNew").setViewName("forward:/static/newEvent.html");
             }
         };
     }
