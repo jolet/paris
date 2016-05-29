@@ -1,0 +1,24 @@
+{
+  "name": "codename paris",
+  "homepage": "https://github.com/vinkstuff/web-nppjj-paris",
+  "authors": [
+    "denix00 <denix00@gmail.com>"
+  ],
+  "description": "projekt za kolegij napredno programiranje u java programskom jeziku",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "babel": "*",
+    "bootstrap": "^3.3.6",
+    "react": "^15.1.0",
+    "bootstrap-select": "^1.10.0"
+  }
+}

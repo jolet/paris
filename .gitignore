@@ -23,3 +23,6 @@ src/main/webapp/static/bower_components/*
 src/main/resources/config/application.properties
 .idea/
 /bin/
+
+
+/src/main/webapp/static/bower_components/
