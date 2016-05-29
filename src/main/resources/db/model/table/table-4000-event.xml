@@ -18,7 +18,7 @@
    <column name="ADDRESS" type="VARCHAR(50)">
     <constraints nullable="true"/>
    </column>
-    <column name="DESCRIPTION" type="TEXT">
+    <column name="DESCRIPTION" type="VARCHAR(500)">
     <constraints nullable="true"/>
    </column>
    <column name="PRICE" type="DECIMAL(18,2)">

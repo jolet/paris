@@ -1,11 +1,10 @@
 package tvz.nppjj.paris.service;
 
-import java.util.List;
-
 import tvz.nppjj.paris.model.Role;
+import tvz.nppjj.paris.model.enums.RoleType;
 
 public interface RoleService {
 
-	List<Role> getAllRoles();
+    Role findByRoleType(RoleType role);
 
 }

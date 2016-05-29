@@ -1,11 +1,10 @@
 package tvz.nppjj.paris.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tvz.nppjj.paris.model.Role;
+import tvz.nppjj.paris.model.enums.RoleType;
 import tvz.nppjj.paris.repository.RoleRepository;
 
 /**
@@ -18,11 +17,11 @@ import tvz.nppjj.paris.repository.RoleRepository;
 @Service
 public class RoleServiceImpl implements RoleService {
 
-	@Autowired
-	private RoleRepository roleRepository;
-	
-	@Override
-	public List<Role> getAllRoles() {
-		return roleRepository.findAll();
-	}
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Override
+    public Role findByRoleType(RoleType roleType) {
+        return roleRepository.findByName(roleType.getRoleName());
+    }
 }

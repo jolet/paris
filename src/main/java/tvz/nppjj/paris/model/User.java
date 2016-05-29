@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,22 +13,23 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-    @Column(name = "ID_USER")
-    @GeneratedValue
+	@Column(name = "ID_USER")
+	@GeneratedValue
 	private Long id;
-	
+
 	@Column(name = "USERNAME")
 	private String username;
-	
+
 	@Column(name = "EMAIL")
 	private String email;
-	
+
 	@Column(name = "PASSWORD")
 	private String password;
-	
-	@Column(name = "ID_ROLE")
-	private Long id_role;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "ID_ROLE")
+	private Role role;
+
 	@Column(name = "PHONE_NUMBER")
 	private String phone_number;
 
@@ -62,14 +65,6 @@ public class User {
 		this.password = password;
 	}
 
-	public Long getId_role() {
-		return id_role;
-	}
-
-	public void setId_role(Long id_role) {
-		this.id_role = id_role;
-	}
-
 	public String getPhone_number() {
 		return phone_number;
 	}
@@ -77,5 +72,13 @@ public class User {
 	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
-	
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
 }
