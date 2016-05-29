@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -42,6 +44,10 @@ public class Event {
 	
 	@Column(name="PICTURE")
 	private String picture;
+	
+	@ManyToOne
+	@JoinColumn(name = "ID_CATEGORY")
+	private Category category;
 	
 	
 
@@ -109,6 +115,14 @@ public class Event {
 
 	public void setPicture(String picture) {
 		this.picture = picture;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 }

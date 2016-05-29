@@ -27,6 +27,8 @@ public class NewEventDto {
 	
 	private BigDecimal price;
 	
+	private Long idCategory;
+	
 	
 	
 
@@ -85,6 +87,16 @@ public class NewEventDto {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public Long getIdCategory() {
+		return idCategory;
+	}
+
+	public void setIdCategory(Long idCategory) {
+		this.idCategory = idCategory;
+	}
+
+	
 	
 	
 }
