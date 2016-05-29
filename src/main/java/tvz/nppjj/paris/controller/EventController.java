@@ -21,9 +21,7 @@ public class EventController {
 	
 	@Autowired
 	private EventService eventService;
-	
-	
-	
+		
 	
 	@RequestMapping(value = "/events", method = RequestMethod.GET)
 	public List<Event> getAllEvents() {
