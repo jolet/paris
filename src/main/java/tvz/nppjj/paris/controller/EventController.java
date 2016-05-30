@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tvz.nppjj.paris.model.Event;
 import tvz.nppjj.paris.model.dto.NewEventDto;
-import tvz.nppjj.paris.model.mapper.EventMapper;
 import tvz.nppjj.paris.service.EventService;
 
 @RestController
@@ -35,7 +34,7 @@ public class EventController {
 	
 	@RequestMapping(value = "/saveEvent", method = RequestMethod.POST)
 	public void saveEvent(@Valid @RequestBody NewEventDto newEventDto){
-		eventService.saveEvent(EventMapper.transformToEvent(newEventDto));
+		eventService.saveEvent(newEventDto);
 		
 	}
 		

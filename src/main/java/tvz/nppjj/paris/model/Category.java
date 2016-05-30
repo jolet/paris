@@ -9,6 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "CATEGORY", schema = "PARIS")
 public class Category {
+	
 	@Id
     @Column(name = "ID_CATEGORY")
     @GeneratedValue
