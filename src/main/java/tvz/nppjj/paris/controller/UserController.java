@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import tvz.nppjj.paris.model.User;
+import tvz.nppjj.paris.model.dto.UserDto;
+import tvz.nppjj.paris.model.mapper.UserMapper;
 import tvz.nppjj.paris.service.UserService;
 
 @RestController
@@ -18,8 +20,8 @@ public class UserController {
 	private UserService userService;
 	
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public List<User> getAllUsers() {
-    	return userService.getAllUsers();
+	public List<UserDto> getAllUsers() {
+		return UserMapper.transformUserListToDtoList(userService.getAllUsers());
 	}
 	
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
@@ -28,8 +30,8 @@ public class UserController {
 	}
 	
 	
-	public String saveUser(User user){
-		userService.saveUser(user);
+	public String saveUser(UserDto userDto){
+		// userService.registerUser(UserMapper.transformToUser(userDto));
 		return "Saved";
 	}
 		
