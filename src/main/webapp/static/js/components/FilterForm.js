@@ -1,10 +1,16 @@
 import React from "react";
 
 export default class extends React.Component {
+
+  submit(event){
+    event.preventDefault();
+    console.log("Forma poslana");
+  }
+
   render() {
 
     return (
-      <form method="GET" action="#">
+      <form method="GET" action="events" onSubmit={this.submit}>
          <h4><strong>Filtriraj</strong></h4>
          <div className="form-group row">
            <label className="col-sm-2 form-control-label" htmlFor="name">Naziv događaja:</label>

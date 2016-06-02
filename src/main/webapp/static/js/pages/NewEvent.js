@@ -1,11 +1,17 @@
 import React from "react";
 
 export default class NewEvent extends React.Component {
+
+  submit(event){
+    event.preventDefault();
+    console.log("Forma poslana");
+  }
+
   render() {
     return (
       <div>
   <h2><strong>Novi događaj</strong></h2>
-  <form method="POST" action="#">
+  <form method="POST" action="events"  onSubmit={this.submit}>
     <div className="row">
       <div className="form-group col-sm-4">
         Naziv događaja:
