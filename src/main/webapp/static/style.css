@@ -1,0 +1,51 @@
+@CHARSET "UTF-8";
+
+.main-page-events{
+	height:450px;
+	border:1px solid #d3d3d3;
+	padding:0 !important;
+}
+
+.homepage-imgs{
+	display: block;
+	max-width: 200px;
+	max-height: 150px;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.homepage-event-about{
+	margin:10px;
+	font-weight: bolder;
+	text-align: justify;
+	text-justify: distribute;
+}
+
+.event-information{
+	height: 150px;
+	width: 100%;
+	border: 1px solid #d3d3d3;
+	margin: 10px 0;
+}
+
+.event-information img{
+	height:150px;
+	display: block;
+}
+
+#filter{
+	background-color:#d3d3d3;
+	padding:15px;
+}
+
+#newEvent{
+	width:75%;
+	margin:0 auto;
+}
+
+#btnSaveEvent{
+	margin-right:20px;
+}
