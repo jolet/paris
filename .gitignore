@@ -26,3 +26,4 @@ src/main/resources/config/application.properties
 
 
 /src/main/webapp/static/bower_components/
+src/main/webapp/node_modules/

@@ -19,6 +19,7 @@
     "babel": "*",
     "bootstrap": "^3.3.6",
     "react": "^15.1.0",
-    "bootstrap-select": "^1.10.0"
+    "bootstrap-select": "^1.10.0",
+    "react-router": "^2.4.1"
   }
 }
