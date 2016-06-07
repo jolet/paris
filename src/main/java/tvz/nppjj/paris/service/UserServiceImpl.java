@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tvz.nppjj.paris.model.User;
+import tvz.nppjj.paris.model.dto.UserDto;
 import tvz.nppjj.paris.model.enums.RoleType;
 import tvz.nppjj.paris.model.exception.ParisException;
+import tvz.nppjj.paris.model.mapper.UserMapper;
 import tvz.nppjj.paris.repository.UserRepository;
 
 @Service
@@ -51,5 +53,15 @@ public class UserServiceImpl implements UserService {
 
 		// TODO: send email notification...
 	}
+
+	@Override
+	public UserDto loginUser(String username, String password) {
+		User user=userRepository.findByUsernameAndPassword(username, password);
+		if (user == null){
+			throw new ParisException("That user do not exist!");
+		}
+		return UserMapper.transformUserToUserDto(user);
+	}
+	
 
 }
