@@ -3,6 +3,10 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
+  devServer:{
+    host: "localhost",
+    port: 8100
+  },
   context: path.join(__dirname, "static"),
   devtool: debug ? "inline-sourcemap" : null,
   entry: "./js/client.js",

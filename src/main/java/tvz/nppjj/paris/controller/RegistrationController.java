@@ -3,6 +3,7 @@ package tvz.nppjj.paris.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,7 @@ public class RegistrationController {
     @Autowired
     private UserService userService;
 
+    @CrossOrigin(origins = "http://localhost:8100")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void registerUser(@Valid @RequestBody RegistrationDto registrationDto) {
         // if registrationDto fails validation or exception is thrown from
