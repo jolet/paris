@@ -40,9 +40,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.liquibase:liquibase-core')
-	compile('org.springframework.boot:spring-boot-devtools')
-	compile 'org.apache.commons:commons-lang3:3.4'
-    compile 'org.assertj:assertj-core:3.4.1'
+	compile("org.springframework.boot:spring-boot-devtools")
 	runtime('com.h2database:h2')
 	// runtime('mysql:mysql-connector-java')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
