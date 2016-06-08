@@ -7,13 +7,13 @@ import tvz.nppjj.paris.model.dto.UserDto;
 
 public interface UserService {
 
-	List<User> getAllUsers();
+    List<User> getAllUsers();
 
-	void saveUser(User user);
+    void saveUser(User user);
 
-	User getUserById(Long id);
+    User getUserById(Long id);
 
-	void registerUser(User user);
-	
-	UserDto loginUser(String username, String password);
+    User registerUser(User user);
+
+    UserDto loginUser(String username, String password);
 }
