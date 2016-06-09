@@ -1,71 +1,117 @@
+
 import React from "react";
+import Router from 'react-router';
 
 export default class Registration extends React.Component {
 
-  submit(event){
-    event.preventDefault();
-    console.log("Forma poslana");
-  }
+      constructor(props){
+            super(props);
+            this.state = {
+              username: '',
+              email: '',
+              password: '',
+              id_Role: 1,
+              phoneNumber:'',
+            }
+            this.handleChange = this.handleChange.bind(this);
+            this.submit = this.submit.bind(this);
+          }
 
-  handleChange(event){ 
-  var pass1 = document.getElementById("pass1").value;
-  var pass2 = event.target.value;
-  if (pass1 != pass2) {
-      document.getElementById("pass1").style.borderColor = "#E34234";
-      document.getElementById("pass2").style.borderColor = "#E34234";
-      $('#btnSaveRegistration').prop('disabled', true);
-  }
-  else {
-	  document.getElementById("pass1").style.borderColor = "#0000FF";
-      document.getElementById("pass2").style.borderColor = "#0000FF";
-      $('#btnSaveRegistration').prop('disabled', false);
-  }
-  }
-  
-  render() {
-    return (
-    		
-      <div>
-  <h2><strong>Registracija</strong></h2>
-  <form method="POST" action="events"  onSubmit={this.submit}>
-    <div className="row">
-      <div className="form-group col-sm-5">
-        Korisničko ime:
-        <input type="text" pattern="^(?=.{4,16}$).*$" title="Korisničko ime mora sadržavati raspon znakova 4-16" name="name" className="form-control" />
-      </div>
-    </div>
-    <div className="row">
-      <div className="form-group col-sm-5">
-        E-Mail:
-        <input type="email" name="email" className="form-control" />
-      </div> 
-    </div>
-    <div className="row">
-      <div className="form-group col-sm-5">
-        Broj mobitela:
-        <input type="tel" pattern="[0-9]{3}/[0-9]{7}" title="Format broja mora biti tipa ***/******* " name="phone" className="form-control" />
-      </div>
-    </div>
-    <div className="row">
-      <div className="form-group col-sm-5">
-      Lozinka:
-          <input type="password" pattern="^(?=.{8,16}$)(?=.*[0-9]+.*)(?=.*[A-Z]+.*)[A-Za-z0-9.-_]*$" title="Lozinka mora imati barem jedno veliko slovo i broj te smije sadržavati posebne znakove [-_.] u rasponu znakova 8-16" name="password" id="pass1" className="form-control" />
-      </div>
-    </div>
- <div className="row">
-    <div className="form-group col-sm-5">
-    Potvrdi lozinku:
-        <input onChange={this.handleChange} type="password" name="password_confirm" className="form-control" id="pass2" oninput="check(this)" />
-    </div>
-  </div>
+      submit(event){
+            event.preventDefault();
+            console.log("Forma poslana");
+            console.log(this.state);
 
-  
-   
-    <div className="row">
-      <input type="submit" id="btnSaveRegistration" defaultValue="Registriraj se" className="btn btn-primary pull-right" />
-    </div>
-  </form>
+            var headers = new Headers({"Content-type": "application/json"});
+            var body = JSON.stringify({
+              email: this.state.email,
+              password: this.state.password,
+              phoneNumber: this.state.phoneNumber,
+            });
+
+            var init = {
+              method: 'POST',
+              headers: headers,
+              body: body,
+              mode: 'cors',
+            }
+
+            var url = new Request('http://localhost:8080/register');
+
+            fetch(url, init).then(function(response){
+              console.log(response);
+              if(response.status == 200 && response.ok == true){
+                console.log("tu dodaj redirect :)");
+              }
+            });
+          }
+
+
+
+          handleChange(name, event){
+             this.setState({[event.target.name]: event.target.value});
+             console.log({[event.target.name]: event.target.value});
+           }
+
+           handlePassCheck(event){
+             var pass1 = document.getElementById("pass1").value;
+             var pass2 = event.target.value;
+             if (pass1 != pass2) {
+                 document.getElementById("pass1").style.borderColor = "#E34234 ";
+                 document.getElementById("pass2").style.borderColor = "#E34234 ";
+                 $('#btnSaveRegistration').prop('disabled', true);
+             }
+             else {
+                  document.getElementById("pass1").style.borderColor = "#0000FF ";
+                 document.getElementById("pass2").style.borderColor = "#0000FF ";
+                 $('#btnSaveRegistration').prop('disabled', false);
+             }
+           }
+
+ render() {
+   return (
+
+     <div>
+ <h2><strong>Registracija</strong></h2>
+ <form onSubmit={this.submit}>
+   <div className="row">
+     <div className="form-group col-sm-5">
+       Korisničko ime:
+       <input type="text" pattern="^(?=.{4,16}$).*$" title="Korisničko ime mora sadržavati raspon znakova 4-16" name="username" className="form-control" required onChange={this.handleChange.bind(this, 'username')} />
+     </div>
+   </div>
+   <div className="row">
+     <div className="form-group col-sm-5">
+       E-Mail:
+       <input type="email" name="email" className="form-control" required onChange={this.handleChange.bind(this, 'email')}/>
+     </div>
+   </div>
+   <div className="row">
+     <div className="form-group col-sm-5">
+       Broj mobitela:
+       <input type="tel" name="phoneNumber" pattern="[0-9]{3}/[0-9]{7}" title="Format broja mora biti tipa ***/******* " className="form-control" required onChange={this.handleChange.bind(this, 'phoneNumber')}/>
+     </div>
+   </div>
+   <div className="row">
+     <div className="form-group col-sm-5">
+     Lozinka:
+         <input type="password" pattern="^(?=.{8,16}$)(?=.*[0-9]+.*)(?=.*[A-Z]+.*)[A-Za-z0-9.-_]*$" title="Lozinka mora imati barem jedno veliko slovo i broj te smije sadržavati posebne znakove [-_​.] u rasponu znakova 8-16" name="password" id="pass1" className="form-control" required onChange={this.handleChange.bind(this, 'password')}/>
+     </div>
+   </div>
+<div className="row">
+   <div className="form-group col-sm-5">
+   Potvrdi lozinku:
+       <input onChange={this.handlePassCheck} type="password" name="password_confirm" className="form-control" id="pass2" oninput="check(this)" />
+   </div>
+ </div>
+
+
+
+   <div className="row">
+     <input type="submit" id="btnSaveRegistration" defaultValue="Registriraj se" className="btn btn-primary pull-right" />
+   </div>
+ </form>
 </div>
-    );
-  }
+   );
+ }
 }
