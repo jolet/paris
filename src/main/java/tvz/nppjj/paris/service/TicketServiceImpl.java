@@ -57,6 +57,18 @@ public class TicketServiceImpl implements TicketService {
 	
 	
 	
+	@Override
+	public List<TicketDto> getTicketsByIdUserOrIdEvent(Long idUser, Long idEvent) {
+		
+		return transformTicketListToDtoList(ticketRepository.findByIdUserOrIdEvent(idUser, idEvent));
+	}
+	
+	
+	
+	
+	
+	
+	
 	public TicketDto transformTicketToTicketDto(Ticket ticket) {
 
 	       TicketDto ticketDto=new TicketDto();

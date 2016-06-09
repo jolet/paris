@@ -12,4 +12,6 @@ public interface TicketService {
 	TicketDto getTicketById(Long id);
 	
 	void saveTicket(TicketDto ticketDto);
+	List<TicketDto> getTicketsByIdUserOrIdEvent(Long idUser, Long idEvent);
+	
 }
