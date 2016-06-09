@@ -1,7 +1,9 @@
 import React from "react";
+import Router from 'react-router';
 
 export default class NewEvent extends React.Component {
 
+// u inputu i constructoru postaviti ista imena varijabli
   constructor(props){
     super(props);
     this.state = {
@@ -14,59 +16,48 @@ export default class NewEvent extends React.Component {
       price: '',
       idCategory: ''
     }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
-  handleName(event){
-    var value = event.target.value;
-    console.log(value);
-    this.setState({name: value});
-  }
-
-  handleLocation(event){
-    var value = event.target.value;
-    console.log(value);
-    this.setState({location: value});
-  }
-
-  handleCity(event){
-    var value = event.target.value;
-    console.log(value);
-    this.setState({city: value});
-  }
-
-  handleDate(event){
-    var value = event.target.value;
-    console.log(value);
-    this.setState({date: value});
-  }
-
-  handleDescription(event){
-    var value = event.target.value;
-    console.log(value);
-    this.setState({description: value});
-  }
-
-  handlePicture(event){
-    var value = event.target.value;
-    console.log(value);
-    this.setState({picture: value});
-  }
-
-  handlePrice(event){
-    var value = event.target.value;
-    console.log(value);
-    this.setState({price: value});
-  }
-
-  handleIdCategory(event){
-    var value = event.target.value;
-    console.log(value);
-    this.setState({idCategory: value});
+  handleChange(name, event){
+    this.setState({[event.target.name]: event.target.value});
+    console.log({[event.target.name]: event.target.value});
   }
 
   submit(event){
     event.preventDefault();
     console.log("Forma poslana");
+    console.log(this.state);
+
+    var headers = new Headers({"Content-type": "application/json"});
+    var body = JSON.stringify({
+      name: this.state.name,
+      location: this.state.location,
+      city: this.state.city,
+      date: this.state.date,
+      description: this.state.description,
+      picture: this.state.picture,
+      price: this.state.price,
+      idCategory: parseInt(this.state.idCategory)
+    });
+
+    var init = {
+      method: 'POST',
+      headers: headers,
+      body: body,
+      mode: 'cors',
+    }
+
+    var url = new Request('http://localhost:8080/saveEvent');
+
+    fetch(url, init).then(function(response){
+      console.log(response);
+      if(response.status == 200 && response.ok == true){
+        console.log("tu dodaj redirect :)");
+      }
+    });
   }
 
   render() {
@@ -77,11 +68,11 @@ export default class NewEvent extends React.Component {
     <div className="row">
       <div className="form-group col-sm-4">
         Naziv događaja:
-        <input type="text" name="name" className="form-control" onChange={this.handleName}/>
+        <input type="text" name="name" className="form-control" required onChange={this.handleChange.bind(this, 'name')}/>
       </div>
       <div className="form-group col-sm-3 col-sm-offset-1">
         Datum početka:
-        <input type="date" name="startDate" className="form-control" onChange={this.handleDate} />
+        <input type="date" name="date" className="form-control" required onChange={this.handleChange.bind(this, 'date')} />
       </div>
       <div className="form-group col-sm-3 col-sm-offset-1">
         Vrijeme početka:
@@ -91,7 +82,7 @@ export default class NewEvent extends React.Component {
     <div className="row">
       <div className="form-group col-sm-4">
         Adresa:
-        <input type="text" name="address" className="form-control" onChange={this.handleLocation}/>
+        <input type="text" name="location" className="form-control"  required onChange={this.handleChange.bind(this, 'location')}/>
       </div>
       <div className="form-group col-sm-3 col-sm-offset-1">
         Datum završetka:
@@ -105,17 +96,25 @@ export default class NewEvent extends React.Component {
     <div className="row">
       <div className="form-group col-sm-4">
         Grad:
-        <input type="text" name="city" className="form-control" onChange={this.handleCity}/>
+        <input type="text" name="city" className="form-control" required onChange={this.handleChange.bind(this, 'city')}/>
+      </div>
+      <div className="form-group col-sm-3 col-sm-offset-1">
+        Kategorija:
+        <select name="idCategory" className="form-control" required onChange={this.handleChange.bind(this, 'idCategory')}>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
       </div>
     </div>
     <div className="row">
       <div className="form-group col-sm-5">
         Opis događaja:<br />
-      <textarea name="description" rows={5} className="form-control" defaultValue={""} onChange={this.handleDescription}/>
+      <textarea name="description" rows={5} className="form-control" defaultValue={""}  required onChange={this.handleChange.bind(this, 'description')}/>
       </div>
       <div className="form-group col-sm-5 col-sm-offset-2">
         URL slike:
-        <input type="url" name="picture" className="form-control" onChange={this.handlePicture}/>
+        <input type="url" name="picture" className="form-control" required onChange={this.handleChange.bind(this, 'picture')}/>
       </div>
     </div>
     <div className="row">
@@ -139,7 +138,7 @@ export default class NewEvent extends React.Component {
       </div>
       <div className="form-group col-sm-3 col-sm-offset-1">
         Cijena:
-        <input type="number" step="any" min={0} name="price" className="form-control" onChange={this.handlePrice} />
+        <input type="number" step="any" min={0} name="price" className="form-control" required onChange={this.handleChange.bind(this, 'price')} />
       </div>
     </div>
     <div className="row">
