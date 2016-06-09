@@ -1,5 +1,6 @@
 import React from "react";
 import Router from 'react-router';
+import Category from '../components/Category'
 
 export default class NewEvent extends React.Component {
 
@@ -14,11 +15,25 @@ export default class NewEvent extends React.Component {
       description: '',
       picture: '',
       price: '',
-      idCategory: ''
+      idCategory: 1,
+      resCategory:[]
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
+  }
+
+  componentDidMount(){
+    console.log('didmount');
+    $.ajax({
+      url: 'http://localhost:8080/category',
+      context: this,
+      dataType: 'json',
+      type: 'GET',
+    }).done(function (data){
+      this.setState({resCategory: data});
+       console.log('dohvaceni');
+    });
   }
 
   handleChange(name, event){
@@ -101,9 +116,7 @@ export default class NewEvent extends React.Component {
       <div className="form-group col-sm-3 col-sm-offset-1">
         Kategorija:
         <select name="idCategory" className="form-control" required onChange={this.handleChange.bind(this, 'idCategory')}>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
+          { this.state.resCategory.map((categoryAPI, i) => <Category key={i} event={categoryAPI} />)  }
         </select>
       </div>
     </div>
