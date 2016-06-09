@@ -3,14 +3,16 @@ package tvz.nppjj.paris.model.dto;
 import java.math.BigDecimal;
 
 
+
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 
 public class TicketDto {
 	
 	@NotBlank(message="Enter QR code!")
 	private String code;
 	
-	
+	@Range(min = 0, message="Enter price...(0 or more)")
 	private BigDecimal price;
 	
 	private Boolean isValidated;
