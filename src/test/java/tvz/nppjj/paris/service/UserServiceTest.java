@@ -13,12 +13,15 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import tvz.nppjj.paris.init.WebNppjjParisApplication;
 import tvz.nppjj.paris.model.Role;
 import tvz.nppjj.paris.model.User;
+import tvz.nppjj.paris.model.dto.RegistrationCommand;
 import tvz.nppjj.paris.model.enums.RoleType;
 import tvz.nppjj.paris.repository.UserRepository;
 
@@ -47,18 +50,17 @@ public class UserServiceTest {
         // prepare
         when(userRepository.findByEmail(anyString())).thenReturn(null);
         when(roleService.findByRoleType(any(RoleType.class))).thenReturn(createMockRole());
-        User userToSave = createUser();
-        when(userRepository.save(any(User.class))).thenReturn(userToSave);
+        RegistrationCommand registrationCommand = createRegistrationCommand();
+        when(userRepository.save(any(User.class))).thenAnswer(userRegistrationAnswer);
 
         // act
-        User registeredUser = userService.registerUser(userToSave);
+        User registeredUser = userService.registerUser(registrationCommand);
 
         // assert
-        // TODO: move mapper from controller to service layer
-        // assertThat(registeredUser.getUsername()).isEqualTo(userToSave.getEmail());
-        assertThat(registeredUser.getEmail()).isEqualTo(userToSave.getEmail());
-        assertThat(registeredUser.getPhone_number()).isEqualTo(userToSave.getPhone_number());
-        assertThat(registeredUser.getRole().getName()).isEqualTo(userToSave.getRole().getName());
+        assertThat(registeredUser.getUsername()).isEqualTo(registrationCommand.getEmail());
+        assertThat(registeredUser.getEmail()).isEqualTo(registrationCommand.getEmail());
+        assertThat(registeredUser.getPhone_number()).isEqualTo(registrationCommand.getPhoneNumber());
+        assertThat(registeredUser.getRole().getName()).isNotNull();
 
         verify(userRepository, times(1)).save(any(User.class));
     }
@@ -70,12 +72,23 @@ public class UserServiceTest {
         return mockRole;
     }
 
-    private User createUser() {
-        User user = new User();
-        user.setEmail("CAFE@BABE.COM");
-        user.setPassword("SuperSecurePassword");
-        user.setPhone_number("666 999");
-        return user;
+    private RegistrationCommand createRegistrationCommand() {
+        RegistrationCommand command = new RegistrationCommand();
+        command.setEmail("CAFE@BABE.COM");
+        command.setPassword("SuperSecurePassword");
+        command.setPhoneNumber("666 999");
+        return command;
     }
+
+    // mock response for userRepository.save
+    private Answer<User> userRegistrationAnswer = new Answer<User>() {
+        @Override
+        public User answer(InvocationOnMock invocation) throws Throwable {
+            User userArgument = invocation.getArgumentAt(0, User.class);
+
+            assertThat(userArgument.getRole()).isNotNull();
+            return userArgument;
+        }
+    };
 
 }

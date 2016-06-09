@@ -20,7 +20,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestTemplate;
 
 import tvz.nppjj.paris.init.WebNppjjParisApplication;
-import tvz.nppjj.paris.model.dto.RegistrationDto;
+import tvz.nppjj.paris.model.dto.RegistrationCommand;
 import tvz.nppjj.paris.repository.TicketRepository;
 import tvz.nppjj.paris.repository.UserRepository;
 
@@ -63,7 +63,7 @@ public class RegistrationControllerTest {
     public void testRegisterUser_whenUserRegistrationIsSuccess_thenUserIsRegistered() throws Exception {
         // prepare
         long userCount = userRepository.count();
-        HttpEntity<RegistrationDto> registrationRequest = createRegistrationRequest();
+        HttpEntity<RegistrationCommand> registrationRequest = createRegistrationRequest();
 
         // act
         ResponseEntity<Void> responseEntity = restTemplate.postForEntity(registrationApiUrl, registrationRequest, Void.class);
@@ -77,7 +77,7 @@ public class RegistrationControllerTest {
     public void testRegisterUser_whenUserAlreadyExists_thenBadRequestIsReturned() throws Exception {
         // prepare
         assertThat(userRepository.findByEmail("CAFE@BABE.COM")).isNull();
-        HttpEntity<RegistrationDto> registrationRequest = createRegistrationRequest();
+        HttpEntity<RegistrationCommand> registrationRequest = createRegistrationRequest();
 
         // act
         ResponseEntity<Void> firstResponseEntity = restTemplate.postForEntity(registrationApiUrl, registrationRequest, Void.class);
@@ -91,7 +91,7 @@ public class RegistrationControllerTest {
     @Test
     public void testRegisterUser_whenRegistrationIsMissingRequiredData_thenBadRequestIsReturned() throws Exception {
         // prepare
-        HttpEntity<RegistrationDto> registrationRequest = createRegistrationRequest();
+        HttpEntity<RegistrationCommand> registrationRequest = createRegistrationRequest();
         registrationRequest.getBody().setEmail(null);
 
         // act
@@ -102,20 +102,20 @@ public class RegistrationControllerTest {
     }
 
     // +------------ HELPER METHODS ------------+
-    private HttpEntity<RegistrationDto> createRegistrationRequest() {
-        RegistrationDto registrationDto = createRegistrationDto();
+    private HttpEntity<RegistrationCommand> createRegistrationRequest() {
+        RegistrationCommand registrationCommand = createRegistrationDto();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<RegistrationDto> request = new HttpEntity<RegistrationDto>(registrationDto, headers);
+        HttpEntity<RegistrationCommand> request = new HttpEntity<RegistrationCommand>(registrationCommand, headers);
         return request;
     }
 
-    private RegistrationDto createRegistrationDto() {
-        RegistrationDto registrationDto = new RegistrationDto();
-        registrationDto.setEmail("CAFE@BABE.COM");
-        registrationDto.setPassword("SuperSecurePassword");
-        registrationDto.setPhoneNumber("666 999");
-        return registrationDto;
+    private RegistrationCommand createRegistrationDto() {
+        RegistrationCommand registrationCommand = new RegistrationCommand();
+        registrationCommand.setEmail("CAFE@BABE.COM");
+        registrationCommand.setPassword("SuperSecurePassword");
+        registrationCommand.setPhoneNumber("666 999");
+        return registrationCommand;
     }
 
     private void resetDb() {

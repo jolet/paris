@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tvz.nppjj.paris.model.User;
+import tvz.nppjj.paris.model.dto.RegistrationCommand;
 import tvz.nppjj.paris.model.dto.UserDto;
 import tvz.nppjj.paris.model.enums.RoleType;
 import tvz.nppjj.paris.model.exception.ParisException;
@@ -40,7 +41,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User registerUser(User user) {
+    public User registerUser(RegistrationCommand registrationCommand) {
+        User user = UserMapper.transformToUser(registrationCommand);
         // Check if user already exists, throw exception if it does.
         // Exception will be propagated back to calling controller and returned
         // through ajax error response

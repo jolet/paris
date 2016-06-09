@@ -4,7 +4,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-public class RegistrationDto {
+public class RegistrationCommand {
 
     @NotBlank
     @Size(min = 6, max = 50, message = "must be at least 6 characters")

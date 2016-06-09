@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tvz.nppjj.paris.model.User;
-import tvz.nppjj.paris.model.dto.RegistrationDto;
+import tvz.nppjj.paris.model.dto.RegistrationCommand;
 import tvz.nppjj.paris.model.dto.UserDto;
 
 public class UserMapper {
 
-    public static User transformToUser(RegistrationDto registrationDto) {
+    public static User transformToUser(RegistrationCommand registrationDto) {
 
         User newUser = new User();
         newUser.setEmail(registrationDto.getEmail());
