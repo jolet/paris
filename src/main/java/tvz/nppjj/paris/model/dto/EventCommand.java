@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-public class NewEventDto {
+public class EventCommand {
 
 	@NotBlank
 	@Size(min = 5, max = 150, message="Must be at least 5 characters")
@@ -95,8 +95,4 @@ public class NewEventDto {
 	public void setIdCategory(Long idCategory) {
 		this.idCategory = idCategory;
 	}
-
-	
-	
-	
 }

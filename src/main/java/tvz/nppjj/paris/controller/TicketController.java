@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import tvz.nppjj.paris.model.dto.TicketCommand;
 import tvz.nppjj.paris.model.dto.TicketDto;
 import tvz.nppjj.paris.service.TicketService;
 
@@ -32,15 +33,15 @@ public class TicketController {
 	}
 	
 	
-	//@RequestMapping(value = "/tickets", method = RequestMethod.GET)
-	//public List<TicketDto> getAllTickets(@RequestParam("idEvent") Long idEvent, @RequestParam("idUser") Long idUser) {
-    //	return ticketService.getTicketsByIdUserOrIdEvent(idUser, idEvent);
-	//}
+//	@RequestMapping(value = "/tickets", method = RequestMethod.GET)
+//	public List<TicketDto> getAllTickets(@RequestParam("idEvent") Long idEvent, @RequestParam("idUser") Long idUser) {
+//    	return ticketService.getTicketsByIdUserOrIdEvent(idUser, idEvent);
+//	}
 	
 	
-	@RequestMapping(value = "/ticket/save", method = RequestMethod.POST)
-	public void saveTicket(@Valid @RequestBody TicketDto ticketDto){
-		ticketService.saveTicket(ticketDto);
+	@RequestMapping(value = "/tickets/save", method = RequestMethod.POST)
+	public void saveTicket(@Valid @RequestBody TicketCommand ticketCommand){
+		ticketService.saveTicket(ticketCommand);
 	}
 
 }

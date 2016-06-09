@@ -2,12 +2,12 @@ package tvz.nppjj.paris.service;
 
 import java.util.List;
 
-import tvz.nppjj.paris.model.Event;
-import tvz.nppjj.paris.model.dto.NewEventDto;
+import tvz.nppjj.paris.model.dto.EventCommand;
+import tvz.nppjj.paris.model.dto.EventDto;
 
 public interface EventService {
 	
-	List<Event> getAllEvents();
-	Event getEventById(Long id);
-	void saveEvent(NewEventDto newEventDto);
+	List<EventDto> getAllEvents();
+	EventDto getEventById(Long id);
+	void saveEvent(EventCommand eventCommand);
 }

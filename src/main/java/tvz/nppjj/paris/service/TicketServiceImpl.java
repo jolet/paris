@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tvz.nppjj.paris.model.Event;
 import tvz.nppjj.paris.model.Ticket;
-
+import tvz.nppjj.paris.model.dto.EventDto;
+import tvz.nppjj.paris.model.dto.TicketCommand;
 import tvz.nppjj.paris.model.dto.TicketDto;
 
 import tvz.nppjj.paris.repository.TicketRepository;
@@ -39,17 +41,17 @@ public class TicketServiceImpl implements TicketService {
 	}
 
 	@Override
-	public void saveTicket(TicketDto ticketDto) {
+	public void saveTicket(TicketCommand ticketCommand) {
 		
 		Ticket ticket = new Ticket();
 		
-		ticket.setCode(ticketDto.getCode());
-		ticket.setPrice(ticketDto.getPrice());
-		ticket.setIsValidated(ticketDto.getIsValidated());
+		ticket.setCode(ticketCommand.getCode());
+		ticket.setPrice(ticketCommand.getPrice());
+		ticket.setIsValidated(ticketCommand.getIsValidated());
 				
-		ticket.setEvent(eventService.getEventById(ticketDto.getIdEvent()));
+		ticket.setEvent(transformEventDtoToEvent(eventService.getEventById(ticketCommand.getIdEvent())));
 		
-		ticket.setUser(userService.getUserById(ticketDto.getIdUser()));
+		ticket.setUser(userService.getUserById(ticketCommand.getIdUser()));
 		
 		
 		ticketRepository.save(ticket);		
@@ -57,19 +59,34 @@ public class TicketServiceImpl implements TicketService {
 	
 	
 	
-	//@Override
-	//public List<TicketDto> getTicketsByIdUserOrIdEvent(Long idUser, Long idEvent) {
+//	@Override
+//	public List<TicketDto> getTicketsByIdUserOrIdEvent(Long idUser, Long idEvent) {
+//		
+//		return transformTicketListToDtoList(ticketRepository.findTicketByIdUserOrIdEvent(idUser, idEvent));
+//	}
+	
+	
+	
+	
+	private Event transformEventDtoToEvent(EventDto eventDto){
+		Event event = new Event();
+		event.setName(eventDto.getName());
+		event.setLocation(eventDto.getLocation());
+		event.setCity(eventDto.getCity());
+		event.setDate(eventDto.getDate());
+		event.setDescription(eventDto.getDescription());
+		event.setPicture(eventDto.getPicture());
+		event.setPrice(eventDto.getPrice());
 		
-	//	return transformTicketListToDtoList(ticketRepository.findByIdUserOrIdEvent(idUser, idEvent));
-	//}
+		event.setCategory(eventDto.getCategory());
+		
+		return event;
+	}
 	
 	
 	
 	
-	
-	
-	
-	public TicketDto transformTicketToTicketDto(Ticket ticket) {
+	private TicketDto transformTicketToTicketDto(Ticket ticket) {
 
 	       TicketDto ticketDto=new TicketDto();
 	       ticketDto.setCode(ticket.getCode());
@@ -81,7 +98,7 @@ public class TicketServiceImpl implements TicketService {
 	    }
 	
 	
-	public List<TicketDto> transformTicketListToDtoList(List<Ticket> ticketList){
+	private List<TicketDto> transformTicketListToDtoList(List<Ticket> ticketList){
    	 List<TicketDto> ticketDtoList=new ArrayList<>();
    	 for (int i=0;i<ticketList.size();i++) {
    		ticketDtoList.add(transformTicketToTicketDto(ticketList.get(i)));
