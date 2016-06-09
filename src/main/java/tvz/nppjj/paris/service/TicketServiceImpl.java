@@ -1,15 +1,20 @@
 package tvz.nppjj.paris.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tvz.nppjj.paris.model.Ticket;
+
 import tvz.nppjj.paris.model.dto.TicketDto;
+
 import tvz.nppjj.paris.repository.TicketRepository;
 
 @Service
+@Transactional
 public class TicketServiceImpl implements TicketService {
 
 	@Autowired
@@ -22,15 +27,15 @@ public class TicketServiceImpl implements TicketService {
 	private UserService userService;
 	
 	@Override
-	public List<Ticket> getAllTickets() {
+	public List<TicketDto> getAllTickets() {
 		
-		return ticketRepository.findAll();
+		return transformTicketListToDtoList(ticketRepository.findAll());
 	}
 
 	@Override
-	public Ticket getTicketById(Long id) {
+	public TicketDto getTicketById(Long id) {
 		
-		return ticketRepository.findOne(id);
+		return transformTicketToTicketDto(ticketRepository.findOne(id));
 	}
 
 	@Override
@@ -49,5 +54,28 @@ public class TicketServiceImpl implements TicketService {
 		
 		ticketRepository.save(ticket);		
 	}
+	
+	
+	
+	public TicketDto transformTicketToTicketDto(Ticket ticket) {
+
+	       TicketDto ticketDto=new TicketDto();
+	       ticketDto.setCode(ticket.getCode());
+	       ticketDto.setIdUser(ticket.getUser().getId());
+	       ticketDto.setIsValidated(ticket.getIsValidated());
+	       ticketDto.setPrice(ticket.getPrice());
+	       ticketDto.setEvent(ticket.getEvent());
+	       return ticketDto;
+	    }
+	
+	
+	public List<TicketDto> transformTicketListToDtoList(List<Ticket> ticketList){
+   	 List<TicketDto> ticketDtoList=new ArrayList<>();
+   	 for (int i=0;i<ticketList.size();i++) {
+   		ticketDtoList.add(transformTicketToTicketDto(ticketList.get(i)));
+		}
+   	 return ticketDtoList;
+   	 
+    }
 
 }

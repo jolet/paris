@@ -7,6 +7,9 @@ import java.math.BigDecimal;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 
+import tvz.nppjj.paris.model.Event;
+
+
 public class TicketDto {
 	
 	@NotBlank(message="Enter QR code!")
@@ -20,6 +23,8 @@ public class TicketDto {
 	
 	private Long idUser;
 	
+	
+	private Event event;
 	
 	private Long idEvent;
 
@@ -60,12 +65,17 @@ public class TicketDto {
 		this.idUser = idUser;
 	}
 
+	public Event getEvent() {
+		return event;
+	}
+	
+	public void setEvent(Event event) {
+		this.event=event;
+	}
+	
 	public Long getIdEvent() {
 		return idEvent;
 	}
 
-	public void setIdEvent(Long idEvent) {
-		this.idEvent = idEvent;
-	}
 
 }
