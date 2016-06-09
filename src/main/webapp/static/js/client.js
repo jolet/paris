@@ -10,6 +10,7 @@ import NewEvent from './pages/NewEvent';
 import Registration from './pages/Registration';
 import BuyTicket from './pages/BuyTicket';
 import EventDetails from './pages/EventDetails';
+import UserProfile from './pages/UserProfile';
 
 const app = document.getElementById('app');
 
@@ -23,6 +24,7 @@ ReactDOM.render(
       <Route path="registration" name="registration" component={Registration}></Route>
       <Route path="event/:id" name="eventDetails" component={EventDetails} ></Route>
       <Route path="buyTicket/:id" name="buyTicket" component={BuyTicket}></Route>
+      <Route path="user/:id" name="userProfile" component={UserProfile}></Route>
     </Route>
   </Router>,
 app);
