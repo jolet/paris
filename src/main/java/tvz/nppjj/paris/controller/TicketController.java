@@ -32,10 +32,10 @@ public class TicketController {
 	}
 	
 	
-	@RequestMapping(value = "/tickets", method = RequestMethod.GET)
-	public List<TicketDto> getAllTickets(@RequestParam("idEvent") Long idEvent, @RequestParam("idUser") Long idUser) {
-    	return ticketService.getTicketsByIdUserOrIdEvent(idUser, idEvent);
-	}
+	//@RequestMapping(value = "/tickets", method = RequestMethod.GET)
+	//public List<TicketDto> getAllTickets(@RequestParam("idEvent") Long idEvent, @RequestParam("idUser") Long idUser) {
+    //	return ticketService.getTicketsByIdUserOrIdEvent(idUser, idEvent);
+	//}
 	
 	
 	@RequestMapping(value = "/ticket/save", method = RequestMethod.POST)
