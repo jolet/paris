@@ -1,5 +1,6 @@
 package tvz.nppjj.paris.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.times;
@@ -41,22 +42,28 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testRegisterUser_whenValidRegistrationDate_thenNoExceptionIsThrown() throws Exception {
+    public void testRegisterUser_whenValidRegistrationData_thenNoExceptionIsThrown() throws Exception {
 
         // prepare
         when(userRepository.findByEmail(anyString())).thenReturn(null);
         when(roleService.findByRoleType(any(RoleType.class))).thenReturn(createMockRole());
-        User user = createUser();
-        when(userRepository.save(any(User.class))).thenReturn(user);
+        User userToSave = createUser();
+        when(userRepository.save(any(User.class))).thenReturn(userToSave);
 
         // act
-        userService.registerUser(user);
-        verify(userRepository, times(1)).save(any(User.class));
+        User registeredUser = userService.registerUser(userToSave);
 
         // assert
+        // TODO: move mapper from controller to service layer
+        // assertThat(registeredUser.getUsername()).isEqualTo(userToSave.getEmail());
+        assertThat(registeredUser.getEmail()).isEqualTo(userToSave.getEmail());
+        assertThat(registeredUser.getPhone_number()).isEqualTo(userToSave.getPhone_number());
+        assertThat(registeredUser.getRole().getName()).isEqualTo(userToSave.getRole().getName());
+
+        verify(userRepository, times(1)).save(any(User.class));
     }
 
-    // +--------- HELPER METHODS ---------+
+    // +------------ HELPER METHODS ------------+
     private Role createMockRole() {
         Role mockRole = new Role();
         mockRole.setName("mockRole");
