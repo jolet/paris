@@ -34,7 +34,7 @@ public class EventController {
     	return eventService.getEventById(id);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8100")
+	@CrossOrigin//(origins = "http://localhost:8100")
 	@RequestMapping(value = "/events/save", method = RequestMethod.POST)
 	public void saveEvent(@Valid @RequestBody EventCommand eventCommand){
 		eventService.saveEvent(eventCommand);
