@@ -59,11 +59,11 @@ public class TicketServiceImpl implements TicketService {
 	
 	
 	
-//	@Override
-//	public List<TicketDto> getTicketsByIdUserOrIdEvent(Long idUser, Long idEvent) {
-//		
-//		return transformTicketListToDtoList(ticketRepository.findTicketByIdUserOrIdEvent(idUser, idEvent));
-//	}
+	@Override
+	public List<TicketDto> getTicketsByIdUser(Long idUser) {
+		
+		return transformTicketListToDtoList(ticketRepository.findTicketByUserId(idUser));
+	}
 	
 	
 	
