@@ -16,9 +16,9 @@ export default class NewEvent extends React.Component {
       description: '',
       picture: '',
       price: '',
-      idCategory: '',
+      idCategory: '1',
       categoryResponse: []
-    }
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
@@ -64,15 +64,26 @@ export default class NewEvent extends React.Component {
       mode: 'cors',
     }
 
-    var url = new Request('http://localhost:8080/saveEvent');
+    var url = new Request('http://localhost:8080/events/save');
 
     fetch(url, init).then(function(response){
+      // console.log(body);
       console.log(response);
       if(response.status == 200 && response.ok == true){
         console.log("tu dodaj redirect :)");
+
+        document.getElementById("name").value = '';
+        document.getElementById("date").value = '';
+        document.getElementById("location").value = '';
+        document.getElementById("city").value = '';
+        document.getElementById("description").value = '';
+        document.getElementById("picture").value = '';
+        document.getElementById("price").value = '';
+
       }
     });
   }
+
 
   render() {
     return (
@@ -82,11 +93,11 @@ export default class NewEvent extends React.Component {
     <div className="row">
       <div className="form-group col-sm-4">
         Naziv događaja:
-        <input type="text" name="name" className="form-control" required onChange={this.handleChange.bind(this, 'name')}/>
+        <input type="text" name="name" id="name" className="form-control" required onChange={this.handleChange.bind(this, 'name')}/>
       </div>
       <div className="form-group col-sm-3 col-sm-offset-1">
         Datum početka:
-        <input type="date" name="date" className="form-control" required onChange={this.handleChange.bind(this, 'date')} />
+        <input type="date" name="date" id="date" className="form-control" required onChange={this.handleChange.bind(this, 'date')} />
       </div>
       <div className="form-group col-sm-3 col-sm-offset-1">
         Vrijeme početka:
@@ -96,7 +107,7 @@ export default class NewEvent extends React.Component {
     <div className="row">
       <div className="form-group col-sm-4">
         Adresa:
-        <input type="text" name="location" className="form-control"  required onChange={this.handleChange.bind(this, 'location')}/>
+        <input type="text" name="location" id="location" className="form-control"  required onChange={this.handleChange.bind(this, 'location')}/>
       </div>
       <div className="form-group col-sm-3 col-sm-offset-1">
         Datum završetka:
@@ -110,7 +121,7 @@ export default class NewEvent extends React.Component {
     <div className="row">
       <div className="form-group col-sm-4">
         Grad:
-        <input type="text" name="city" className="form-control" required onChange={this.handleChange.bind(this, 'city')}/>
+        <input type="text" name="city" id="city" className="form-control" required onChange={this.handleChange.bind(this, 'city')}/>
       </div>
       <div className="form-group col-sm-3 col-sm-offset-1">
         Kategorija:
@@ -122,11 +133,11 @@ export default class NewEvent extends React.Component {
     <div className="row">
       <div className="form-group col-sm-5">
         Opis događaja:<br />
-      <textarea name="description" rows={5} className="form-control" defaultValue={""}  required onChange={this.handleChange.bind(this, 'description')}/>
+      <textarea name="description" id="description" rows={5} className="form-control" defaultValue={""}  required onChange={this.handleChange.bind(this, 'description')}/>
       </div>
       <div className="form-group col-sm-5 col-sm-offset-2">
         URL slike:
-        <input type="url" name="picture" className="form-control" required onChange={this.handleChange.bind(this, 'picture')}/>
+        <input type="url" name="picture" id="picture" className="form-control" required onChange={this.handleChange.bind(this, 'picture')}/>
       </div>
     </div>
     <div className="row">
@@ -150,7 +161,7 @@ export default class NewEvent extends React.Component {
       </div>
       <div className="form-group col-sm-3 col-sm-offset-1">
         Cijena:
-        <input type="number" step="any" min={0} name="price" className="form-control" required onChange={this.handleChange.bind(this, 'price')} />
+        <input type="number" step="any" min={0} name="price" id="price" className="form-control" required onChange={this.handleChange.bind(this, 'price')} />
       </div>
     </div>
     <div className="row">
