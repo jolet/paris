@@ -10,6 +10,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import tvz.nppjj.paris.model.Category;
 
 public class EventDto {
+	
+	private Long id;
 
 	@NotBlank
 	@Size(min = 5, max = 150, message="Must be at least 5 characters")
@@ -33,6 +35,14 @@ public class EventDto {
 	
 	
 	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
