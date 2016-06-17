@@ -13,6 +13,6 @@ public interface TicketService {
 	TicketDto getTicketById(Long id);
 	
 	void saveTicket(TicketCommand ticketCommand);
-	List<TicketDto> getTicketsByIdUser(Long idUser);
+	List<TicketDto> getTicketsByUserId(Long idUser);
 	
 }
