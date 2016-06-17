@@ -18,7 +18,7 @@ public class RegistrationController {
     @Autowired
     private UserService userService;
 
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void registerUser(@Valid @RequestBody RegistrationCommand registrationCommand) {
         // if registrationDto fails validation or exception is thrown from
