@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import tvz.nppjj.paris.model.Event;
 import tvz.nppjj.paris.model.Ticket;
+import tvz.nppjj.paris.model.User;
 import tvz.nppjj.paris.model.dto.EventDto;
 import tvz.nppjj.paris.model.dto.TicketCommand;
 import tvz.nppjj.paris.model.dto.TicketDto;
@@ -51,8 +52,10 @@ public class TicketServiceImpl implements TicketService {
 				
 		ticket.setEvent(transformEventDtoToEvent(eventService.getEventById(ticketCommand.getIdEvent())));
 		
-		ticket.setUser(userService.getUserById(ticketCommand.getIdUser()));
 		
+		User user = userService.getUserById(ticketCommand.getIdUser());	
+		
+		ticket.setUser(user);
 		
 		ticketRepository.save(ticket);		
 	}
@@ -60,7 +63,7 @@ public class TicketServiceImpl implements TicketService {
 	
 	
 	@Override
-	public List<TicketDto> getTicketsByIdUser(Long idUser) {
+	public List<TicketDto> getTicketsByUserId(Long idUser) {
 		
 		return transformTicketListToDtoList(ticketRepository.findTicketByUserId(idUser));
 	}

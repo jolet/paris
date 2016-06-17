@@ -34,8 +34,8 @@ public class TicketController {
 	
 	
 	@RequestMapping(value = "/tickets/user/{id}", method = RequestMethod.GET)
-	public List<TicketDto> getAllTickets(@PathVariable("id") Long idUser) {
-    	return ticketService.getTicketsByIdUser(idUser);
+	public List<TicketDto> getAllTicketsByUserId(@PathVariable("id") Long idUser) {
+    	return ticketService.getTicketsByUserId(idUser);
 	}
 	
 	
