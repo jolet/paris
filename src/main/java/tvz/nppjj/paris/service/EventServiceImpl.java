@@ -36,7 +36,7 @@ public class EventServiceImpl implements EventService {
 	public void saveEvent(EventCommand eventCommand){
 		
 		
-		if(eventRepository.findOne(eventCommand.getId()) == null){
+		if(eventCommand.getId() == null){
 			Event event = new Event();
 			event.setName(eventCommand.getName());
 			event.setLocation(eventCommand.getLocation());
