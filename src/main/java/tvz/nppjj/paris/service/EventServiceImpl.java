@@ -35,18 +35,35 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public void saveEvent(EventCommand eventCommand){
 		
-		Event event = new Event();
-		event.setName(eventCommand.getName());
-		event.setLocation(eventCommand.getLocation());
-		event.setCity(eventCommand.getCity());
-		event.setDate(eventCommand.getDate());
-		event.setDescription(eventCommand.getDescription());
-		event.setPicture(eventCommand.getPicture());
-		event.setPrice(eventCommand.getPrice());
 		
-		event.setCategory(categoryService.getCategoryById(eventCommand.getIdCategory()));
-		
-		eventRepository.save(event);
+		if(eventRepository.findOne(eventCommand.getId()) == null){
+			Event event = new Event();
+			event.setName(eventCommand.getName());
+			event.setLocation(eventCommand.getLocation());
+			event.setCity(eventCommand.getCity());
+			event.setDate(eventCommand.getDate());
+			event.setDescription(eventCommand.getDescription());
+			event.setPicture(eventCommand.getPicture());
+			event.setPrice(eventCommand.getPrice());
+			
+			event.setCategory(categoryService.getCategoryById(eventCommand.getIdCategory()));
+			
+			eventRepository.save(event);
+		}
+		else{
+			Event event = eventRepository.findOne(eventCommand.getId());
+			event.setName(eventCommand.getName());
+			event.setLocation(eventCommand.getLocation());
+			event.setCity(eventCommand.getCity());
+			event.setDate(eventCommand.getDate());
+			event.setDescription(eventCommand.getDescription());
+			event.setPicture(eventCommand.getPicture());
+			event.setPrice(eventCommand.getPrice());
+			
+			event.setCategory(categoryService.getCategoryById(eventCommand.getIdCategory()));
+			
+			eventRepository.save(event);
+		}
 	}
 	
 	
