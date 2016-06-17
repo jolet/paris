@@ -49,3 +49,33 @@
 #btnSaveEvent{
 	margin-right:20px;
 }
+.event-details-text pre{
+	/*width: 500px;                          /* specify width  */
+	white-space: pre-wrap;                 /* CSS3 browsers  */
+	white-space: -moz-pre-wrap !important; /* 1999+ Mozilla  */
+	white-space: -o-pre-wrap;              /* Opera 7 and up */
+	word-wrap: break-word;                 /* IE 5.5+ and up */
+	overflow-x: auto;                /* Firefox 2 only */
+	width: 100%;		       /* only if needed */
+	text-overflow: ellipsis;
+	border: 0;
+	background: none;
+	font-family: 'Arial', sans-serif;
+	font-size: 16px;
+}
+
+.event-details-text table{
+	width:100%
+}
+.event-details-text td:nth-child(even){
+	text-align: right;
+}
+.event-details-text th:nth-child(even){
+	text-align: right;
+}
+#btnBuy{
+	margin-top: 15px;
+	line-height: 24px;
+	padding: 5px 5% 5px 5%;
+	font-size: 24px;
+}
