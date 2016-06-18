@@ -12,6 +12,7 @@ build/
 bin/*
 
 # Intellij IDEA
+*.iml
 
 # Mac OS
 .DS_Store
