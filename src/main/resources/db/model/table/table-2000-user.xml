@@ -23,6 +23,9 @@
             <column name="PHONE_NUMBER" type="VARCHAR(25)">
                 <constraints nullable="true"/>
             </column>
+            <column name="ACCOUNT" type="DECIMAL(18,2)">
+            	<constraints nullable="true"/>
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

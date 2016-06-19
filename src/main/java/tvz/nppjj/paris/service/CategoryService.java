@@ -6,7 +6,7 @@ import tvz.nppjj.paris.model.Category;
 
 public interface CategoryService {
 
-	List<Category> getAllCategory();
-	
-	Category getCategoryById(Long id);
+    List<Category> getAllCategory();
+
+    Category getCategoryById(Long id);
 }

@@ -10,6 +10,7 @@
             <column name="PASSWORD" value="lozinka"/>
             <column name="ID_ROLE" value="1"/>
             <column name="PHONE_NUMBER" value="095-9999999"/>
+            <column name="ACCOUNT" value="500"/>
         </insert>
         <insert schemaName="${schema.paris}" tableName="USER">
             <column name="USERNAME" value="dglad"/>
@@ -17,6 +18,7 @@
             <column name="PASSWORD" value="drugalozinka"/>
             <column name="ID_ROLE" value="2"/>
             <column name="PHONE_NUMBER" value="095-8888888"/>
+            <column name="ACCOUNT" value="1000"/>
         </insert>
         <insert schemaName="${schema.paris}" tableName="USER">
             <column name="USERNAME" value="jolek"/>
@@ -24,6 +26,7 @@
             <column name="PASSWORD" value="trecalozinka"/>
             <column name="ID_ROLE" value="3"/>
             <column name="PHONE_NUMBER" value="095-7777777"/>
+            <column name="ACCOUNT" value="1500"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

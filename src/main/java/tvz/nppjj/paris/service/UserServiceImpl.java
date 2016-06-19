@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private RoleService roleService;
+    private RoleService    roleService;
 
     @Override
     public List<User> getAllUsers() {

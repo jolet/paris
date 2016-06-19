@@ -6,5 +6,5 @@ import tvz.nppjj.paris.model.EventMock;
 
 public interface EventServiceMock {
 
-	List<EventMock> getAllEvents();
+    List<EventMock> getAllEvents();
 }

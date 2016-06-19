@@ -1,6 +1,7 @@
 package tvz.nppjj.paris.service;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -14,24 +15,28 @@ import tvz.nppjj.paris.repository.TicketRepository;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = WebNppjjParisApplication.class)
 public class TicketServiceTest {
-	
-	@Mock
-	private TicketRepository ticketRepository; 
-	
-	@Mock
-	private EventService eventService;
-	
-	@Mock
-	private UserService userService;
-	
-	
-	@InjectMocks
-	private TicketService ticketService;
-	
-	@Before
-	public void setup(){
-		ticketService= new TicketServiceImpl();
-		MockitoAnnotations.initMocks(this);
-	}
+
+    @Mock
+    private TicketRepository ticketRepository;
+
+    @Mock
+    private EventService     eventService;
+
+    @Mock
+    private UserService      userService;
+
+    @InjectMocks
+    private TicketService    ticketService;
+
+    @Before
+    public void setup() {
+        ticketService = new TicketServiceImpl();
+        MockitoAnnotations.initMocks(this);
+    }
+
+    @Test
+    public void testName() throws Exception {
+        // TODO: write the test
+    }
 
 }

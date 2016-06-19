@@ -31,13 +31,13 @@ import tvz.nppjj.paris.repository.UserRepository;
 public class RegistrationControllerTest {
 
     @Value("${local.server.port}")
-    int port;
+    int                      port;
 
-    private String       registrationApiUrl;
-    private RestTemplate restTemplate = new TestRestTemplate();
+    private String           registrationApiUrl;
+    private RestTemplate     restTemplate = new TestRestTemplate();
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository   userRepository;
 
     @Autowired
     private TicketRepository ticketRepository;
@@ -66,7 +66,8 @@ public class RegistrationControllerTest {
         HttpEntity<RegistrationCommand> registrationRequest = createRegistrationRequest();
 
         // act
-        ResponseEntity<Void> responseEntity = restTemplate.postForEntity(registrationApiUrl, registrationRequest, Void.class);
+        ResponseEntity<Void> responseEntity = restTemplate.postForEntity(registrationApiUrl, registrationRequest,
+                Void.class);
 
         // assert
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -80,8 +81,10 @@ public class RegistrationControllerTest {
         HttpEntity<RegistrationCommand> registrationRequest = createRegistrationRequest();
 
         // act
-        ResponseEntity<Void> firstResponseEntity = restTemplate.postForEntity(registrationApiUrl, registrationRequest, Void.class);
-        ResponseEntity<Void> secondResponseEntity = restTemplate.postForEntity(registrationApiUrl, registrationRequest, Void.class);
+        ResponseEntity<Void> firstResponseEntity = restTemplate.postForEntity(registrationApiUrl, registrationRequest,
+                Void.class);
+        ResponseEntity<Void> secondResponseEntity = restTemplate.postForEntity(registrationApiUrl, registrationRequest,
+                Void.class);
 
         // assert
         assertThat(firstResponseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -95,7 +98,8 @@ public class RegistrationControllerTest {
         registrationRequest.getBody().setEmail(null);
 
         // act
-        ResponseEntity<Void> responseEntity = restTemplate.postForEntity("http://localhost:" + port + "/register/", registrationRequest, Void.class);
+        ResponseEntity<Void> responseEntity = restTemplate.postForEntity("http://localhost:" + port + "/register/",
+                registrationRequest, Void.class);
 
         // assert
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);

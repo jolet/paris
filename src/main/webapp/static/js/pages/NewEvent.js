@@ -70,16 +70,8 @@ export default class NewEvent extends React.Component {
       // console.log(body);
       console.log(response);
       if(response.status == 200 && response.ok == true){
-        console.log("tu dodaj redirect :)");
 
-        document.getElementById("name").value = '';
-        document.getElementById("date").value = '';
-        document.getElementById("location").value = '';
-        document.getElementById("city").value = '';
-        document.getElementById("description").value = '';
-        document.getElementById("picture").value = '';
-        document.getElementById("price").value = '';
-
+        location.href = '/#/events';
       }
     });
   }

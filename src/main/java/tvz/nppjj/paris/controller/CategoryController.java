@@ -14,12 +14,12 @@ import tvz.nppjj.paris.service.CategoryService;
 @RestController
 public class CategoryController {
 
-	@Autowired
-	private CategoryService categoryService;
-	
-	@CrossOrigin(origins = "http://localhost:8100")
-	@RequestMapping(value = "/category", method = RequestMethod.GET)
-	public List<Category> getAllEvents() {
-    	return categoryService.getAllCategory();
-	}
+    @Autowired
+    private CategoryService categoryService;
+
+    @CrossOrigin(origins = "http://localhost:8100")
+    @RequestMapping(value = "/category", method = RequestMethod.GET)
+    public List<Category> getAllEvents() {
+        return categoryService.getAllCategory();
+    }
 }
