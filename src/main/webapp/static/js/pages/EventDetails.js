@@ -1,12 +1,19 @@
-
 import React from "react";
 import ReactDOM from 'react-dom';
+import { Modal } from 'react-bootstrap';
 
 export default class extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {response:[]}
+    this.state = {response:[]};
+    this.state = {showModal: false};
+    this.closeModal = this.closeModal.bind(this);
+    this.openModal = this.openModal.bind(this);
+  }
+
+  componentDidMount(){
+    this.setState({showModal: false});
   }
 
   // componentDidMount(){
@@ -20,6 +27,12 @@ export default class extends React.Component {
   //     console.log(JSON.stringify(this.state.response));
   //   })
   // }
+  openModal(){
+    this.setState({showModal: true});
+  }
+  closeModal(){
+    this.setState({showModal: false});
+  }
 
   render() {
 
@@ -29,7 +42,7 @@ export default class extends React.Component {
           <div class="event-details-text col span_6_of_12">
             <h1>Lorem Ipsum</h1>
             <p><i class="icon-clock"></i>20/04/2016, 16:00 h</p>
-            <p><i class="icon-location"></i>Trg bana Josipa Jelačića 4, Zagreb</p>
+            <p><i class="icon-location"></i>Trg bana Josipa Jelačića 8, Zagreb</p>
             <pre>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Sed ased turpis id quam lobortis tincidunt a in urna.
@@ -58,7 +71,15 @@ export default class extends React.Component {
                 </tr>
               </tbody>
             </table>
-            <button id="btnBuy"><i class="icon-tags"></i>Kupi</button>
+            <button id="btnBuy" onClick={this.openModal}><i class="icon-tags"></i>Kupi</button>
+            <Modal show={this.state.showModal} onHide={this.closeModal}>
+              <Modal.Header>
+                <Modal.Title>Kupnja</Modal.Title>
+              </Modal.Header>
+              <Modal.Footer>
+                <button onClick={this.closeModal}>Odustani</button>
+              </Modal.Footer>
+            </Modal>
           </div>
         </div>
     );
