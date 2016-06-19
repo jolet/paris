@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tvz.nppjj.paris.helpers.BarcodeHelper;
 import tvz.nppjj.paris.model.Event;
 import tvz.nppjj.paris.model.Ticket;
 import tvz.nppjj.paris.model.User;
@@ -83,7 +84,7 @@ public class TicketServiceImpl implements TicketService {
     private TicketDto transformTicketToTicketDto(Ticket ticket) {
 
         TicketDto ticketDto = new TicketDto();
-        ticketDto.setCode(ticket.getCode());
+        ticketDto.setCode(BarcodeHelper.generateBase64Barcode(ticket.getCode()));
         ticketDto.setIdUser(ticket.getUser().getId());
         ticketDto.setIsValidated(ticket.getIsValidated());
         ticketDto.setPrice(ticket.getPrice());
@@ -97,7 +98,6 @@ public class TicketServiceImpl implements TicketService {
             ticketDtoList.add(transformTicketToTicketDto(ticketList.get(i)));
         }
         return ticketDtoList;
-
     }
 
 }
