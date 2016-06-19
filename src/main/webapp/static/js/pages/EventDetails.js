@@ -43,18 +43,20 @@ export default class extends React.Component {
             <hr/>
             <h2>Ulaznice</h2>
             <table>
-              <tr>
-                  <th>Tip ulaznice</th>
-                  <th>Cijena</th>
-              </tr>
-              <tr>
-                <td>VIP</td>
-                <td>280 kn</td>
-              </tr>
-              <tr>
-                <td>Regularna ulaznica</td>
-                <td>120 kn</td>
-              </tr>
+              <tbody>
+                <tr>
+                    <th>Tip ulaznice</th>
+                    <th>Cijena</th>
+                </tr>
+                <tr>
+                  <td>VIP</td>
+                  <td>280 kn</td>
+                </tr>
+                <tr>
+                  <td>Regularna ulaznica</td>
+                  <td>120 kn</td>
+                </tr>
+              </tbody>
             </table>
             <button id="btnBuy"><i class="icon-tags"></i>Kupi</button>
           </div>
