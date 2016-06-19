@@ -1,6 +1,7 @@
 package tvz.nppjj.paris.service;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -34,4 +35,11 @@ public class TicketServiceTest {
 		MockitoAnnotations.initMocks(this);
 	}
 
+	
+	
+	@Test
+    public void testName() throws Exception {
+       // TODO: write the test
+    }
+	
 }
