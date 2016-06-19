@@ -17,7 +17,7 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public List<Category> getAllEvents() {
         return categoryService.getAllCategory();

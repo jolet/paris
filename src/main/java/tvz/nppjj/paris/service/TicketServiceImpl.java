@@ -1,5 +1,6 @@
 package tvz.nppjj.paris.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import tvz.nppjj.paris.model.User;
 import tvz.nppjj.paris.model.dto.EventDto;
 import tvz.nppjj.paris.model.dto.TicketCommand;
 import tvz.nppjj.paris.model.dto.TicketDto;
-
+import tvz.nppjj.paris.model.exception.ParisException;
 import tvz.nppjj.paris.repository.TicketRepository;
 
 @Service
@@ -42,6 +43,7 @@ public class TicketServiceImpl implements TicketService {
         return transformTicketToTicketDto(ticketRepository.findOne(id));
     }
 
+    
     @Override
     public void saveTicket(TicketCommand ticketCommand) {
 
@@ -57,7 +59,17 @@ public class TicketServiceImpl implements TicketService {
 
         ticket.setUser(user);
 
-        ticketRepository.save(ticket);
+        BigDecimal newAccount = user.getAccount().subtract(ticket.getPrice());
+
+        /* 
+         * Is there enough money on the account ?
+         */
+        if (newAccount.compareTo(BigDecimal.ZERO) >= 0) {
+            user.setAccount(newAccount);
+            ticketRepository.save(ticket);
+        } else {
+            throw new ParisException("Not enough money on account!");
+        }
     }
 
     @Override
