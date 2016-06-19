@@ -14,76 +14,75 @@ import javax.persistence.Table;
 @Table(name = "TICKET", schema = "PARIS")
 public class Ticket {
 
-	@Id
+    @Id
     @Column(name = "ID_TICKET")
     @GeneratedValue
-	private Long id;
-	
-	@Column(name="CODE")
-	private String code;
-	
-	@Column(name="PRICE")
-	private BigDecimal price;
-	
-	@Column(name="IS_VALIDATED")
-	private Boolean isValidated;
-	
-	@ManyToOne
-	@JoinColumn(name="ID_USER")
-	private User user;
-	
-	@ManyToOne
-	@JoinColumn(name="ID_EVENT")
-	private Event event;
-	
-	
-	//getters&setters
+    private Long       id;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "CODE")
+    private String     code;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "PRICE")
+    private BigDecimal price;
 
-	public String getCode() {
-		return code;
-	}
+    @Column(name = "IS_VALIDATED")
+    private Boolean    isValidated;
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    @ManyToOne
+    @JoinColumn(name = "ID_USER")
+    private User       user;
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+    @ManyToOne
+    @JoinColumn(name = "ID_EVENT")
+    private Event      event;
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    // getters&setters
 
-	public Boolean getIsValidated() {
-		return isValidated;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setIsValidated(Boolean isValidated) {
-		this.isValidated = isValidated;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public Event getEvent() {
-		return event;
-	}
+    public BigDecimal getPrice() {
+        return price;
+    }
 
-	public void setEvent(Event event) {
-		this.event = event;
-	}
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public Boolean getIsValidated() {
+        return isValidated;
+    }
+
+    public void setIsValidated(Boolean isValidated) {
+        this.isValidated = isValidated;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
 }

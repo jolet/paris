@@ -10,105 +10,99 @@ import org.hibernate.validator.constraints.NotBlank;
 import tvz.nppjj.paris.model.Category;
 
 public class EventDto {
-	
-	private Long id;
 
-	@NotBlank
-	@Size(min = 5, max = 150, message="Must be at least 5 characters")
-	private String name;
-	
-	@NotBlank(message="We need location!")
-	private String location;
+    private Long       id;
 
-	@NotBlank(message="Which city? Ati?(Chad)")
-	private String city;
+    @NotBlank
+    @Size(min = 5, max = 150, message = "Must be at least 5 characters")
+    private String     name;
 
-	private Date date;
-	
-	private String description;
-	
-	private String picture;
-	
-	private BigDecimal price;
-	
-	private Category category;
-	
-	
-	
+    @NotBlank(message = "We need location!")
+    private String     location;
 
-	public Long getId() {
-		return id;
-	}
+    @NotBlank(message = "Which city? Ati?(Chad)")
+    private String     city;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private Date       date;
 
-	public String getName() {
-		return name;
-	}
+    private String     description;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private String     picture;
 
-	public String getLocation() {
-		return location;
-	}
+    private BigDecimal price;
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    private Category   category;
 
-	public String getCity() {
-		return city;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Date getDate() {
-		return date;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+    public String getLocation() {
+        return location;
+    }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
-	public String getPicture() {
-		return picture;
-	}
+    public String getCity() {
+        return city;
+    }
 
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public Date getDate() {
+        return date;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
-	public Category getCategory() {
-		return category;
-	}
+    public BigDecimal getPrice() {
+        return price;
+    }
 
-	public void setCategory(Category category) {
-		this.category = category;
-	}
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 
-	
-	
-	
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
 }

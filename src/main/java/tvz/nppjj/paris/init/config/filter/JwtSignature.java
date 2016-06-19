@@ -13,7 +13,7 @@ public enum JwtSignature {
 
     KEY("p@jXrn0d*t._~:SVnTC*&G9$C#zQ6H+TttHF7D=-7");
 
-    private String key;
+    private String              key;
 
     private static final Logger LOG = LoggerFactory.getLogger(JwtSignature.class);
 
@@ -26,8 +26,8 @@ public enum JwtSignature {
     }
 
     public static String createJwtToken(UserDto userDto) {
-        String jwtToken = Jwts.builder().setSubject(userDto.getEmail()).claim("roles", userDto.getRole()).setIssuedAt(new Date())
-                .signWith(SignatureAlgorithm.HS256, KEY.getValue()).compact();
+        String jwtToken = Jwts.builder().setSubject(userDto.getEmail()).claim("roles", userDto.getRole())
+                .setIssuedAt(new Date()).signWith(SignatureAlgorithm.HS256, KEY.getValue()).compact();
         LOG.info("Created new jwt signature: " + jwtToken);
         return jwtToken;
     }

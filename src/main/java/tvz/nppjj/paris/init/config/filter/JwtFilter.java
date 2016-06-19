@@ -18,7 +18,8 @@ import tvz.nppjj.paris.model.exception.ParisException;
 public class JwtFilter extends GenericFilterBean {
 
     @Override
-    public void doFilter(final ServletRequest req, final ServletResponse res, final FilterChain chain) throws IOException, ServletException {
+    public void doFilter(final ServletRequest req, final ServletResponse res, final FilterChain chain)
+            throws IOException, ServletException {
         final HttpServletRequest request = (HttpServletRequest) req;
 
         final String authHeader = request.getHeader("Authorization");
@@ -29,7 +30,8 @@ public class JwtFilter extends GenericFilterBean {
         final String token = authHeader.substring(7); // The part after "Bearer "
 
         try {
-            final Claims claims = Jwts.parser().setSigningKey(JwtSignature.KEY.getValue()).parseClaimsJws(token).getBody();
+            final Claims claims = Jwts.parser().setSigningKey(JwtSignature.KEY.getValue()).parseClaimsJws(token)
+                    .getBody();
             request.setAttribute("claims", claims);
         } catch (final UnsupportedJwtException e) {
             throw new ServletException("Invalid token.");

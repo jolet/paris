@@ -33,10 +33,10 @@ public class UserServiceTest {
     private UserRepository userRepository;
 
     @Mock
-    private RoleService roleService;
+    private RoleService    roleService;
 
     @InjectMocks
-    private UserService userService;
+    private UserService    userService;
 
     @Before
     public void setup() {

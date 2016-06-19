@@ -18,27 +18,27 @@ import tvz.nppjj.paris.service.EventService;
 
 @RestController
 public class EventController {
-	
-	@Autowired
-	private EventService eventService;
-		
-	@CrossOrigin(origins = "http://localhost:8100")
-	@RequestMapping(value = "/events", method = RequestMethod.GET)
-	public List<EventDto> getAllEvents() {
-    	return eventService.getAllEvents();
-	}
-	
-	@CrossOrigin(origins = "http://localhost:8100")
-	@RequestMapping(value = "/events/{id}", method = RequestMethod.GET)
-	public EventDto getEventById(@PathVariable("id") Long id) {
-    	return eventService.getEventById(id);
-	}
-	
-	@CrossOrigin//(origins = "http://localhost:8100")
-	@RequestMapping(value = "/events/save", method = RequestMethod.POST)
-	public void saveEvent(@Valid @RequestBody EventCommand eventCommand){
-		eventService.saveEvent(eventCommand);
-		
-	}
-		
+
+    @Autowired
+    private EventService eventService;
+
+    @CrossOrigin
+    @RequestMapping(value = "/events", method = RequestMethod.GET)
+    public List<EventDto> getAllEvents() {
+        return eventService.getAllEvents();
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/events/{id}", method = RequestMethod.GET)
+    public EventDto getEventById(@PathVariable("id") Long id) {
+        return eventService.getEventById(id);
+    }
+
+    @CrossOrigin // (origins = "http://localhost:8100")
+    @RequestMapping(value = "/events/save", method = RequestMethod.POST)
+    public void saveEvent(@Valid @RequestBody EventCommand eventCommand) {
+        eventService.saveEvent(eventCommand);
+
+    }
+
 }

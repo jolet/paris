@@ -1,0 +1,91 @@
+2016-06-19 08:00:13.893  INFO 7248 --- [restartedMain] t.n.paris.init.WebNppjjParisApplication  : Starting WebNppjjParisApplication on Marijan-PC with PID 7248 (started by Marijan in C:\Users\Marijan\Desktop\Napredna Java\web-nppjj-paris)
+2016-06-19 08:00:13.944  INFO 7248 --- [restartedMain] t.n.paris.init.WebNppjjParisApplication  : No active profile set, falling back to default profiles: default
+2016-06-19 08:00:15.110  INFO 7248 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@45937021: startup date [Sun Jun 19 08:00:15 CEST 2016]; root of context hierarchy
+2016-06-19 08:00:36.699  INFO 7248 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$728c50bf] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-06-19 08:00:58.171  INFO 7248 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2016-06-19 08:00:58.773  INFO 7248 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2016-06-19 08:00:58.823  INFO 7248 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.0.33
+2016-06-19 08:01:00.748  INFO 7248 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2016-06-19 08:01:00.829  INFO 7248 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 45808 ms
+2016-06-19 08:01:04.005  INFO 7248 --- [localhost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-06-19 08:01:04.026  INFO 7248 --- [localhost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2016-06-19 08:01:04.030  INFO 7248 --- [localhost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2016-06-19 08:01:04.043  INFO 7248 --- [localhost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'requestContextFilter' to: [/*]
+2016-06-19 08:01:04.047  INFO 7248 --- [localhost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'jwtFilter' to urls: [/jwt]
+2016-06-19 08:01:04.048  INFO 7248 --- [localhost-startStop-1] o.s.b.c.e.ServletRegistrationBean        : Mapping servlet: 'dispatcherServlet' to [/]
+2016-06-19 08:01:04.055  INFO 7248 --- [localhost-startStop-1] o.s.b.c.e.ServletRegistrationBean        : Mapping servlet: 'webServlet' to [/h2/*]
+2016-06-19 08:01:15.511  INFO 7248 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-06-19 08:01:15.557  INFO 7248 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-06-19 08:01:15.844  INFO 7248 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {4.3.11.Final}
+2016-06-19 08:01:15.850  INFO 7248 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2016-06-19 08:01:15.871  INFO 7248 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2016-06-19 08:01:17.551  INFO 7248 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-06-19 08:01:19.029  INFO 7248 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2016-06-19 08:01:19.775  INFO 7248 --- [restartedMain] o.h.h.i.ast.ASTQueryTranslatorFactory    : HHH000397: Using ASTQueryTranslatorFactory
+2016-06-19 08:01:23.442  INFO 7248 --- [restartedMain] o.h.tool.hbm2ddl.SchemaValidator         : HHH000229: Running schema validator
+2016-06-19 08:01:23.449  INFO 7248 --- [restartedMain] o.h.tool.hbm2ddl.SchemaValidator         : HHH000102: Fetching database metadata
+2016-06-19 08:01:23.519  INFO 7248 --- [restartedMain] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: PARIS.PARIS.CATEGORY
+2016-06-19 08:01:23.520  INFO 7248 --- [restartedMain] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [id_category, name]
+2016-06-19 08:01:23.536  INFO 7248 --- [restartedMain] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: PARIS.PARIS.EVENT
+2016-06-19 08:01:23.536  INFO 7248 --- [restartedMain] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [date, address, city, price, id_category, name, description, id_event, picture]
+2016-06-19 08:01:23.541  INFO 7248 --- [restartedMain] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: PARIS.PARIS.ROLE
+2016-06-19 08:01:23.541  INFO 7248 --- [restartedMain] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [name, id_role]
+2016-06-19 08:01:23.568  INFO 7248 --- [restartedMain] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: PARIS.PARIS.TICKET
+2016-06-19 08:01:23.570  INFO 7248 --- [restartedMain] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [code, price, id_user, id_event, is_validated, id_ticket]
+2016-06-19 08:01:23.583  INFO 7248 --- [restartedMain] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: PARIS.PARIS.USER
+2016-06-19 08:01:23.585  INFO 7248 --- [restartedMain] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [password, id_role, phone_number, id_user, email, username]
+2016-06-19 08:01:28.905  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@45937021: startup date [Sun Jun 19 08:00:15 CEST 2016]; root of context hierarchy
+2016-06-19 08:01:29.407  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/category],methods=[GET]}" onto public java.util.List<tvz.nppjj.paris.model.Category> tvz.nppjj.paris.controller.CategoryController.getAllEvents()
+2016-06-19 08:01:29.422  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/events],methods=[GET]}" onto public java.util.List<tvz.nppjj.paris.model.dto.EventDto> tvz.nppjj.paris.controller.EventController.getAllEvents()
+2016-06-19 08:01:29.423  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/events/{id}],methods=[GET]}" onto public tvz.nppjj.paris.model.dto.EventDto tvz.nppjj.paris.controller.EventController.getEventById(java.lang.Long)
+2016-06-19 08:01:29.430  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/events/save],methods=[POST]}" onto public void tvz.nppjj.paris.controller.EventController.saveEvent(tvz.nppjj.paris.model.dto.EventCommand)
+2016-06-19 08:01:29.438  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/mock/events],methods=[GET]}" onto public java.util.List<tvz.nppjj.paris.model.EventMock> tvz.nppjj.paris.controller.EventMockController.getEvents()
+2016-06-19 08:01:29.442  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/register],methods=[POST]}" onto public void tvz.nppjj.paris.controller.RegistrationController.registerUser(tvz.nppjj.paris.model.dto.RegistrationCommand)
+2016-06-19 08:01:29.448  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/tickets/user/{id}],methods=[GET]}" onto public java.util.List<tvz.nppjj.paris.model.dto.TicketDto> tvz.nppjj.paris.controller.TicketController.getAllTicketsByUserId(java.lang.Long)
+2016-06-19 08:01:29.461  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/tickets],methods=[GET]}" onto public java.util.List<tvz.nppjj.paris.model.dto.TicketDto> tvz.nppjj.paris.controller.TicketController.getAllTickets()
+2016-06-19 08:01:29.462  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/tickets/{id}],methods=[GET]}" onto public tvz.nppjj.paris.model.dto.TicketDto tvz.nppjj.paris.controller.TicketController.getTicketById(java.lang.Long)
+2016-06-19 08:01:29.463  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/tickets/save],methods=[POST]}" onto public void tvz.nppjj.paris.controller.TicketController.saveTicket(tvz.nppjj.paris.model.dto.TicketCommand)
+2016-06-19 08:01:29.467  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users],methods=[GET]}" onto public java.util.List<tvz.nppjj.paris.model.dto.UserDto> tvz.nppjj.paris.controller.UserController.getAllUsers()
+2016-06-19 08:01:29.478  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/users/{id}],methods=[GET]}" onto public tvz.nppjj.paris.model.User tvz.nppjj.paris.controller.UserController.getUserById(java.lang.Long)
+2016-06-19 08:01:29.487  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[POST]}" onto public tvz.nppjj.paris.model.dto.LoginResponseDto tvz.nppjj.paris.controller.UserLoginController.authenticateUser(tvz.nppjj.paris.command.UserLoginCommand)
+2016-06-19 08:01:29.491  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/jwt],methods=[POST]}" onto public java.lang.String tvz.nppjj.paris.controller.UserLoginController.jwtTest()
+2016-06-19 08:01:29.500  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-06-19 08:01:29.501  INFO 7248 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-06-19 08:01:29.587  INFO 7248 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2016-06-19 08:01:29.629  INFO 7248 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-19 08:01:29.634  INFO 7248 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-19 08:01:29.807  INFO 7248 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-06-19 08:01:31.022  INFO 7248 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2016-06-19 08:01:31.160  INFO 7248 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2016-06-19 08:01:32.513  INFO 7248 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2016-06-19 08:01:32.529  INFO 7248 --- [restartedMain] t.n.paris.init.WebNppjjParisApplication  : Started WebNppjjParisApplication in 88.866 seconds (JVM running for 100.92)
+2016-06-19 08:02:42.590  INFO 6172 --- [main] t.nppjj.paris.service.TicketServiceTest  : Starting TicketServiceTest on Marijan-PC with PID 6172 (started by Marijan in C:\Users\Marijan\Desktop\Napredna Java\web-nppjj-paris)
+2016-06-19 08:02:42.595  INFO 6172 --- [main] t.nppjj.paris.service.TicketServiceTest  : No active profile set, falling back to default profiles: default
+2016-06-19 08:02:42.726  INFO 6172 --- [main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@5911e990: startup date [Sun Jun 19 08:02:42 CEST 2016]; root of context hierarchy
+2016-06-19 08:02:52.201  INFO 6172 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2016-06-19 08:02:52.350  INFO 6172 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2016-06-19 08:02:52.514  INFO 6172 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {4.3.11.Final}
+2016-06-19 08:02:52.518  INFO 6172 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2016-06-19 08:02:52.521  INFO 6172 --- [main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2016-06-19 08:02:53.293  INFO 6172 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2016-06-19 08:02:53.373  INFO 6172 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2016-06-19 08:02:53.604  INFO 6172 --- [main] o.h.h.i.ast.ASTQueryTranslatorFactory    : HHH000397: Using ASTQueryTranslatorFactory
+2016-06-19 08:02:54.482  INFO 6172 --- [main] o.h.tool.hbm2ddl.SchemaValidator         : HHH000229: Running schema validator
+2016-06-19 08:02:54.533  INFO 6172 --- [main] o.h.tool.hbm2ddl.SchemaValidator         : HHH000102: Fetching database metadata
+2016-06-19 08:02:54.552  INFO 6172 --- [main] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: PARIS.PARIS.CATEGORY
+2016-06-19 08:02:54.558  INFO 6172 --- [main] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [id_category, name]
+2016-06-19 08:02:54.563  INFO 6172 --- [main] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: PARIS.PARIS.EVENT
+2016-06-19 08:02:54.569  INFO 6172 --- [main] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [date, address, city, price, id_category, name, description, id_event, picture]
+2016-06-19 08:02:54.573  INFO 6172 --- [main] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: PARIS.PARIS.ROLE
+2016-06-19 08:02:54.574  INFO 6172 --- [main] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [name, id_role]
+2016-06-19 08:02:54.581  INFO 6172 --- [main] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: PARIS.PARIS.TICKET
+2016-06-19 08:02:54.582  INFO 6172 --- [main] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [code, price, id_user, id_event, is_validated, id_ticket]
+2016-06-19 08:02:54.613  INFO 6172 --- [main] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000261: Table found: PARIS.PARIS.USER
+2016-06-19 08:02:54.613  INFO 6172 --- [main] o.hibernate.tool.hbm2ddl.TableMetadata   : HHH000037: Columns: [password, id_role, phone_number, id_user, email, username]
+2016-06-19 08:02:56.359  INFO 6172 --- [main] t.nppjj.paris.service.TicketServiceTest  : Started TicketServiceTest in 15.782 seconds (JVM running for 32.537)
+2016-06-19 08:02:57.522  INFO 6172 --- [Thread-3] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@5911e990: startup date [Sun Jun 19 08:02:42 CEST 2016]; root of context hierarchy
+2016-06-19 08:02:57.644  INFO 6172 --- [Thread-3] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
