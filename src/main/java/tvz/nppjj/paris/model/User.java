@@ -1,5 +1,7 @@
 package tvz.nppjj.paris.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +34,9 @@ public class User {
 
     @Column(name = "PHONE_NUMBER")
     private String phone_number;
+    
+    @Column(name = "ACCOUNT")
+    private BigDecimal account;
 
     public Long getId() {
         return id;
@@ -80,5 +85,13 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
+
+	public BigDecimal getAccount() {
+		return account;
+	}
+
+	public void setAccount(BigDecimal account) {
+		this.account = account;
+	}
 
 }
