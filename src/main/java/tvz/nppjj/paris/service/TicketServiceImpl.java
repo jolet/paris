@@ -66,6 +66,7 @@ public class TicketServiceImpl implements TicketService {
          */
         if (newAccount.compareTo(BigDecimal.ZERO) >= 0) {
             user.setAccount(newAccount);
+            userService.saveUser(user);
             ticketRepository.save(ticket);
         } else {
             throw new ParisException("Not enough money on account!");
