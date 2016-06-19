@@ -11,6 +11,7 @@ import Registration from './pages/Registration';
 import BuyTicket from './pages/BuyTicket';
 import EventDetails from './pages/EventDetails';
 import UserProfile from './pages/UserProfile';
+import Login from './pages/Login'
 
 const app = document.getElementById('app');
 
@@ -25,6 +26,7 @@ ReactDOM.render(
       <Route path="event/:id" name="eventDetails" component={EventDetails} ></Route>
       <Route path="buyTicket/:id" name="buyTicket" component={BuyTicket}></Route>
       <Route path="user/:id" name="userProfile" component={UserProfile}></Route>
+      <Route path="login" name="login" component={Login}></Route>
     </Route>
   </Router>,
 app);

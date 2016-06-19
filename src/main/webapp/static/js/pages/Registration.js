@@ -41,7 +41,8 @@ export default class Registration extends React.Component {
             fetch(url, init).then(function(response){
               console.log(response);
               if(response.status == 200 && response.ok == true){
-                console.log("tu dodaj redirect :)");
+
+                location.href = '/#/login';
               }
             });
           }
