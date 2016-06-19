@@ -9,35 +9,31 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "CATEGORY", schema = "PARIS")
 public class Category {
-	
-	@Id
+
+    @Id
     @Column(name = "ID_CATEGORY")
     @GeneratedValue
-	private Long id;
+    private Long   id;
 
-	@Column(name = "NAME")
-	private String name;
-	
-	
-	//getters & setters
+    @Column(name = "NAME")
+    private String name;
 
-	public Long getId() {
-		return id;
-	}
+    // getters & setters
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	
-	
-	
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }

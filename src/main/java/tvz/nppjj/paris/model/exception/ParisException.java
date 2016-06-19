@@ -9,12 +9,12 @@ package tvz.nppjj.paris.model.exception;
 @SuppressWarnings("serial")
 public class ParisException extends RuntimeException {
 
-	public ParisException(String message) {
-		super(message);
-	}
+    public ParisException(String message) {
+        super(message);
+    }
 
-	public ParisException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    public ParisException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
 }

@@ -13,8 +13,8 @@ import tvz.nppjj.paris.init.WebNppjjParisApplication;
 @WebAppConfiguration
 public class WebNppjjParisApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+    }
 
 }

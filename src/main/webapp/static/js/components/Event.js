@@ -1,5 +1,5 @@
 import React from "react";
-import { IndexLink, Link } from "react-router";
+import { IndexLink, Link, Router, Route, hashHistory } from "react-router";
 
 export default class Event extends React.Component {
   render() {
@@ -18,7 +18,7 @@ export default class Event extends React.Component {
           <div className="col-sm-5">
             <h4><strong>{event.name}</strong></h4>
             <p>{event.description}</p>
-            <Link className="pull-right" to={"event/" + event.id } >Više informacija</Link>
+            <Link className="pull-right" to={"event/" + "1"} >Više informacija</Link>
           </div>
           <div className="col-sm-2">
             <h4>Cijena ulaznice:<br />{event.price} kn</h4>
@@ -29,3 +29,4 @@ export default class Event extends React.Component {
     );
   }
 }
+

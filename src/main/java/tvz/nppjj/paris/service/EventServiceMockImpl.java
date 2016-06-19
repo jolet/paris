@@ -16,19 +16,19 @@ import tvz.nppjj.paris.model.EventMock;
 @Service
 public class EventServiceMockImpl implements EventServiceMock {
 
-	@Override
-	public List<EventMock> getAllEvents() {
-		List<EventMock> eventMockList = new ArrayList<>();
-		int eventCount = 5;
-		for (long i = 0; i < eventCount; i++) {
-			EventMock eventMock = new EventMock();
-			eventMock.setId(i);
-			eventMock.setName("Event #" + i);
-			eventMock.setLocation("Location #" + i);
+    @Override
+    public List<EventMock> getAllEvents() {
+        List<EventMock> eventMockList = new ArrayList<>();
+        int eventCount = 5;
+        for (long i = 0; i < eventCount; i++) {
+            EventMock eventMock = new EventMock();
+            eventMock.setId(i);
+            eventMock.setName("Event #" + i);
+            eventMock.setLocation("Location #" + i);
 
-			eventMockList.add(eventMock);
-		}
-		return eventMockList;
-	}
+            eventMockList.add(eventMock);
+        }
+        return eventMockList;
+    }
 
 }

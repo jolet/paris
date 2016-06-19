@@ -11,21 +11,20 @@ import tvz.nppjj.paris.repository.CategoryRepository;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
-	@Autowired
-	private CategoryRepository categoryRepository;
-	
-	
-	@Override
-	public List<Category> getAllCategory() {
-		
-		return categoryRepository.findAll();
-	}
-	
-	@Override
-	public Category getCategoryById(Long id) {
-		
-		return categoryRepository.findOne(id);
-		
-	}
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+    @Override
+    public List<Category> getAllCategory() {
+
+        return categoryRepository.findAll();
+    }
+
+    @Override
+    public Category getCategoryById(Long id) {
+
+        return categoryRepository.findOne(id);
+
+    }
 
 }

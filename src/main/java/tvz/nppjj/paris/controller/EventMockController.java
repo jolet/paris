@@ -14,11 +14,11 @@ import tvz.nppjj.paris.service.EventServiceMock;
 @RequestMapping(value = "/mock")
 public class EventMockController {
 
-	@Autowired
-	private EventServiceMock eventService;
-	
+    @Autowired
+    private EventServiceMock eventService;
+
     @RequestMapping(value = "/events", method = RequestMethod.GET)
     public List<EventMock> getEvents() {
-    	return eventService.getAllEvents();
+        return eventService.getAllEvents();
     }
 }

@@ -1,0 +1,8 @@
+Tab policy: spaces only
+Indentation/Tab size: 4
+Align fields in columns
+Maximum line width: 160
+Maximum line width for coments: 120
+...
+Text file encoding: UTF-8
+...
