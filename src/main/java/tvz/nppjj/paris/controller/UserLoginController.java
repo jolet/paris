@@ -3,6 +3,7 @@ package tvz.nppjj.paris.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +21,7 @@ public class UserLoginController {
     @Autowired
     private UserService userService;
 
+    @CrossOrigin
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public LoginResponseDto authenticateUser(@Valid @RequestBody UserLoginCommand userLoginCommand) {
         UserDto userDto = userService.loginUser(userLoginCommand.getUsername(), userLoginCommand.getPassword());
@@ -32,6 +34,7 @@ public class UserLoginController {
     }
 
     // TODO: remove after jwt integration
+    @CrossOrigin
     @RequestMapping(value = "/jwt", method = RequestMethod.POST)
     public String jwtTest() {
         return "jwt request OK";
