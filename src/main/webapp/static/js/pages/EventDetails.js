@@ -10,6 +10,8 @@ export default class extends React.Component {
     this.state = {showModal: false};
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {totalCost: 0};
   }
 
   componentDidMount(){
@@ -34,6 +36,11 @@ export default class extends React.Component {
     this.setState({showModal: false});
   }
 
+  handleChange(event){
+    this.setState({totalCost: event.target.value * 180})
+
+  }
+  
   render() {
 
     return (
@@ -72,15 +79,49 @@ export default class extends React.Component {
               </tbody>
             </table>
             <button id="btnBuy" onClick={this.openModal}><i class="icon-tags"></i>Kupi</button>
-            <Modal show={this.state.showModal} onHide={this.closeModal}>
-              <Modal.Header>
-                <Modal.Title>Kupnja</Modal.Title>
-              </Modal.Header>
-              <Modal.Footer>
-                <button onClick={this.closeModal}>Odustani</button>
-              </Modal.Footer>
-            </Modal>
           </div>
+          <Modal show={this.state.showModal}
+                 onHide={this.closeModal}
+                 dialogClassName="custom-modal"
+                  bsSize="small"
+                  >
+            <Modal.Header>
+              <Modal.Title>Kupovina karte</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <table>
+                <tbody>
+                <tr>
+                  <td>
+                    <label for="ticketCategory">Tip karte:</label>
+                  </td>
+                  <td>
+                    <select id="ticketCategory">
+                      <option value="reg">Regular</option>
+                      <option value="vip">Vip</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label for="ticketAmount">Količina:</label>
+                  </td>
+                  <td>
+                    <input type="number" id="ticketAmount" defaultValue="1" onChange={this.handleChange}/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Sveukupno:</td>
+                  <td id="ticketTotalBillAmount">{this.state.totalCost}kn</td>
+                </tr>
+                </tbody>
+              </table>
+            </Modal.Body>
+            <Modal.Footer>
+              <button>Potvrdi kupnju</button>
+              <button onClick={this.closeModal}>Odustani</button>
+            </Modal.Footer>
+          </Modal>
         </div>
     );
   }
