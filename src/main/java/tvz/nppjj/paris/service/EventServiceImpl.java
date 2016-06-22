@@ -71,6 +71,7 @@ public class EventServiceImpl implements EventService {
     private EventDto transformEventToEventDto(Event event) {
 
         EventDto eventDto = new EventDto();
+        eventDto.setId(event.getId());
         eventDto.setName(event.getName());
         eventDto.setCity(event.getCity());
         eventDto.setLocation(event.getLocation());
