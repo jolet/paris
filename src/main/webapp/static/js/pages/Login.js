@@ -36,11 +36,11 @@ export default class Login extends React.Component {
             fetch(url, init)
             .then((response) => response.json())
             .then((responseData) => {
-              console.log(responseData);
               localStorage.setItem("token", 'Bearer ' + responseData.token);
               localStorage.setItem("username", responseData.userDto.username);
               localStorage.setItem("email", responseData.userDto.email);
               localStorage.setItem("role", responseData.userDto.role);
+              location.href = '/#/';
             });
           }
 
