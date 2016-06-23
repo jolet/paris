@@ -14,6 +14,11 @@ export default class Nav extends React.Component {
     this.setState({collapsed});
   }
 
+  logout(){
+    localStorage.clear();
+    console.log('localstorage clear');
+  }
+
   render() {
     const { location } = this.props;
     const { collapsed } = this.state;
@@ -23,6 +28,7 @@ export default class Nav extends React.Component {
     const aboutClass = location.pathname.match(/^\/about/) ? "active" : "";
     const registerClass = location.pathname.match(/^\/register/) ? "active" : "";
     const loginClass = location.pathname.match(/^\/login/) ? "active" : "";
+    const logoutClass = location.pathname.match(/^\/logout/) ? "active" : "";
     const navClass = collapsed ? "collapse" : "";
 
     return (
@@ -46,7 +52,7 @@ export default class Nav extends React.Component {
               <li class={aboutClass}><Link to="about" onClick={this.toggleCollapse.bind(this)}>O Parisu</Link></li>
               <li class={registerClass}><Link to="registration" onClick={this.toggleCollapse.bind(this)}>Registracija</Link></li>
               { localStorage.getItem('username') ?
-                null
+                <li ><Link to="/" onClick={this.toggleCollapse.bind(this), this.logout.bind(this)}>Odjava</Link></li>
                 :
                 <li class={loginClass}><Link to="login" onClick={this.toggleCollapse.bind(this)}>Prijava</Link></li>
                }
