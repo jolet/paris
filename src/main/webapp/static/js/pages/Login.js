@@ -33,14 +33,12 @@ export default class Login extends React.Component {
 
             var url = new Request('http://localhost:8080/login');
 
-            fetch(url, init).then(function(response){
-              console.log(response);
-              if(response.status == 200 && response.ok == true){
-                console.log("tu prihvati id od korisnika i spremi i localstorage");
-              }
+            fetch(url, init)
+            .then((response) => response.json())
+            .then((responseData) => {
+              console.log(responseData);
             });
           }
-
 
 
       handleChange(name, event){
@@ -63,7 +61,7 @@ export default class Login extends React.Component {
      <div className="row">
      <div className="form-group col-sm-5">
      Lozinka:
-     <input type="password" name="password" id="pass1" className="form-control" required onChange={this.handleChange.bind(this, 'password')}/>
+     <input type="password" name="password" id="pass1" className="form-control" required onChange={this.handleChange.bind(this, 'password')} />
      </div>
      </div>
      <div className="row">
