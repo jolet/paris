@@ -6,8 +6,17 @@ public class UserDto {
     private String email;
     private String phoneNumber;
     private String role;
+    private String id;
 
-    public String getRole() {
+    public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getRole() {
         return role;
     }
 
