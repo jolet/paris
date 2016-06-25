@@ -52,10 +52,17 @@ export default class Nav extends React.Component {
               <li class={aboutClass}><Link to="about" onClick={this.toggleCollapse.bind(this)}>O Parisu</Link></li>
               <li class={registerClass}><Link to="registration" onClick={this.toggleCollapse.bind(this)}>Registracija</Link></li>
               { localStorage.getItem('username') ?
+            	
                 <li ><Link to="/" onClick={this.toggleCollapse.bind(this), this.logout.bind(this)}>Odjava</Link></li>
                 :
                 <li class={loginClass}><Link to="login" onClick={this.toggleCollapse.bind(this)}>Prijava</Link></li>
                }
+              { localStorage.getItem('username') ?
+              <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} onClick={this.toggleCollapse.bind(this)}>Korisnički profil</Link></li> 
+                 :
+              <li></li>
+              }
+               
   		      </ul>
   		    </div>
   		  </div>

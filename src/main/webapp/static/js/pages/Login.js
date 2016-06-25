@@ -39,6 +39,7 @@ export default class Login extends React.Component {
               localStorage.setItem("token", 'Bearer ' + responseData.token);
               localStorage.setItem("username", responseData.userDto.username);
               localStorage.setItem("email", responseData.userDto.email);
+              localStorage.setItem("id", responseData.userDto.id);
               localStorage.setItem("role", responseData.userDto.role);
               location.href = '/#/';
             });

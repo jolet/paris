@@ -6,13 +6,13 @@ public class UserDto {
     private String email;
     private String phoneNumber;
     private String role;
-    private String id;
+    private Long id;
 
-    public String getId() {
+    public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -22,6 +22,7 @@ export default class UserProfile extends React.Component {
 		    }).done(function (data){
 		      this.setState({response: data});
 		      //console.log(JSON.stringify(this.state.response));
+		     
 		    });
 		  }
   render() {
