@@ -67,12 +67,16 @@ export default class NewEvent extends React.Component {
     var url = new Request('http://localhost:8080/events/save');
 
     fetch(url, init).then(function(response){
-      // console.log(body);
-      console.log(response);
       if(response.status == 200 && response.ok == true){
-
         location.href = '/#/events';
       }
+
+      return response;
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      console.log(responseData);
+      alert(responseData.errors[0].field + ' ' + responseData.errors[0].defaultMessage);
     });
   }
 
