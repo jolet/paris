@@ -7,6 +7,7 @@ export default class Nav extends React.Component {
     this.state = {
       collapsed: true,
     };
+    this.navigation = this.navigation.bind(this);
   }
 
   toggleCollapse() {
@@ -19,7 +20,7 @@ export default class Nav extends React.Component {
     console.log('localstorage clear');
   }
 
-  render() {
+  navigation(){
     const { location } = this.props;
     const { collapsed } = this.state;
     const homepageClass = location.pathname === "/" ? "active" : "";
@@ -29,6 +30,54 @@ export default class Nav extends React.Component {
     const registerClass = location.pathname.match(/^\/register/) ? "active" : "";
     const loginClass = location.pathname.match(/^\/login/) ? "active" : "";
     const logoutClass = location.pathname.match(/^\/logout/) ? "active" : "";
+    const navClass = collapsed ? "collapse" : "";
+
+
+    switch(localStorage.getItem('role')){
+      case 'Administrator':
+          return      <ul class="nav navbar-nav navbar-right">
+                        <li class={homepageClass}><IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Početna</IndexLink></li>
+                        <li class={newEventClass}><Link to="newevent" onClick={this.toggleCollapse.bind(this)}>Novi događaj</Link></li>
+                        <li class={eventsClass}><Link to="events" onClick={this.toggleCollapse.bind(this)}>Svi događaji</Link></li>
+                        <li class={aboutClass}><Link to="about" onClick={this.toggleCollapse.bind(this)}>O Parisu</Link></li>
+                        <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} onClick={this.toggleCollapse.bind(this)}>Korisnički profil</Link></li>
+                        <li ><Link to="/" onClick={this.toggleCollapse.bind(this), this.logout.bind(this)}>Odjava</Link></li>
+            		      </ul>
+        break;
+      case 'Organisator':
+          return      <ul class="nav navbar-nav navbar-right">
+                        <li class={homepageClass}><IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Početna</IndexLink></li>
+                        <li class={newEventClass}><Link to="newevent" onClick={this.toggleCollapse.bind(this)}>Novi događaj</Link></li>
+                        <li class={eventsClass}><Link to="events" onClick={this.toggleCollapse.bind(this)}>Svi događaji</Link></li>
+                        <li class={aboutClass}><Link to="about" onClick={this.toggleCollapse.bind(this)}>O Parisu</Link></li>
+                        <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} onClick={this.toggleCollapse.bind(this)}>Korisnički profil</Link></li>
+                        <li ><Link to="/" onClick={this.toggleCollapse.bind(this), this.logout.bind(this)}>Odjava</Link></li>
+                      </ul>
+        break;
+      case 'User':
+          return      <ul class="nav navbar-nav navbar-right">
+                        <li class={homepageClass}><IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Početna</IndexLink></li>
+                        <li class={eventsClass}><Link to="events" onClick={this.toggleCollapse.bind(this)}>Svi događaji</Link></li>
+                        <li class={aboutClass}><Link to="about" onClick={this.toggleCollapse.bind(this)}>O Parisu</Link></li>
+                        <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} onClick={this.toggleCollapse.bind(this)}>Korisnički profil</Link></li>
+                        <li ><Link to="/" onClick={this.toggleCollapse.bind(this), this.logout.bind(this)}>Odjava</Link></li>
+                      </ul>
+        break;
+      default:
+          return      <ul class="nav navbar-nav navbar-right">
+                        <li class={homepageClass}><IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Početna</IndexLink></li>
+                        <li class={newEventClass}><Link to="newevent" onClick={this.toggleCollapse.bind(this)}>Novi događaj</Link></li>
+                        <li class={eventsClass}><Link to="events" onClick={this.toggleCollapse.bind(this)}>Svi događaji</Link></li>
+                        <li class={aboutClass}><Link to="about" onClick={this.toggleCollapse.bind(this)}>O Parisu</Link></li>
+                        <li class={registerClass}><Link to="registration" onClick={this.toggleCollapse.bind(this)}>Registracija</Link></li>
+                        <li class={loginClass}><Link to="login" onClick={this.toggleCollapse.bind(this)}>Prijava</Link></li>
+                      </ul>
+
+    }
+  }
+
+  render() {
+    const { collapsed } = this.state;
     const navClass = collapsed ? "collapse" : "";
 
     return (
@@ -46,56 +95,7 @@ export default class Nav extends React.Component {
 
   		    <div class={"navbar-collapse " + navClass} id="bs-example-navbar-collapse-1">
 
-            { localStorage.getItem('role') ?
-              <span></span>
-            :
-            <ul class="nav navbar-nav navbar-right">
-              <li class={homepageClass}><IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Početna</IndexLink></li>
-              <li class={newEventClass}><Link to="newevent" onClick={this.toggleCollapse.bind(this)}>Novi događaj</Link></li>
-              <li class={eventsClass}><Link to="events" onClick={this.toggleCollapse.bind(this)}>Svi događaji</Link></li>
-              <li class={aboutClass}><Link to="about" onClick={this.toggleCollapse.bind(this)}>O Parisu</Link></li>
-              <li class={registerClass}><Link to="registration" onClick={this.toggleCollapse.bind(this)}>Registracija</Link></li>
-              <li class={loginClass}><Link to="login" onClick={this.toggleCollapse.bind(this)}>Prijava</Link></li>
-            </ul>
-            }
-
-            { localStorage.getItem('role') == "Administrator" ?
-            <ul class="nav navbar-nav navbar-right">
-              <li class={homepageClass}><IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Početna</IndexLink></li>
-              <li class={newEventClass}><Link to="newevent" onClick={this.toggleCollapse.bind(this)}>Novi događaj</Link></li>
-              <li class={eventsClass}><Link to="events" onClick={this.toggleCollapse.bind(this)}>Svi događaji</Link></li>
-              <li class={aboutClass}><Link to="about" onClick={this.toggleCollapse.bind(this)}>O Parisu</Link></li>
-              <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} onClick={this.toggleCollapse.bind(this)}>Korisnički profil</Link></li>
-              <li ><Link to="/" onClick={this.toggleCollapse.bind(this), this.logout.bind(this)}>Odjava</Link></li>
-  		      </ul>
-            :
-            <span></span>
-            }
-
-            { localStorage.getItem('role') == "Organisator" ?
-            <ul class="nav navbar-nav navbar-right">
-              <li class={homepageClass}><IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Početna</IndexLink></li>
-              <li class={newEventClass}><Link to="newevent" onClick={this.toggleCollapse.bind(this)}>Novi događaj</Link></li>
-              <li class={eventsClass}><Link to="events" onClick={this.toggleCollapse.bind(this)}>Svi događaji</Link></li>
-              <li class={aboutClass}><Link to="about" onClick={this.toggleCollapse.bind(this)}>O Parisu</Link></li>
-              <li ><Link to="/" onClick={this.toggleCollapse.bind(this), this.logout.bind(this)}>Odjava</Link></li>
-              <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} onClick={this.toggleCollapse.bind(this)}>Korisnički profil</Link></li>
-            </ul>
-            :
-            <span></span>
-            }
-
-            { localStorage.getItem('role') == "User" ?
-            <ul class="nav navbar-nav navbar-right">
-              <li class={homepageClass}><IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Početna</IndexLink></li>
-              <li class={eventsClass}><Link to="events" onClick={this.toggleCollapse.bind(this)}>Svi događaji</Link></li>
-              <li class={aboutClass}><Link to="about" onClick={this.toggleCollapse.bind(this)}>O Parisu</Link></li>
-              <li ><Link to="/" onClick={this.toggleCollapse.bind(this), this.logout.bind(this)}>Odjava</Link></li>
-              <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} onClick={this.toggleCollapse.bind(this)}>Korisnički profil</Link></li>
-            </ul>
-            :
-            <span></span>
-            }
+            {this.navigation()}
 
   		    </div>
   		  </div>
