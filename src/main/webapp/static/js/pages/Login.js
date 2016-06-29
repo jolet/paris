@@ -36,12 +36,16 @@ export default class Login extends React.Component {
             fetch(url, init)
             .then((response) => response.json())
             .then((responseData) => {
-              localStorage.setItem("token", 'Bearer ' + responseData.token);
-              localStorage.setItem("username", responseData.userDto.username);
-              localStorage.setItem("email", responseData.userDto.email);
-              localStorage.setItem("id", responseData.userDto.id);
-              localStorage.setItem("role", responseData.userDto.role);
-              location.href = '/#/';
+              if(responseData.status == 500){
+                alert(responseData.message);
+              }else{
+                localStorage.setItem("token", 'Bearer ' + responseData.token);
+                localStorage.setItem("username", responseData.userDto.username);
+                localStorage.setItem("email", responseData.userDto.email);
+                localStorage.setItem("id", responseData.userDto.id);
+                localStorage.setItem("role", responseData.userDto.role);
+                location.href = '/#/';
+              }
             });
           }
 
