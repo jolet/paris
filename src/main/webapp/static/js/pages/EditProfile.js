@@ -17,7 +17,7 @@ export default class EditProfile extends React.Component {
 		  var url = $(location).attr('href');
       console.log(url);
 		  var id = url.substring(url.lastIndexOf('/') + 1);
-		  var putanja='http://localhost:8080/user/'+id;
+		  var putanja='http://localhost:8080/users/'+id;
 		    $.ajax({
 		      url: putanja,
 		      context: this,
