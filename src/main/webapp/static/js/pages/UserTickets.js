@@ -1,5 +1,5 @@
 import React from "react";
-import Event from '../components/Ticket';
+
 export default class UserTickets extends React.Component {
 
 	constructor(props){
