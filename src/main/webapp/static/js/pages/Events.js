@@ -69,6 +69,7 @@ export default class Events extends React.Component {
              <label className="col-sm-2 form-control-label" htmlFor="category">Vrsta događaja:</label>
              <div className="col-sm-4">
              <select className="form-control" onChange={this.handleChange.bind(this, 'type')}>
+               <option value="0">Odaberite</option>
                 {this.state.categoryResponse.map((categoryAPI, i) => <Category key={i} category={categoryAPI} />)}
              </select>
              </div>
