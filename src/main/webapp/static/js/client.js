@@ -14,6 +14,7 @@ import UserProfile from './pages/UserProfile';
 import Login from './pages/Login';
 import UserTickets from './pages/UserTickets';
 import UserList from './pages/UserList';
+import EditProfile from './pages/EditProfile'
 
 const app = document.getElementById('app');
 
@@ -29,6 +30,7 @@ ReactDOM.render(
       <Route path="buyTicket/:id" name="buyTicket" component={BuyTicket}></Route>
       <Route path="user/:id" name="userProfile" component={UserProfile}></Route>
       <Route path="users" name="userList" component={UserList}></Route>
+      <Route path="userEdit/:id" name="userEdit" component="EditProfile"></Route>
       <Route path="login" name="login" component={Login}></Route>
       <Route path="userTickets/:id" name="userTickets" component={UserTickets}></Route>
     </Route>
