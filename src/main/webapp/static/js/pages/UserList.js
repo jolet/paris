@@ -10,6 +10,25 @@ export default class UserList extends React.Component {
     }
 
   componentDidMount(){
+    // var self = this;
+    //
+    // var header = new Headers();
+    //
+    //   var init = {
+    //     headers: header,
+    //     method: 'GET',
+    //     mode: 'cors',
+    //   }
+    //
+    //   var url = new Request('http://localhost:8080/users');
+    //
+    //   fetch(url, init)
+    //   .then((response) => response.json())
+    //   .then((responseData) => {
+    //     var jsonResponse = JSON.stringify(responseData);
+    //     self.setState({response: jsonResponse});
+    //   });
+
     $.ajax({
       url: 'http://localhost:8080/users',
       context: this,
@@ -17,7 +36,6 @@ export default class UserList extends React.Component {
       type: 'GET'
     }).done(function (data){
       this.setState({response: data});
-      console.log(JSON.stringify(this.state.response));
     });
   }
 
