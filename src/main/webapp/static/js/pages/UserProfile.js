@@ -25,6 +25,13 @@ export default class UserProfile extends React.Component {
 		     
 		    });
 		  }
+	  
+	  handleClick() {
+		  var id=localStorage.getItem('id');
+		  location.href = '/#/userTickets/'+id;
+		 
+		  }
+	  
   render() {
 console.log(this.state);
 
@@ -63,7 +70,12 @@ console.log(this.state);
     		     </div>
     		   </div>
     		 
-    	     
+    		   <div className="row">
+  		     <div className="form-group col-sm-5">
+  		   <button type="button" onClick={this.handleClick} class="btn btn-primary btn-md">Kupljene karte</button>
+  		     </div>
+  		   </div>   
+     		 
 
       </div>
     
