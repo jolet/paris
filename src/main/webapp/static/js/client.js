@@ -14,7 +14,7 @@ import UserProfile from './pages/UserProfile';
 import Login from './pages/Login';
 import UserTickets from './pages/UserTickets';
 import UserList from './pages/UserList';
-import EditProfile from './pages/EditProfile'
+import EditProfile from './pages/EditProfile';
 
 const app = document.getElementById('app');
 
