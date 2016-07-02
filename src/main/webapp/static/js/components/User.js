@@ -14,7 +14,7 @@ export default class User extends React.Component {
         <td>{user.email}</td>
         <td>{user.role}</td>
         <td>{user.phoneNumber}</td>
-        <td><Link to={'userEdit/' + user.id} class="btn btn-warning">Uredi</Link></td>
+        <td><Link to={'editUser/' + user.id} class="btn btn-warning">Uredi</Link></td>
         <td><Link to="#" class="btn btn-danger">Obriši</Link></td>
       </tr>
     );
