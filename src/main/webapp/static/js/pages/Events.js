@@ -11,7 +11,7 @@ export default class Events extends React.Component {
       response:[],
       categoryResponse:[],
       name: '',
-      type: '',
+      category: '',
       date: '',
     }
 
@@ -49,6 +49,7 @@ export default class Events extends React.Component {
     event.preventDefault();
     console.log("Forma poslana");
     console.log(this.state);
+    //ako je category 0, ocisti tu varijablu, ne salji nista
 
   }
 
@@ -68,7 +69,7 @@ export default class Events extends React.Component {
            <div className="form-group row">
              <label className="col-sm-2 form-control-label" htmlFor="category">Vrsta događaja:</label>
              <div className="col-sm-4">
-             <select className="form-control" onChange={this.handleChange.bind(this, 'type')}>
+             <select className="form-control" name="category" onChange={this.handleChange.bind(this, 'type')}>
                <option value="0">Odaberite</option>
                 {this.state.categoryResponse.map((categoryAPI, i) => <Category key={i} category={categoryAPI} />)}
              </select>
