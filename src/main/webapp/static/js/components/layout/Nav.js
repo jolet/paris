@@ -42,8 +42,18 @@ export default class Nav extends React.Component {
                         <li class={eventsClass}><Link to="events" onClick={this.toggleCollapse.bind(this)}>Svi događaji</Link></li>
                         <li class={aboutClass}><Link to="about" onClick={this.toggleCollapse.bind(this)}>O Parisu</Link></li>
                         <li class={usersClass}><Link to="users" onClick={this.toggleCollapse.bind(this)}>Korisnici</Link></li>
-                        <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} onClick={this.toggleCollapse.bind(this)}>Korisnički profil</Link></li>
-                        <li ><Link to="/" onClick={this.toggleCollapse.bind(this), this.logout.bind(this)}>Odjava</Link></li>
+
+                        <li class="dropdown dropdownStyle" >
+                            <span class="btn btn-sm btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                              {localStorage.getItem('username')}<span class="caret"></span>
+                            </span>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                              <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} onClick={this.toggleCollapse.bind(this)}>Korisnički profil</Link></li>
+                              <li class="divider"></li>
+                              <li ><Link to="/" onClick={this.toggleCollapse.bind(this), this.logout.bind(this)}>Odjava</Link></li>
+                            </ul>
+                        </li>
+                        
             		      </ul>
         break;
       case 'Organisator':
@@ -52,8 +62,18 @@ export default class Nav extends React.Component {
                         <li class={newEventClass}><Link to="newevent" onClick={this.toggleCollapse.bind(this)}>Novi događaj</Link></li>
                         <li class={eventsClass}><Link to="events" onClick={this.toggleCollapse.bind(this)}>Svi događaji</Link></li>
                         <li class={aboutClass}><Link to="about" onClick={this.toggleCollapse.bind(this)}>O Parisu</Link></li>
-                        <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} onClick={this.toggleCollapse.bind(this)}>Korisnički profil</Link></li>
-                        <li ><Link to="/" onClick={this.toggleCollapse.bind(this), this.logout.bind(this)}>Odjava</Link></li>
+
+                        <li class="dropdown dropdownStyle" >
+                            <span class="btn btn-sm btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                              {localStorage.getItem('username')}<span class="caret"></span>
+                            </span>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                              <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} onClick={this.toggleCollapse.bind(this)}>Korisnički profil</Link></li>
+                              <li class="divider"></li>
+                              <li ><Link to="/" onClick={this.toggleCollapse.bind(this), this.logout.bind(this)}>Odjava</Link></li>
+                            </ul>
+                        </li>
+
                       </ul>
         break;
       case 'User':
@@ -61,8 +81,18 @@ export default class Nav extends React.Component {
                         <li class={homepageClass}><IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Početna</IndexLink></li>
                         <li class={eventsClass}><Link to="events" onClick={this.toggleCollapse.bind(this)}>Svi događaji</Link></li>
                         <li class={aboutClass}><Link to="about" onClick={this.toggleCollapse.bind(this)}>O Parisu</Link></li>
-                        <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} onClick={this.toggleCollapse.bind(this)}>Korisnički profil</Link></li>
-                        <li ><Link to="/" onClick={this.toggleCollapse.bind(this), this.logout.bind(this)}>Odjava</Link></li>
+
+                        <li class="dropdown dropdownStyle" >
+                            <span class="btn btn-sm btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                              {localStorage.getItem('username')}<span class="caret"></span>
+                            </span>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                              <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} onClick={this.toggleCollapse.bind(this)}>Korisnički profil</Link></li>
+                              <li class="divider"></li>
+                              <li ><Link to="/" onClick={this.toggleCollapse.bind(this), this.logout.bind(this)}>Odjava</Link></li>
+                            </ul>
+                        </li>
+
                       </ul>
         break;
       default:
