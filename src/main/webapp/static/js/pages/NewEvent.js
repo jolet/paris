@@ -89,7 +89,7 @@ export default class NewEvent extends React.Component {
     <div className="row">
       <div className="form-group col-sm-4">
         Naziv događaja:
-        <input type="text" name="name" id="name" className="form-control" required onChange={this.handleChange.bind(this, 'name')}/>
+        <input pattern="[A-Za-z0-9-_]{5,150}" title="Broj znakova mora biti viši od 5! Smiju se koristiti slova i brojevi te znakovi - i _" type="text" name="name" id="name" className="form-control" required onChange={this.handleChange.bind(this, 'name')}/>
       </div>
       <div className="form-group col-sm-3 col-sm-offset-1">
         Datum početka:
@@ -117,7 +117,7 @@ export default class NewEvent extends React.Component {
     <div className="row">
       <div className="form-group col-sm-4">
         Grad:
-        <input type="text" name="city" id="city" className="form-control" required onChange={this.handleChange.bind(this, 'city')}/>
+        <input pattern="[A-Za-z]{2,}" title="Samo slova dopuštena" type="text" name="city" id="city" className="form-control" required onChange={this.handleChange.bind(this, 'city')}/>
       </div>
       <div className="form-group col-sm-3 col-sm-offset-1">
         Kategorija:
