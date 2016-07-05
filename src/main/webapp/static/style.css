@@ -103,3 +103,17 @@
 .dropdownStyle{
 	margin-top: 10px;
 }
+
+/*stil za required inpute*/
+input:required {
+	box-shadow: 1px 1px 5px rgba(200, 0, 0, 0.85);
+}
+
+input:required:focus {
+	border: 1px solid red;
+	outline: none;
+}
+
+input:required:hover {
+	opacity: 1;
+}
