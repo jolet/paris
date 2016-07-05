@@ -49,8 +49,6 @@ export default class Nav extends React.Component {
                             </span>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li class="divider"></li>
-                            <li class={loginClass}><Link to='#' >Moji događaji</Link></li>
-                            <li class="divider"></li>
                             <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} >Korisnički profil</Link></li>
                             <li class="divider"></li>
                             <li ><Link to="/" onClick={this.logout.bind(this)}>Odjava</Link></li>
@@ -71,6 +69,8 @@ export default class Nav extends React.Component {
                               {localStorage.getItem('username')}<span class="caret"></span>
                             </span>
                         <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="divider"></li>
+                            <li class={loginClass}><Link to='#' >Moji događaji</Link></li>
                             <li class="divider"></li>
                             <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} >Korisnički profil</Link></li>
                             <li class="divider"></li>
