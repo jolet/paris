@@ -22,7 +22,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "webpack-dev-server --content-base static --inline --hot"
+    "dev": "webpack-dev-server --content-base static --inline --hot",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC"
