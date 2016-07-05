@@ -4,16 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import tvz.nppjj.paris.model.Event;
+import tvz.nppjj.paris.model.User;
 import tvz.nppjj.paris.model.dto.EventCommand;
 import tvz.nppjj.paris.model.dto.EventDto;
+import tvz.nppjj.paris.model.dto.PaginationDto;
 import tvz.nppjj.paris.model.exception.ParisException;
 import tvz.nppjj.paris.repository.EventRepository;
 
 @Service
 public class EventServiceImpl implements EventService {
+    private static final int ENTITIES_PER_PAGE = 2;
 
     @Autowired
     private EventRepository eventRepository;
@@ -24,6 +30,15 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<EventDto> getAllEvents() {
         return transformEventListToDtoList(eventRepository.findAll());
+    }
+
+    @Override
+    public PaginationDto<EventDto> getAllEventsWithPagination(Integer pageIndex) {
+        Page<Event> requestedPage = eventRepository.findAll(createPageRequest(pageIndex));
+        List<EventDto> paginatedList = transformEventListToDtoList(requestedPage.getContent());
+
+        PaginationDto<EventDto> paginationDto = new PaginationDto<>(paginatedList, requestedPage.getNumber() + 1, requestedPage.getNumberOfElements(), requestedPage.getTotalPages());
+        return paginationDto;
     }
 
     @Override
@@ -91,6 +106,10 @@ public class EventServiceImpl implements EventService {
         }
         return eventDtoList;
 
+    }
+
+    private PageRequest createPageRequest(Integer pageIndex) {
+        return new PageRequest(pageIndex - 1, ENTITIES_PER_PAGE, new Sort(Sort.Direction.ASC, "date", "name"));
     }
 
 }
