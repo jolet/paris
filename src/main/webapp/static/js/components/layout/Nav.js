@@ -44,7 +44,7 @@ export default class Nav extends React.Component {
                     <li class={usersClass}><Link to="users" onClick={this.toggleCollapse.bind(this)}>Korisnici</Link></li>
 
                     <li class="dropdown dropdownStyle" >
-                            <span class="btn btn-sm btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                            <span class="btn btn-sm btn-default dropdown-toggle" type="button" data-toggle="dropdown" id="userOptions">
                               {localStorage.getItem('username')}<span class="caret"></span>
                             </span>
                         <ul class="dropdown-menu dropdown-menu-right">

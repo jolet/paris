@@ -48,9 +48,29 @@ export default class Events extends React.Component {
   submit(event){
     event.preventDefault();
     console.log("Forma poslana");
-    console.log(this.state);
-    //ako je category 0, ocisti tu varijablu, ne salji nista
 
+    //ako je category 0, ocisti tu varijablu, ne salji nista
+      if(!this.state.category)
+          this.setState({
+              category: ''
+          });
+
+      console.log(this.state);
+
+      $.ajax({
+          url: 'http://localhost:8080/eventsFilter',
+          context: this,
+          dataType: 'json',
+          type: 'GET',
+          data:{
+              'name': this.state.name,
+              'categoryId': this.state.category,
+              'date': this.state.date
+          }
+      }).done(function (data){
+          console.log(data);
+          this.setState({response: data});
+      });
   }
 
 
