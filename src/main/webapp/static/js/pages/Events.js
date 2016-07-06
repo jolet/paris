@@ -12,7 +12,7 @@ export default class Events extends React.Component {
       categoryResponse:[],
       name: '',
       category: '',
-      date: '',
+      date: new Date(0).toJSON().slice(0,10),
     }
 
     this.handleChange = this.handleChange.bind(this);
