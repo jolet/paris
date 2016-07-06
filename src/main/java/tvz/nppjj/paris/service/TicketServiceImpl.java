@@ -98,6 +98,7 @@ public class TicketServiceImpl implements TicketService {
     private TicketDto transformTicketToTicketDto(Ticket ticket) {
 
         TicketDto ticketDto = new TicketDto();
+        ticketDto.setId(ticket.getId());
         ticketDto.setCode(BarcodeHelper.generateBase64Barcode(ticket.getCode()));
         ticketDto.setIdUser(ticket.getUser().getId());
         ticketDto.setIsValidated(ticket.getIsValidated());

@@ -21,6 +21,8 @@ public class TicketDto {
 
     private Event      event;
 
+    private Long       id;
+
     public String getCode() {
         return code;
     }
@@ -61,4 +63,11 @@ public class TicketDto {
         this.event = event;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
