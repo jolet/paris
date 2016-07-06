@@ -1,8 +1,5 @@
 import React from "react";
 
-
-
-
 export default class UserProfile extends React.Component {
 
 	constructor(props){
@@ -18,7 +15,10 @@ export default class UserProfile extends React.Component {
 		      url: putanja,
 		      context: this,
 		      dataType: 'json',
-		      type: 'GET'
+		      type: 'GET',
+				beforeSend: function(request){
+					request.setRequestHeader("Authorization", localStorage.getItem("token"));
+				}
 		    }).done(function (data){
 		      this.setState({response: data});
 		      //console.log(JSON.stringify(this.state.response));

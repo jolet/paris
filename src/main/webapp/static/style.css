@@ -105,15 +105,15 @@
 }
 
 /*stil za required inpute*/
-input:required {
+input:required, textarea:required, select:required {
 	box-shadow: 1px 1px 5px rgba(200, 0, 0, 0.85);
 }
 
-input:required:focus {
+input:required:focus, textarea:required:focus, select:required:focus{
 	border: 1px solid red;
 	outline: none;
 }
 
-input:required:hover {
+input:required:hover, textarea:required:hover, select:required:hover {
 	opacity: 1;
 }

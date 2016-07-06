@@ -22,7 +22,10 @@ export default class EditUser extends React.Component {
 		      url: putanja,
 		      context: this,
 		      dataType: 'json',
-		      type: 'GET'
+		      type: 'GET',
+                beforeSend: function(request){
+                    request.setRequestHeader("Authorization", localStorage.getItem("token"));
+                }
 		    }).done(function (data){
 		      this.setState({response: data});
           console.log("podaci o korisniku");
@@ -55,7 +58,10 @@ export default class EditUser extends React.Component {
           console.log("Forma poslana");
           console.log(this.state);
 
-          // var headers = new Headers({"Content-type": "application/json"});
+          // var headers = new Headers({
+          //    "Content-type": "application/json",
+          //    "Authorization": localStorage.getItem("token")
+          //    });
           // var body = JSON.stringify({
           //   email: this.state.email,
           //   password: this.state.password,
