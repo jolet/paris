@@ -31,3 +31,7 @@ src/main/webapp/node_modules/
 src/main/webapp/npm-debug.log
 
 nppjj-paris.log
+
+# merge (meld)
+*.orig
+deployments/*

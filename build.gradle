@@ -27,8 +27,8 @@ war {
 	//baseName = 'web-nppjj-paris'
 	//version = '0.0.1-SNAPSHOT'
 	archiveName = 'ROOT.war'
-	destinationDir = file('webapps')
-	//destinationDir = file('deployments')
+	//destinationDir = file('webapps')
+	destinationDir = file('deployments')
 
 }
 
