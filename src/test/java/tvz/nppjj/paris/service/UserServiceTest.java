@@ -84,7 +84,7 @@ public class UserServiceTest {
     private Answer<User> userRegistrationAnswer = new Answer<User>() {
         @Override
         public User answer(InvocationOnMock invocation) throws Throwable {
-            User userArgument = invocation.getArgumentAt(0, User.class);
+            User userArgument = invocation.getArgument(0);
 
             assertThat(userArgument.getRole()).isNotNull();
             return userArgument;
