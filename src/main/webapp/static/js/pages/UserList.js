@@ -33,7 +33,10 @@ export default class UserList extends React.Component {
       url: 'http://localhost:8080/users',
       context: this,
       dataType: 'json',
-      type: 'GET'
+      type: 'GET',
+      beforeSend: function(request){
+        request.setRequestHeader("Authorization", localStorage.getItem("token"));
+      }
     }).done(function (data){
       this.setState({response: data});
     });

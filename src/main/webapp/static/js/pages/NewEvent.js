@@ -45,7 +45,10 @@ export default class NewEvent extends React.Component {
     console.log("Forma poslana");
     console.log(this.state);
 
-    var headers = new Headers({"Content-type": "application/json"});
+    var headers = new Headers({
+        "Content-type": "application/json",
+        "Authorization": localStorage.getItem("token")
+    });
     var body = JSON.stringify({
       name: this.state.name,
       location: this.state.location,
@@ -65,6 +68,8 @@ export default class NewEvent extends React.Component {
     }
 
     var url = new Request('http://localhost:8080/events/save');
+
+      console.log(JSON.stringify(init));
 
     fetch(url, init).then(function(response){
       if(response.status == 200 && response.ok == true){
