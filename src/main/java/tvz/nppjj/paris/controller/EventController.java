@@ -29,14 +29,18 @@ public class EventController {
     }
 
     @CrossOrigin
-    @RequestMapping(value = "/eventsFilter", params = {"name","categoryId","date"} ,method = RequestMethod.POST)
-    public @ResponseBody List<EventDto> getFilteredEvents(
-            @RequestParam(value = "name") String name,
-            @RequestParam(value = "categoryId") Long categoryId, 
-            @RequestParam(value = "date") Date date){
+    @RequestMapping(value = "/eventsFilter", params = { "name", "categoryId", "date" }, method = RequestMethod.GET)
+    public @ResponseBody List<EventDto> getFilteredEvents(@RequestParam(required = false, value = "name") String name,
+            @RequestParam(required = false, value = "categoryId") Long categoryId,
+            @RequestParam(required = false, value = "date") Date date) {
+
+        if(name==null && categoryId==null && date == null){
+            return eventService.getAllEvents();
+        }
+        else{
+            return eventService.getFilteredEvents(name, categoryId, date);  
+        }
         
-        
-        return eventService.getFilteredEvents(name, categoryId, date);
     }
 
     @CrossOrigin
