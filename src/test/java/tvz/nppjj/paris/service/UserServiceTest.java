@@ -7,6 +7,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.math.BigDecimal;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +24,7 @@ import tvz.nppjj.paris.init.WebNppjjParisApplication;
 import tvz.nppjj.paris.model.Role;
 import tvz.nppjj.paris.model.User;
 import tvz.nppjj.paris.model.dto.RegistrationCommand;
+import tvz.nppjj.paris.model.dto.UserDto;
 import tvz.nppjj.paris.model.enums.RoleType;
 import tvz.nppjj.paris.repository.UserRepository;
 
@@ -64,14 +67,55 @@ public class UserServiceTest {
 
         verify(userRepository, times(1)).save(any(User.class));
     }
+    
+    @Test
+    public void testLoginUser_whenValidLoginData_thenNoExceptionIsThrown() throws Exception{
+    	 // prepare
+    	Role role=new Role();
+    	role.setName("User");
+    	BigDecimal acc= new BigDecimal(10);
+      User testUser=new User();
+      testUser.setUsername("ejosip");
+      testUser.setPassword("lozinka");
+      testUser.setAccount(acc);
+      testUser.setEmail("moje@moje.com");
+      testUser.setId(569l);
+      testUser.setPhone_number("123454");
+      testUser.setRole(role);
+      when(userRepository.findByUsernameAndPassword(anyString(), anyString())).thenReturn(createMySuperUser());
+      
+    	
+        // act
+        UserDto loginUser = userService.loginUser("ejosip","lozinka");
 
-    // +------------ HELPER METHODS ------------+
+        // assert
+        assertThat(loginUser.getUsername()).isEqualTo(testUser.getUsername());
+        //verify(userRepository, times(1)).save(any(User.class));
+    }
+    
+    
+    private User createMySuperUser() {
+    	Role role=new Role();
+    	role.setName("User");
+    	BigDecimal acc= new BigDecimal(10);
+      User testUser=new User();
+      testUser.setUsername("ejosip");
+      testUser.setPassword("lozinka");
+      testUser.setAccount(acc);
+      testUser.setEmail("moje@moje.com");
+      testUser.setId(569l);
+      testUser.setPhone_number("123454");
+      testUser.setRole(role);
+		return testUser;
+	}
+
+	// +------------ HELPER METHODS ------------+
     private Role createMockRole() {
         Role mockRole = new Role();
         mockRole.setName("mockRole");
         return mockRole;
     }
-
+        
     private RegistrationCommand createRegistrationCommand() {
         RegistrationCommand command = new RegistrationCommand();
         command.setEmail("CAFE@BABE.COM");
