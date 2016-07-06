@@ -52,7 +52,7 @@ public class EventServiceTest {
 
     @Test
     public final void testSaveEvent() throws ParseException {
-
+        // PREPARE
         EventCommand eventCommand = createEventCommand();
         when(categoryService.getCategoryById(anyLong())).thenReturn(Mockito.mock(Category.class));
         when(eventRepository.save(any(Event.class))).thenAnswer(new Answer<Event>() {
@@ -60,6 +60,7 @@ public class EventServiceTest {
             @Override
             public Event answer(InvocationOnMock invocation) throws Throwable {
                 Event event = invocation.getArgument(0);
+                // ASSERT
                 assertThat(event.getCity()).isEqualTo(eventCommand.getCity());
                 assertThat(event.getDate()).isEqualTo(eventCommand.getDate());
                 assertThat(event.getName()).isEqualTo(eventCommand.getName());
@@ -71,35 +72,40 @@ public class EventServiceTest {
                 return event;
             }
         });
-
+        // ACT
         eventService.saveEvent(eventCommand);
 
+        // VERIFY
         verify(eventRepository, times(1)).save(any(Event.class));
 
     }
 
     @Test(expected = ParisException.class)
     public final void testSaveEvent_whenIdDoesNotExistInDatabase_thenExceptionIsThrown() throws ParseException {
-
+        // PREPARE
         EventCommand eventCommand = createEventCommand();
         eventCommand.setId(213L);
         when(categoryService.getCategoryById(anyLong())).thenReturn(Mockito.mock(Category.class));
         when(eventRepository.findOne(anyLong())).thenReturn(null);
 
+        // ACT
         eventService.saveEvent(eventCommand);
 
+        // VERIFY
         verify(eventRepository, times(0)).save(any(Event.class));
 
     }
 
     @Test(expected = TooLittleActualInvocations.class)
-    // expect test to fail
+    // EXPECT TEST TO FAIL
     public final void testSaveEvent_whenValidEventCommand_thenSaveShouldBeCalledOnlyOnce() throws ParseException {
-
+        // PREPARE
         EventCommand eventCommand = createEventCommand();
 
+        // ACT
         eventService.saveEvent(eventCommand);
 
+        // VERIFY
         verify(eventRepository, times(2)).save(any(Event.class));
 
     }
@@ -124,12 +130,5 @@ public class EventServiceTest {
 
         return command;
     }
-
-    // private Category createMockCategory() {
-    // Category category = new Category();
-    //
-    // category.setId();
-    // return null;
-    // }
 
 }

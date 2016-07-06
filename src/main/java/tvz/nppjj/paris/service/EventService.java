@@ -1,5 +1,6 @@
 package tvz.nppjj.paris.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import tvz.nppjj.paris.model.dto.EventCommand;
@@ -15,4 +16,6 @@ public interface EventService {
     void saveEvent(EventCommand eventCommand);
 
     PaginationDto<EventDto> getAllEventsWithPagination(Integer pageIndex);
+
+    List<EventDto> getFilteredEvents(String name, Long categoryId, Date date);
 }

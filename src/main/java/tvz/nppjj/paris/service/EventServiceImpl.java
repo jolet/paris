@@ -1,5 +1,6 @@
 package tvz.nppjj.paris.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,11 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<EventDto> getAllEvents() {
         return transformEventListToDtoList(eventRepository.findAll());
+    }
+    
+    @Override
+    public List<EventDto> getFilteredEvents(String name, Long categoryId, Date date){
+        return transformEventListToDtoList(eventRepository.findByNameContainingOrDateAfterOrCategoryIdIs(name, date, categoryId));
     }
 
     @Override

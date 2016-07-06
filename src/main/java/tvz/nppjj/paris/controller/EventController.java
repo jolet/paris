@@ -1,5 +1,6 @@
 package tvz.nppjj.paris.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Required;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
+import tvz.nppjj.paris.model.Category;
 import tvz.nppjj.paris.model.dto.EventCommand;
 import tvz.nppjj.paris.model.dto.EventDto;
 import tvz.nppjj.paris.model.dto.PaginationDto;
@@ -27,9 +29,21 @@ public class EventController {
     }
 
     @CrossOrigin
+    @RequestMapping(value = "/eventsFilter", params = {"name","categoryId","date"} ,method = RequestMethod.POST)
+    public @ResponseBody List<EventDto> getFilteredEvents(
+            @RequestParam(value = "name") String name,
+            @RequestParam(value = "categoryId") Long categoryId, 
+            @RequestParam(value = "date") Date date){
+        
+        
+        return eventService.getFilteredEvents(name, categoryId, date);
+    }
+
+    @CrossOrigin
     @RequestMapping(value = "/eventspage", method = RequestMethod.GET)
-    public PaginationDto<EventDto> getAllEventsWithPagination(@RequestParam(required = false, defaultValue = "1") Integer pageIndex) {
-        if(pageIndex < 1) {
+    public PaginationDto<EventDto> getAllEventsWithPagination(
+            @RequestParam(required = false, defaultValue = "1") Integer pageIndex) {
+        if (pageIndex < 1) {
             return new PaginationDto<>();
         }
         return eventService.getAllEventsWithPagination(pageIndex);
