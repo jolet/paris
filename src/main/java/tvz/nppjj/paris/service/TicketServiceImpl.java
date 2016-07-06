@@ -113,4 +113,11 @@ public class TicketServiceImpl implements TicketService {
         return ticketDtoList;
     }
 
+    @Override
+    public void validateTicket(Long id) {
+        Ticket ticket = ticketRepository.findOne(id);
+        if (ticket != null) {
+            ticket.setIsValidated(true);
+        }
+    }
 }

@@ -47,4 +47,9 @@ public class TicketController {
         ticketService.saveTicket(ticketCommand);
     }
 
+    @CrossOrigin
+    @RequestMapping(value = "/tickets/validate/{id}", method = RequestMethod.POST)
+    public void validateTicket(@PathVariable("id") Long id) {
+        ticketService.validateTicket(id);
+    }
 }
