@@ -117,3 +117,8 @@ input:required:focus, textarea:required:focus, select:required:focus{
 input:required:hover, textarea:required:hover, select:required:hover {
 	opacity: 1;
 }
+
+
+.build-version{
+    color: red;
+}
