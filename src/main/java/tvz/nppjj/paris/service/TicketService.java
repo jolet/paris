@@ -15,4 +15,5 @@ public interface TicketService {
 
     List<TicketDto> getTicketsByUserId(Long idUser);
 
+    void validateTicket(Long id);
 }

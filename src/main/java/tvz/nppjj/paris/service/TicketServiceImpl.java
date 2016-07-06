@@ -43,7 +43,6 @@ public class TicketServiceImpl implements TicketService {
         return transformTicketToTicketDto(ticketRepository.findOne(id));
     }
 
-    
     @Override
     public void saveTicket(TicketCommand ticketCommand) {
 
@@ -58,10 +57,12 @@ public class TicketServiceImpl implements TicketService {
         User user = userService.getUserById(ticketCommand.getIdUser());
 
         ticket.setUser(user);
-
+        
+        
+        //deduct money from account
         BigDecimal newAccount = user.getAccount().subtract(ticket.getPrice());
 
-        /* 
+        /*
          * Is there enough money on the account ?
          */
         if (newAccount.compareTo(BigDecimal.ZERO) >= 0) {
@@ -113,4 +114,11 @@ public class TicketServiceImpl implements TicketService {
         return ticketDtoList;
     }
 
+    @Override
+    public void validateTicket(Long id) {
+        Ticket ticket = ticketRepository.findOne(id);
+        if (ticket != null) {
+            ticket.setIsValidated(true);
+        }
+    }
 }
