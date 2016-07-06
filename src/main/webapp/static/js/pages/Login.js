@@ -64,13 +64,13 @@ export default class Login extends React.Component {
      <div className="row">
      <div className="form-group col-sm-5">
      Korisničko ime:
-     <input type="text" name="username" className="form-control" required onChange={this.handleChange.bind(this, 'username')} />
+     <input type="text" pattern="^(?=.{4,16}$).*$" title="Korisničko ime sadržava 4-16 znakova" name="username" className="form-control" required onChange={this.handleChange.bind(this, 'username')} />
      </div>
      </div>
      <div className="row">
      <div className="form-group col-sm-5">
      Lozinka:
-     <input type="password" name="password" id="pass1" className="form-control" required onChange={this.handleChange.bind(this, 'password')} />
+     <input type="password" pattern="^(?=.{6,16}$).*$" title="Lozinka sadržava 8-16 znakova" name="password" id="pass1" className="form-control" required onChange={this.handleChange.bind(this, 'password')} />
      </div>
      </div>
      <div className="row">
