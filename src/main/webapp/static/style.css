@@ -122,3 +122,19 @@ input:required:hover, textarea:required:hover, select:required:hover {
 .build-version{
     color: red;
 }
+
+.neweventform{
+	background-color: rgba(239, 239, 239, 1);
+	border-radius: 10px;
+}
+
+.neweventformdiv{
+	padding:15px;
+}
+
+.neweventformdiv hr{
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
