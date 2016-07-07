@@ -30,6 +30,11 @@ export default class extends React.Component {
   //   })
   // }
   openModal(){
+    //ako nije ulogiran, prebaci ga na login screen, spremi url da ga znas vratiti
+    if(! localStorage.getItem('username')){
+      localStorage.setItem('url', window.location.href);
+      location.href = '/#/login';
+    }
     this.setState({showModal: true});
   }
   closeModal(){

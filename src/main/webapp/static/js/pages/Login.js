@@ -46,13 +46,22 @@ export default class Login extends React.Component {
                       error: temp
                   });
               }else{
-                  localStorage.clear();
+
+                  localStorage.setItem("registrationStatus", "");
                 localStorage.setItem("token", 'Bearer ' + responseData.token);
                 localStorage.setItem("username", responseData.userDto.username);
                 localStorage.setItem("email", responseData.userDto.email);
                 localStorage.setItem("id", responseData.userDto.id);
                 localStorage.setItem("role", responseData.userDto.role);
-                location.href = '/#/';
+
+                  //ako je preusmjeren s neke stranice, vrati ga tamo
+                  if(localStorage.getItem("url") != ""){
+                      let temp = localStorage.getItem("url");
+                      localStorage.setItem("url", "");
+                      location.href = temp;
+                  }else{
+                      location.href = '/#/';
+                  }
               }
             });
           }
@@ -74,6 +83,15 @@ export default class Login extends React.Component {
              <strong>Registracija je prošla uspješno!</strong> Molimo, prijavite se.
          </div>
              : null}
+
+         {! localStorage.getItem("url") == ""
+             ?
+             <div class="alert alert-warning">
+                 <strong>Prijavi se kako bi kupnja bila moguća!</strong>
+             </div>
+             : null}
+
+
 
          { this.state.error.map((error, i) => <AlertDanger key={i} error={error.message} />)  }
 
