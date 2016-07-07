@@ -1,5 +1,5 @@
 import React from "react";
-import Router from 'react-router';
+import AlertDanger from '../components/AlertDanger';
 
 export default class Login extends React.Component {
 
@@ -8,12 +8,15 @@ export default class Login extends React.Component {
             this.state = {
               username: '',
               password: '',
+                error:[]
             }
             this.handleChange = this.handleChange.bind(this);
             this.submit = this.submit.bind(this);
           }
 
       submit(event){
+          var ovaKlasa = this;
+
             event.preventDefault();
             console.log("Prijava ce se izvrsiti");
             console.log(this.state);
@@ -37,7 +40,11 @@ export default class Login extends React.Component {
             .then((response) => response.json())
             .then((responseData) => {
               if(responseData.status == 500){
-                alert(responseData.message);
+                  let temp = [];
+                  temp.push(responseData);
+                  ovaKlasa.setState({
+                      error: temp
+                  });
               }else{
                   localStorage.clear();
                 localStorage.setItem("token", 'Bearer ' + responseData.token);
@@ -67,6 +74,8 @@ export default class Login extends React.Component {
              <strong>Registracija je prošla uspješno!</strong> Molimo, prijavite se.
          </div>
              : null}
+
+         { this.state.error.map((error, i) => <AlertDanger key={i} error={error.message} />)  }
 
      <h2><strong>Prijava</strong></h2>
      <form onSubmit={this.submit}>
