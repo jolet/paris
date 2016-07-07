@@ -1,8 +1,5 @@
 package tvz.nppjj.paris.controller;
 
-
-
-
 import java.sql.Date;
 import java.util.List;
 
@@ -26,9 +23,6 @@ import tvz.nppjj.paris.service.EventService;
 
 @RestController
 public class EventController {
-    
-    @SuppressWarnings("deprecation")
-    private Date dateCompare = new Date(1970, 01, 01); 
 
     @Autowired
     private EventService eventService;
@@ -43,12 +37,9 @@ public class EventController {
     @RequestMapping(value = "/eventsFilter", method = RequestMethod.GET)
     public @ResponseBody List<EventDto> getFilteredEvents(@RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "categoryId", required = false) Long categoryId,
-            @RequestParam(value = "date", required = false, defaultValue="1970-01-01") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
+            @RequestParam(value = "date", required = false) Date date) {
 
-        
-        
-        
-        if (name == null && categoryId == null && date.compareTo(dateCompare)==0) {
+        if (name == null && categoryId == null && date.compareTo(null) == 0) {
             return eventService.getAllEvents();
         } else {
             return eventService.getFilteredEvents(name, categoryId, date);
