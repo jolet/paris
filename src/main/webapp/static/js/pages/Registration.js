@@ -43,6 +43,7 @@ export default class Registration extends React.Component {
             fetch(url, init)
               .then(function(response){
               if(response.status == 200 && response.ok == true){
+                  localStorage.setItem("registrationStatus", 'true');
                   location.href = '/#/login';
               }else{
                   return response;

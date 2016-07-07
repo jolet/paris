@@ -39,6 +39,7 @@ export default class Login extends React.Component {
               if(responseData.status == 500){
                 alert(responseData.message);
               }else{
+                  localStorage.clear();
                 localStorage.setItem("token", 'Bearer ' + responseData.token);
                 localStorage.setItem("username", responseData.userDto.username);
                 localStorage.setItem("email", responseData.userDto.email);
@@ -59,6 +60,14 @@ export default class Login extends React.Component {
    return (
 
      <div>
+
+         {localStorage.getItem("registrationStatus") == "true"
+             ?
+         <div class="alert alert-success">
+             <strong>Registracija je prošla uspješno!</strong> Molimo, prijavite se.
+         </div>
+             : null}
+
      <h2><strong>Prijava</strong></h2>
      <form onSubmit={this.submit}>
      <div className="row">
