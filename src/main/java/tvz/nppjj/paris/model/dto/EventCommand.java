@@ -30,6 +30,8 @@ public class EventCommand {
     private BigDecimal price;
 
     private Long       idCategory;
+    
+//    private Long       idUser;
 
     public Long getId() {
         return id;
@@ -102,4 +104,12 @@ public class EventCommand {
     public void setIdCategory(Long idCategory) {
         this.idCategory = idCategory;
     }
+
+//    public Long getIdUser() {
+//        return idUser;
+//    }
+//
+//    public void setIdUser(Long idUser) {
+//        this.idUser = idUser;
+//    }
 }

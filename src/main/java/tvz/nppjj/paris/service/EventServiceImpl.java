@@ -23,27 +23,35 @@ public class EventServiceImpl implements EventService {
     private static final int ENTITIES_PER_PAGE = 2;
 
     @Autowired
-    private EventRepository eventRepository;
+    private EventRepository  eventRepository;
 
     @Autowired
-    private CategoryService categoryService;
+    private CategoryService  categoryService;
 
     @Override
     public List<EventDto> getAllEvents() {
         return transformEventListToDtoList(eventRepository.findAll());
     }
-    
+
     @Override
-    public List<EventDto> getFilteredEvents(String name, Long categoryId, Date date){
-        return transformEventListToDtoList(eventRepository.findByNameContainingOrDateAfterOrCategoryIdIs(name, date, categoryId));
+    public List<EventDto> getFilteredEvents(String name, Long categoryId, Date date) {
+        return transformEventListToDtoList(
+                eventRepository.findByNameContainingOrDateAfterOrCategoryIdIs(name, date, categoryId));
     }
+
+    // @Override
+    // public List<EventDto> getEventsByUserId(Long idUser) {
+    //
+    // return transformEventListToDtoList(eventRepository.findEventByUserId(idUser));
+    // }
 
     @Override
     public PaginationDto<EventDto> getAllEventsWithPagination(Integer pageIndex) {
         Page<Event> requestedPage = eventRepository.findAll(createPageRequest(pageIndex));
         List<EventDto> paginatedList = transformEventListToDtoList(requestedPage.getContent());
 
-        PaginationDto<EventDto> paginationDto = new PaginationDto<>(paginatedList, requestedPage.getNumber() + 1, requestedPage.getNumberOfElements(), requestedPage.getTotalPages());
+        PaginationDto<EventDto> paginationDto = new PaginationDto<>(paginatedList, requestedPage.getNumber() + 1,
+                requestedPage.getNumberOfElements(), requestedPage.getTotalPages());
         return paginationDto;
     }
 
@@ -64,6 +72,7 @@ public class EventServiceImpl implements EventService {
             event.setDescription(eventCommand.getDescription());
             event.setPicture(eventCommand.getPicture());
             event.setPrice(eventCommand.getPrice());
+            // event.setUser(userService.getUserById(eventCommand.getIdUser()));
 
             event.setCategory(categoryService.getCategoryById(eventCommand.getIdCategory()));
 
@@ -80,6 +89,7 @@ public class EventServiceImpl implements EventService {
                 event.setDescription(eventCommand.getDescription());
                 event.setPicture(eventCommand.getPicture());
                 event.setPrice(eventCommand.getPrice());
+                // event.setUser(userService.getUserById(eventCommand.getIdUser()));
 
                 event.setCategory(categoryService.getCategoryById(eventCommand.getIdCategory()));
 

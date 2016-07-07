@@ -18,4 +18,6 @@ public interface EventService {
     PaginationDto<EventDto> getAllEventsWithPagination(Integer pageIndex);
 
     List<EventDto> getFilteredEvents(String name, Long categoryId, Date date);
+
+//    List<EventDto> getEventsByUserId(Long idUser);
 }

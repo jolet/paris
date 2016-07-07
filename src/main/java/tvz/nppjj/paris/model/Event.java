@@ -44,7 +44,14 @@ public class Event {
     @ManyToOne
     @JoinColumn(name = "ID_CATEGORY")
     private Category   category;
+    
+//    @ManyToOne
+//    @JoinColumn(name = "ID_USER")
+//    private User       user;
 
+   
+    
+    
     // getters and setters
     public Long getId() {
         return id;
@@ -117,5 +124,13 @@ public class Event {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
 }

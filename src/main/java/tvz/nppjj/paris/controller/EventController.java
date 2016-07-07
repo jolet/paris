@@ -1,12 +1,13 @@
 package tvz.nppjj.paris.controller;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,8 +25,14 @@ import tvz.nppjj.paris.service.EventService;
 @RestController
 public class EventController {
 
+    private static final Date DEFAULT_DATE = (Date) Date
+            .from(LocalDate.of(1970, 1, 1).atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+    // @SuppressWarnings("deprecation")
+    // private Date DEFAULT_DATE = new Date(1970,1,1);
+    //
     @Autowired
-    private EventService eventService;
+    private EventService      eventService;
 
     @CrossOrigin
     @RequestMapping(value = "/events", method = RequestMethod.GET)
@@ -33,22 +40,17 @@ public class EventController {
         return eventService.getAllEvents();
     }
 
-    @SuppressWarnings("deprecation")
     @CrossOrigin
     @RequestMapping(value = "/eventsFilter", method = RequestMethod.GET)
-    public @ResponseBody List<EventDto> getFilteredEvents(@RequestParam(value = "name", required = false) String name,
+    public @ResponseBody List<EventDto> getFilteredEvents(
+            @RequestParam(value = "name", required = false, defaultValue = "") String name,
             @RequestParam(value = "categoryId", required = false) Long categoryId,
             @RequestParam(value = "date", required = false) Date date) {
-        
-        if(date.compareTo(null) == 0){
-            date = new Date(1970, 01, 01);
-        }
-        
-        if(name==null){
-            name="";
-        }
 
-        if (name == null && categoryId == null && date.compareTo(null) == 0) {
+        if (date == null)
+            date = DEFAULT_DATE;
+
+        if (name == "" && categoryId == null && date.equals(DEFAULT_DATE)) {
             return eventService.getAllEvents();
         } else {
             return eventService.getFilteredEvents(name, categoryId, date);
@@ -71,6 +73,12 @@ public class EventController {
     public EventDto getEventById(@PathVariable("id") Long id) {
         return eventService.getEventById(id);
     }
+
+    // @CrossOrigin
+    // @RequestMapping(value = "/events/user/{id}", method = RequestMethod.GET)
+    // public List<EventDto> getEventByUserId(@PathVariable("id") Long idUser) {
+    // return eventService.getEventsByUserId(idUser);
+    // }
 
     @CrossOrigin // (origins = "http://localhost:8100")
     @RequestMapping(value = "/events/save", method = RequestMethod.POST)
