@@ -74,11 +74,11 @@ public class EventController {
         return eventService.getEventById(id);
     }
 
-    // @CrossOrigin
-    // @RequestMapping(value = "/events/user/{id}", method = RequestMethod.GET)
-    // public List<EventDto> getEventByUserId(@PathVariable("id") Long idUser) {
-    // return eventService.getEventsByUserId(idUser);
-    // }
+     @CrossOrigin
+     @RequestMapping(value = "/events/user/{id}", method = RequestMethod.GET)
+     public List<EventDto> getEventByUserId(@PathVariable("id") Long idUser) {
+     return eventService.getEventsByUserId(idUser);
+     }
 
     @CrossOrigin // (origins = "http://localhost:8100")
     @RequestMapping(value = "/events/save", method = RequestMethod.POST)

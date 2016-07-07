@@ -19,5 +19,5 @@ public interface EventService {
 
     List<EventDto> getFilteredEvents(String name, Long categoryId, Date date);
 
-//    List<EventDto> getEventsByUserId(Long idUser);
+    List<EventDto> getEventsByUserId(Long idUser);
 }
