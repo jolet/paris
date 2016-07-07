@@ -33,11 +33,20 @@ public class EventController {
         return eventService.getAllEvents();
     }
 
+    @SuppressWarnings("deprecation")
     @CrossOrigin
     @RequestMapping(value = "/eventsFilter", method = RequestMethod.GET)
     public @ResponseBody List<EventDto> getFilteredEvents(@RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "categoryId", required = false) Long categoryId,
             @RequestParam(value = "date", required = false) Date date) {
+        
+        if(date.compareTo(null) == 0){
+            date = new Date(1970, 01, 01);
+        }
+        
+        if(name==null){
+            name="";
+        }
 
         if (name == null && categoryId == null && date.compareTo(null) == 0) {
             return eventService.getAllEvents();
