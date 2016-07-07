@@ -16,19 +16,19 @@ export default class extends React.Component {
 
   componentDidMount(){
     this.setState({showModal: false});
+    var urlId = window.location.href.substr(window.location.href.lastIndexOf("/")+1);
+    urlId = urlId.substr(0, urlId.indexOf("?"));
+    console.log(urlId);
+    $.ajax({
+      url: 'http://localhost:8080/event/' + urlId,
+      context: this,
+      dataType: 'json',
+      type: 'GET'
+    }).done(function (data) {
+      this.setState({response: data});
+      console.log(JSON.stringify(this.state.response));
+    })
   }
-
-  // componentDidMount(){
-  //   $.ajax({
-  //     url: 'http://localhost:8080/event/' + this.props.id,
-  //     context: this,
-  //     dataType: 'json',
-  //     type: 'GET'
-  //   }).done(function (data) {
-  //     this.setState({response: data});
-  //     console.log(JSON.stringify(this.state.response));
-  //   })
-  // }
   openModal(){
     //ako nije ulogiran, prebaci ga na login screen, spremi url da ga znas vratiti
     if(! localStorage.getItem('username')){
@@ -86,10 +86,7 @@ export default class extends React.Component {
             <button id="btnBuy" onClick={this.openModal}><i class="icon-tags"></i>Kupi</button>
           </div>
           <Modal show={this.state.showModal}
-                 onHide={this.closeModal}
-                 dialogClassName="custom-modal"
-                  bsSize="small"
-                  >
+                 onHide={this.closeModal}>
             <Modal.Header>
               <Modal.Title>Kupovina karte</Modal.Title>
             </Modal.Header>

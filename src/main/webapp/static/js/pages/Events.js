@@ -1,7 +1,8 @@
 import React from "react";
 
 import Event from '../components/Event';
-import Category from '../components/Category'
+import Category from '../components/Category';
+import { Modal } from 'react-bootstrap';
 
 export default class Events extends React.Component {
 
@@ -13,6 +14,7 @@ export default class Events extends React.Component {
       name: '',
       category: '',
       date: new Date(0).toJSON().slice(0,10),
+        showModal: false
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,6 +22,7 @@ export default class Events extends React.Component {
     }
 
   componentDidMount(){
+
     $.ajax({
       url: 'http://localhost:8080/category',
       context: this,
@@ -36,7 +39,7 @@ export default class Events extends React.Component {
       type: 'GET'
     }).done(function (data){
       this.setState({response: data});
-      // console.log(JSON.stringify(this.state.response));
+      //console.log(JSON.stringify(this.state.response));
     });
   }
 
@@ -73,6 +76,25 @@ export default class Events extends React.Component {
       });
   }
 
+    openModal(){
+        //ako nije ulogiran, prebaci ga na login screen, spremi url da ga znas vratiti
+        if(! localStorage.getItem('username')){
+            localStorage.setItem('url', window.location.href);
+            location.href = '/#/login';
+        }
+        this.setState({showModal: true});
+    }
+    closeModal(){
+        this.setState({showModal: false});
+    }
+
+    handleModalChange(event){
+        this.setState({totalCost: event.target.value * 180})
+
+    }
+
+
+
 
   render() {
     return (
@@ -108,6 +130,46 @@ export default class Events extends React.Component {
         <div class="row events-event">
           { this.state.response.map((eventAPI, i) => <Event key={i} event={eventAPI} />)  }
         </div>
+        <Modal show={this.state.showModal}
+                 onHide={this.closeModal}
+                 bsSize="small">
+              <Modal.Header>
+                  <Modal.Title>Kupovina karte</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                  <table>
+                      <tbody>
+                      <tr>
+                          <td>
+                              <label for="ticketCategory">Tip karte:</label>
+                          </td>
+                          <td>
+                              <select id="ticketCategory">
+                                  <option value="reg">Regular</option>
+                                  <option value="vip">Vip</option>
+                              </select>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <label for="ticketAmount">Količina:</label>
+                          </td>
+                          <td>
+                              <input type="number" id="ticketAmount" defaultValue="1" onChange={this.handleModalChange}/>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>Sveukupno:</td>
+                          <td id="ticketTotalBillAmount">{this.state.totalCost}kn</td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </Modal.Body>
+              <Modal.Footer>
+                  <button>Potvrdi kupnju</button>
+                  <button onClick={this.closeModal}>Odustani</button>
+              </Modal.Footer>
+        </Modal>
       </div>
     );
   }

@@ -27,7 +27,8 @@
 .event-information{
 	height: 150px;
 	width: 100%;
-	border: 1px solid #d3d3d3;
+	border-top: 1px solid #d3d3d3;
+	border-bottom: 1px solid #d3d3d3;
 	margin: 10px 0;
 }
 
@@ -97,4 +98,21 @@
 }
 .custom-modal .modal-content input, select{
 	width: 100%;
+}
+
+#eventDate p{
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 24px;
+	line-height: 24px;
+	margin-left: 5%;
+}
+#eventDate{
+	margin: 30px 0;
+}
+#eventListLinks{
+	margin-top: 30px;
+	text-align: center;
+}
+#eventListLinks a{
+	margin-top: 5px;
 }
