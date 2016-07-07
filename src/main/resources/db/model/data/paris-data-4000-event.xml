@@ -12,6 +12,7 @@
             <column name="PRICE" value="51.55"/>
    	        <column name="PICTURE" value="//"/>
             <column name="ID_CATEGORY" value="1"/>
+            <column name="ID_USER" value="2"/>
         </insert>
         <insert schemaName="${schema.paris}" tableName="EVENT">
             <column name="NAME" value="Humanitarni koncert"/>
@@ -22,6 +23,7 @@
             <column name="PRICE" value="11.51"/>
             <column name="PICTURE" value="//"/>
             <column name="ID_CATEGORY" value="2"/>
+            <column name="ID_USER" value="2"/>
         </insert>
          <insert schemaName="${schema.paris}" tableName="EVENT">
             <column name="NAME" value="Inception"/>
@@ -32,6 +34,7 @@
             <column name="PRICE" value="111.11"/>
             <column name="PICTURE" value="//"/>
             <column name="ID_CATEGORY" value="3"/>
+            <column name="ID_USER" value="2"/>
         </insert>
     </changeSet>
 </databaseChangeLog>
