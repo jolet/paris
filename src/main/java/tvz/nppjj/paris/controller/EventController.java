@@ -25,12 +25,12 @@ import tvz.nppjj.paris.service.EventService;
 @RestController
 public class EventController {
 
-    private static final Date DEFAULT_DATE = (Date) Date
-            .from(LocalDate.of(1970, 1, 1).atStartOfDay(ZoneId.systemDefault()).toInstant());
+//    private static final Date DEFAULT_DATE = (Date) Date
+//            .from(LocalDate.of(1970, 1, 1).atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-    // @SuppressWarnings("deprecation")
-    // private Date DEFAULT_DATE = new Date(1970,1,1);
-    //
+     @SuppressWarnings("deprecation")
+     private Date DEFAULT_DATE = new Date(1970,1,1);
+    
     @Autowired
     private EventService      eventService;
 
