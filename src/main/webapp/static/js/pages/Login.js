@@ -55,7 +55,7 @@ export default class Login extends React.Component {
                 localStorage.setItem("role", responseData.userDto.role);
 
                   //ako je preusmjeren s neke stranice, vrati ga tamo
-                  if(localStorage.getItem("url") != ""){
+                  if(! localStorage.getItem("url") == ""){
                       let temp = localStorage.getItem("url");
                       localStorage.setItem("url", "");
                       location.href = temp;
