@@ -39,11 +39,11 @@ public class EventServiceImpl implements EventService {
                 eventRepository.findByNameContainingOrDateAfterOrCategoryIdIs(name, date, categoryId));
     }
 
-    // @Override
-    // public List<EventDto> getEventsByUserId(Long idUser) {
-    //
-    // return transformEventListToDtoList(eventRepository.findEventByUserId(idUser));
-    // }
+     @Override
+     public List<EventDto> getEventsByUserId(Long idUser) {
+    
+     return transformEventListToDtoList(eventRepository.findEventByUserId(idUser));
+     }
 
     @Override
     public PaginationDto<EventDto> getAllEventsWithPagination(Integer pageIndex) {
