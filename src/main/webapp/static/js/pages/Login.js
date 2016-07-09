@@ -100,7 +100,7 @@ export default class Login extends React.Component {
      <div className="row">
      <div className="form-group col-sm-5">
      Korisničko ime:
-     <input type="text" pattern="^(?=.{4,16}$).*$" title="Korisničko ime sadržava 4-16 znakova" name="username" className="form-control" required onChange={this.handleChange.bind(this, 'username')} />
+     <input type="text" pattern="^(?=.{4,100}$).*$" title="Korisničko ime sadržava 4-100 znakova" name="username" className="form-control" required onChange={this.handleChange.bind(this, 'username')} />
      </div>
      </div>
      <div className="row">

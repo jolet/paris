@@ -105,7 +105,7 @@ export default class Events extends React.Component {
            <div className="form-group row">
              <label className="col-sm-2 form-control-label" htmlFor="name">Naziv događaja:</label>
              <div className="col-sm-4">
-               <input pattern="[A-Za-z0-9-_]{5,150}" title="Broj znakova mora biti viši od 5! Smiju se koristiti slova i brojevi te znakovi - i _" type="text" name="name" id="name" className="form-control" value={this.state.name} onChange={this.handleChange.bind(this, 'name')}/>
+               <input pattern="[A-Za-z0-9-_]*" title="Broj znakova mora biti viši od 5! Smiju se koristiti slova i brojevi te znakovi - i _" type="text" name="name" id="name" className="form-control" value={this.state.name} onChange={this.handleChange.bind(this, 'name')}/>
              </div>
            </div>
            <div className="form-group row">
