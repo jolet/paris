@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+ <changeSet id="20160709-0245" author="jp">
+  <createTable tableName="TICKETTYPE" schemaName="${schema.paris}">
+   <column autoIncrement="true" name="ID_TICKETTYPE" type="BIGINT">
+    <constraints primaryKey="true" primaryKeyName="PK_TICKETTYPE"/>
+   </column>
+   <column name="NAME" type="VARCHAR(100)">
+    <constraints nullable="false"/>
+   </column>
+   <column name="PRICE" type="DECIMAL(18,2)">
+    <constraints nullable="false"/>
+   </column>
+   <column name="AMOUNT" type="BIGINT">
+    <constraints nullable="false"/>
+   </column>
+   <column name="ID_EVENT" type="BIGINT">
+    <constraints nullable="true" foreignKeyName="fk_TICKETTYPE_EVENT" references="${schema.paris}.EVENT(ID_EVENT)"/>
+   </column>
+  </createTable>
+ </changeSet>
+</databaseChangeLog>

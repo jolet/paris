@@ -6,5 +6,6 @@
     <include relativeToChangelogFile="true" file="table/table-3000-category.xml"/>
     <include relativeToChangelogFile="true" file="table/table-4000-event.xml"/>
     <include relativeToChangelogFile="true" file="table/table-5000-ticket.xml"/>
+    <include relativeToChangelogFile="true" file="table/table-6000-tickettype.xml"/>
 
 </databaseChangeLog>

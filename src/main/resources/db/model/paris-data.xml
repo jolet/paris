@@ -6,5 +6,6 @@
     <include relativeToChangelogFile="true" file="data/paris-data-3000-category.xml"/>
     <include relativeToChangelogFile="true" file="data/paris-data-4000-event.xml"/>
     <include relativeToChangelogFile="true" file="data/paris-data-5000-ticket.xml"/>
+    <include relativeToChangelogFile="true" file="data/paris-data-6000-tickettype.xml"/>
 
 </databaseChangeLog>
