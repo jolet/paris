@@ -1,6 +1,7 @@
 import React from "react";
+import UserEvent from '../components/UserEvent';
 
-export default class UserProfile extends React.Component {
+export default class UserEvents extends React.Component {
 
 	constructor(props){
 	    super(props);
@@ -33,7 +34,10 @@ console.log(this.state);
 
 	  
     return (
-    		<div class="panel panel-info">
+    		<div>
+    		<div class="row events-event">
+            { this.state.response.map((usereventAPI, i) => <UserEvent key={i} userevent={usereventAPI} />)  }
+          </div>
       </div>
     
     );

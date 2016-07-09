@@ -70,7 +70,7 @@ export default class Nav extends React.Component {
                             </span>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li class="divider"></li>
-                            <li class={loginClass}><Link to='#' >Moji događaji</Link></li>
+                            <li class={eventsClass}><Link to={"userEvents/"+localStorage.getItem('id')} >Moji događaji</Link></li>
                             <li class="divider"></li>
                             <li class={loginClass}><Link to={"user/"+localStorage.getItem('id')} >Korisnički profil</Link></li>
                             <li class="divider"></li>
