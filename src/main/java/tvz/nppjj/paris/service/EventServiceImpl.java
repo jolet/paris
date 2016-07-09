@@ -11,7 +11,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import tvz.nppjj.paris.model.Event;
-import tvz.nppjj.paris.model.User;
 import tvz.nppjj.paris.model.dto.EventCommand;
 import tvz.nppjj.paris.model.dto.EventDto;
 import tvz.nppjj.paris.model.dto.PaginationDto;
@@ -24,6 +23,9 @@ public class EventServiceImpl implements EventService {
 
     @Autowired
     private EventRepository  eventRepository;
+    
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private CategoryService  categoryService;
@@ -72,7 +74,7 @@ public class EventServiceImpl implements EventService {
             event.setDescription(eventCommand.getDescription());
             event.setPicture(eventCommand.getPicture());
             event.setPrice(eventCommand.getPrice());
-            // event.setUser(userService.getUserById(eventCommand.getIdUser()));
+            event.setUser(userService.getUserById(eventCommand.getIdUser()));
 
             event.setCategory(categoryService.getCategoryById(eventCommand.getIdCategory()));
 
@@ -89,7 +91,7 @@ public class EventServiceImpl implements EventService {
                 event.setDescription(eventCommand.getDescription());
                 event.setPicture(eventCommand.getPicture());
                 event.setPrice(eventCommand.getPrice());
-                // event.setUser(userService.getUserById(eventCommand.getIdUser()));
+                event.setUser(userService.getUserById(eventCommand.getIdUser()));
 
                 event.setCategory(categoryService.getCategoryById(eventCommand.getIdCategory()));
 

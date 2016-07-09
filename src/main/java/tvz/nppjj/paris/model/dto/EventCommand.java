@@ -31,7 +31,7 @@ public class EventCommand {
 
     private Long       idCategory;
     
-//    private Long       idUser;
+    private Long       idUser;
 
     public Long getId() {
         return id;
@@ -105,11 +105,11 @@ public class EventCommand {
         this.idCategory = idCategory;
     }
 
-//    public Long getIdUser() {
-//        return idUser;
-//    }
-//
-//    public void setIdUser(Long idUser) {
-//        this.idUser = idUser;
-//    }
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
 }

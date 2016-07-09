@@ -1,8 +1,6 @@
 package tvz.nppjj.paris.controller;
 
 import java.sql.Date;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 
 import javax.validation.Valid;

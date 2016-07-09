@@ -22,7 +22,6 @@ import org.springframework.web.client.RestTemplate;
 import tvz.nppjj.paris.command.UserLoginCommand;
 import tvz.nppjj.paris.init.WebNppjjParisApplication;
 import tvz.nppjj.paris.model.dto.LoginResponseDto;
-import tvz.nppjj.paris.model.dto.RegistrationCommand;
 import tvz.nppjj.paris.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
