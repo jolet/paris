@@ -15,6 +15,7 @@ import Login from './pages/Login';
 import UserTickets from './pages/UserTickets';
 import UserList from './pages/UserList';
 import EditUser from './pages/EditUser';
+import UserEvents from './pages/UserEvents';
 
 const app = document.getElementById('app');
 
@@ -33,6 +34,7 @@ ReactDOM.render(
       <Route path='editUser/:id' name="editUser" component={EditUser}></Route>
       <Route path="login" name="login" component={Login}></Route>
       <Route path="userTickets/:id" name="userTickets" component={UserTickets}></Route>
+      <Route path="userEvents/:id" name="userEvents" component={UserEvents}></Route>
     </Route>
   </Router>,
 app);
