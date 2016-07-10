@@ -118,7 +118,7 @@ export default class NewEvent extends React.Component {
                         </div>
                         <div className="form-group col-sm-4 col-sm-offset-3">
                             Vrijeme početka:
-                            <input type="time" name="startTime" required className="form-control" onChange={this.handleChange.bind(this, 'time')}/>
+                            <input type="time" name="time" required className="form-control" onChange={this.handleChange.bind(this, 'time')}/>
                         </div>
                     </div>
 
@@ -161,7 +161,7 @@ export default class NewEvent extends React.Component {
                     <div className="row">
                         <div className="form-group col-sm-3 col-sm-offset">
                             Broj ulaznica:
-                            <input type="number" min={0} name="number" className="form-control" onChange={this.handleChange.bind(this, 'ticketNumber')}/>
+                            <input type="number" min={0} name="ticketNumber" className="form-control" onChange={this.handleChange.bind(this, 'ticketNumber')}/>
                         </div>
                     </div>
 
