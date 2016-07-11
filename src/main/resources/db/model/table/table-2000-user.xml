@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="20160519-1701" author="jp">
+        <createTable tableName="USER" schemaName="${schema.paris}" remarks="Table">
+            <column autoIncrement="true" name="ID_USER" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="PK_USER"/>
+            </column>
+            <column name="USERNAME" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMAIL" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="PASSWORD" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+			<column name="ID_ROLE" type="BIGINT">
+			   <constraints nullable="false" foreignKeyName="fk_USER_ROLE" references="${schema.paris}.ROLE(ID_ROLE)"/>
+			</column>
+            <column name="PHONE_NUMBER" type="VARCHAR(25)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="ACCOUNT" type="DECIMAL(18,2)">
+            	<constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

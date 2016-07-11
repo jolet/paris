@@ -1,0 +1,37 @@
+# Eclipse
+target/*
+localDB/*
+.classpath
+.metadata/*
+.project
+.settings
+
+# Gradle
+.gradle
+build/
+bin/*
+
+# Intellij IDEA
+*.iml
+
+# Mac OS
+.DS_Store
+
+# Bower
+src/main/webapp/static/bower_components/*
+
+# Hidden config
+src/main/resources/config/application.properties
+.idea/
+/bin/
+
+
+/src/main/webapp/static/bower_components/
+src/main/webapp/node_modules/
+src/main/webapp/npm-debug.log
+
+nppjj-paris.log
+
+# merge (meld)
+*.orig
+deployments/*

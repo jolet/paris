@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="20160519-1701" author="jp">
+        <insert schemaName="${schema.paris}" tableName="USER">
+            <column name="USERNAME" value="ejosip"/>
+            <column name="EMAIL" value="ejosip93@gmail.com"/>
+            <column name="PASSWORD" value="lozinka"/>
+            <column name="ID_ROLE" value="1"/>
+            <column name="PHONE_NUMBER" value="095-9999999"/>
+            <column name="ACCOUNT" value="500"/>
+        </insert>
+        <insert schemaName="${schema.paris}" tableName="USER">
+            <column name="USERNAME" value="dglad"/>
+            <column name="EMAIL" value="dglad@gmail.com"/>
+            <column name="PASSWORD" value="drugalozinka"/>
+            <column name="ID_ROLE" value="2"/>
+            <column name="PHONE_NUMBER" value="095-8888888"/>
+            <column name="ACCOUNT" value="1000"/>
+        </insert>
+        <insert schemaName="${schema.paris}" tableName="USER">
+            <column name="USERNAME" value="jolek"/>
+            <column name="EMAIL" value="jolek@gmail.com"/>
+            <column name="PASSWORD" value="trecalozinka"/>
+            <column name="ID_ROLE" value="3"/>
+            <column name="PHONE_NUMBER" value="095-7777777"/>
+            <column name="ACCOUNT" value="1500"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

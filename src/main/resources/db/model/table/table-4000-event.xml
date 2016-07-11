@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+ <changeSet id="20160520-0233" author="jp">
+  <createTable tableName="EVENT" schemaName="${schema.paris}">
+   <column autoIncrement="true" name="ID_EVENT" type="BIGINT">
+    <constraints primaryKey="true" primaryKeyName="PK_EVENT"/>
+   </column>
+   <column name="NAME" type="VARCHAR(50)">
+    <constraints nullable="false"/>
+   </column>
+   <column name="DATE" type="DATE">
+    <constraints nullable="false"/>
+   </column>
+   <column name="CITY" type="VARCHAR(50)">
+    <constraints nullable="false"/>
+   </column>
+   <column name="ADDRESS" type="VARCHAR(50)">
+    <constraints nullable="true"/>
+   </column>
+    <column name="DESCRIPTION" type="VARCHAR(500)">
+    <constraints nullable="true"/>
+   </column>
+   <column name="PRICE" type="DECIMAL(18,2)">
+    <constraints nullable="false"/>
+   </column>
+   <column name="PICTURE" type="VARCHAR(255)">
+    <constraints nullable="true"/>
+   </column>
+   <column name="ID_CATEGORY" type="BIGINT">
+    <constraints nullable="false" foreignKeyName="fk_EVENT_CATEGORY" references="${schema.paris}.CATEGORY(ID_CATEGORY)"/>
+   </column>
+    <column name="ID_USER" type="BIGINT">
+    <constraints nullable="true" foreignKeyName="fk_EVENT_USER" references="${schema.paris}.USER(ID_USER)"/>
+   </column>
+  </createTable>
+ </changeSet>
+</databaseChangeLog>

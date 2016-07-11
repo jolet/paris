@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="20160520-0233" author="jp">
+        <insert schemaName="${schema.paris}" tableName="EVENT">
+            <column name="NAME" value="Euro2016"/>
+            <column name="DATE" value="2016-06-10"/>
+            <column name="CITY" value="Paris"/>
+            <column name="ADDRESS" value="Stade de France"/>
+            <column name="DESCRIPTION" value="Utakmica Eura 2016."/>
+            <column name="PRICE" value="51.55"/>
+   	        <column name="PICTURE" value="//"/>
+            <column name="ID_CATEGORY" value="1"/>
+            <column name="ID_USER" value="1"/>
+        </insert>
+        <insert schemaName="${schema.paris}" tableName="EVENT">
+            <column name="NAME" value="Humanitarni koncert"/>
+            <column name="DATE" value="2016-06-21"/>
+            <column name="CITY" value="Zagreb"/>
+            <column name="ADDRESS" value="Slavonska avenija 7"/>
+            <column name="DESCRIPTION" value="Koncert u svrhu skupljanja sredstava za siromašne"/>
+            <column name="PRICE" value="11.51"/>
+            <column name="PICTURE" value="//"/>
+            <column name="ID_CATEGORY" value="2"/>
+            <column name="ID_USER" value="2"/>
+        </insert>
+         <insert schemaName="${schema.paris}" tableName="EVENT">
+            <column name="NAME" value="Inception"/>
+            <column name="DATE" value="2016-06-10"/>
+            <column name="CITY" value="Zagreb"/>
+            <column name="ADDRESS" value="Branimirova"/>
+            <column name="DESCRIPTION" value="Prikazivanje filma s glavnom ulogom Leonarda Di Capria"/>
+            <column name="PRICE" value="111.11"/>
+            <column name="PICTURE" value="//"/>
+            <column name="ID_CATEGORY" value="3"/>
+            <column name="ID_USER" value="2"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,118 @@
+@CHARSET "UTF-8";
+
+.main-page-events{
+	height:450px;
+	border:1px solid #d3d3d3;
+	padding:0 !important;
+}
+
+.homepage-imgs{
+	display: block;
+	max-width: 200px;
+	max-height: 150px;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.homepage-event-about{
+	margin:10px;
+	font-weight: bolder;
+	text-align: justify;
+	text-justify: distribute;
+}
+
+.event-information{
+	height: 150px;
+	width: 100%;
+	border-top: 1px solid #d3d3d3;
+	border-bottom: 1px solid #d3d3d3;
+	margin: 10px 0;
+}
+
+.event-information img{
+	height:150px;
+	display: block;
+}
+
+#filter{
+	background-color:#d3d3d3;
+	padding:15px;
+}
+
+#newEvent{
+	width:75%;
+	margin:0 auto;
+}
+
+#btnSaveEvent{
+	margin-right:20px;
+}
+.event-details-text pre{
+	/*width: 500px;                          /* specify width  */
+	white-space: pre-wrap;                 /* CSS3 browsers  */
+	white-space: -moz-pre-wrap !important; /* 1999+ Mozilla  */
+	white-space: -o-pre-wrap;              /* Opera 7 and up */
+	word-wrap: break-word;                 /* IE 5.5+ and up */
+	overflow-x: auto;                /* Firefox 2 only */
+	width: 100%;		       /* only if needed */
+	text-overflow: ellipsis;
+	border: 0;
+	background: none;
+	font-family: 'Arial', sans-serif;
+	font-size: 16px;
+}
+
+.event-details-text table{
+	width:100%
+}
+.event-details-text td:nth-child(even){
+	text-align: right;
+}
+.event-details-text th:nth-child(even){
+	text-align: right;
+}
+#btnBuy{
+	margin-top: 15px;
+	line-height: 24px;
+	padding: 5px 5% 5px 5%;
+	font-size: 24px;
+}
+.custom-modal{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.custom-modal .modal-content{
+	width:220px;
+	height: 240px;
+	position: relative;
+	top: 50%;
+	margin-top: -120px;
+}
+.custom-modal .modal-content input, select{
+	width: 100%;
+}
+
+#eventDate p{
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 24px;
+	line-height: 24px;
+	margin-left: 5%;
+}
+#eventDate{
+	margin: 30px 0;
+}
+#eventListLinks{
+	margin-top: 30px;
+	text-align: center;
+}
+#eventListLinks a{
+	margin-top: 5px;
+}

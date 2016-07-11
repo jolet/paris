@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20160519-2313
+      author: jkovacek
+      changes:
+        - createTable:
+            tableName: role
+            schemaName: ${schema.paris}
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(25)
+                  constraints:
+                    nullable: false
+                    
+  - changeSet:
+      id: 20160519-2314
+      author: jkovacek
+      changes:
+        - insert:
+            tableName: role
+            schemaName: ${schema.paris}
+            columns:
+              - column:
+                  name: NAME
+                  value: Administrator
+        - insert:
+            tableName: role
+            schemaName: ${schema.paris}
+            columns:
+              - column:
+                  name: NAME
+                  value: Organisator
+        - insert:
+            tableName: role
+            schemaName: ${schema.paris}
+            columns:
+              - column:
+                  name: NAME
+                  value: User
