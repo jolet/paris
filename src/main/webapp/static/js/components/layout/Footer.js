@@ -16,12 +16,11 @@ export default class Footer extends React.Component {
          $.ajax({
              url:  localStorage.getItem("environmentPrefix") + '/changelog',
              context: this,
-             dataType: 'json',
+             dataType: '',
              type: 'GET'
          }).done(function (data){
             console.log("changelog data ");
-             console.log(data);
-            //this.setState({version: data});
+            this.setState({version: data});
          });
     }
 
