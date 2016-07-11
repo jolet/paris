@@ -12,17 +12,18 @@ export default class Footer extends React.Component {
     }
 
     componentDidMount(){
-        this.setState({
-            version: '1.1'
-        });
+//        this.setState({
+//            version: '1.1'
+//        });
 
          $.ajax({
-             url: 'http://localhost:8080/changelog',
+             url: '/changelog',
              context: this,
              dataType: 'json',
              type: 'GET'
          }).done(function (data){
-             this.setState({version: data});
+            console.log("changelog data ", data)
+            this.setState({version: data});
          });
     }
 
