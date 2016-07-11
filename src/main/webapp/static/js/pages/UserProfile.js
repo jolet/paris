@@ -10,7 +10,7 @@ export default class UserProfile extends React.Component {
 	  componentDidMount(){
 		  var url = $(location).attr('href');
 		  var id = url.substring(url.lastIndexOf('/') + 1);
-		  var putanja='http://localhost:8080/users/'+id;
+		  var putanja= localStorage.getItem("environmentPrefix") + '/users/'+id;
 		    $.ajax({
 		      url: putanja,
 		      context: this,

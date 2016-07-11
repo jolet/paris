@@ -24,7 +24,7 @@ export default class Events extends React.Component {
   componentDidMount(){
 
     $.ajax({
-      url: 'http://localhost:8080/category',
+      url: localStorage.getItem("environmentPrefix") + '/category',
       context: this,
       dataType: 'json',
       type: 'GET'
@@ -33,7 +33,7 @@ export default class Events extends React.Component {
     });
 
     $.ajax({
-      url: 'http://localhost:8080/events',
+      url: localStorage.getItem("environmentPrefix") + '/events',
       context: this,
       dataType: 'json',
       type: 'GET'
@@ -61,7 +61,7 @@ export default class Events extends React.Component {
       console.log(this.state);
 
       $.ajax({
-          url: 'http://localhost:8080/eventsFilter',
+          url: localStorage.getItem("environmentPrefix") + '/eventsFilter',
           context: this,
           dataType: 'json',
           type: 'GET',

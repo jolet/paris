@@ -20,19 +20,19 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public List<UserDto> getAllUsers() {
         return UserMapper.transformUserListToDtoList(userService.getAllUsers());
     }
 
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
     public User getUserById(@PathVariable("id") Long id) {
         return userService.getUserById(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin
     public String saveUser(UserDto userDto) {
         // userService.registerUser(UserMapper.transformToUser(userDto));
         return "Saved";

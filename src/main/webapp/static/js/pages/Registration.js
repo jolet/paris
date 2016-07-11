@@ -38,7 +38,7 @@ export default class Registration extends React.Component {
               mode: 'cors',
             }
 
-            var url = new Request('http://localhost:8080/register');
+            var url = new Request(localStorage.getItem("environmentPrefix") + '/register');
 
             fetch(url, init)
               .then(function(response){

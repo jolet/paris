@@ -29,7 +29,7 @@ export default class NewEvent extends React.Component {
 
     componentDidMount(){
         $.ajax({
-            url: 'http://localhost:8080/category',
+            url: localStorage.getItem("environmentPrefix") + '/category',
             context: this,
             dataType: 'json',
             type: 'GET'
@@ -71,9 +71,9 @@ export default class NewEvent extends React.Component {
             headers: headers,
             body: body,
             mode: 'cors',
-        }
+        };
 
-        var url = new Request('http://localhost:8080/events/save');
+        var url = new Request(localStorage.getItem("environmentPrefix") + '/events/save');
 
         console.log(JSON.stringify(init));
 

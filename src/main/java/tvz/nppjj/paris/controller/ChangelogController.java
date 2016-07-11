@@ -1,6 +1,7 @@
 package tvz.nppjj.paris.controller;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +16,8 @@ public class ChangelogController {
 
     @Value("${appVersion:unknown}")
     String appVersion;
-    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm");;
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm");
+    @CrossOrigin
     @RequestMapping("/changelog")
     public String getAppVersion(){
 

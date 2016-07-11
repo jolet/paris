@@ -10,7 +10,7 @@ export default class UserTickets extends React.Component {
 	  componentDidMount(){
 		  var url = $(location).attr('href');
 		  var id = url.substring(url.lastIndexOf('/') + 1);
-		  var putanja='http://localhost:8080/tickets/user/'+id;
+		  var putanja= localStorage.getItem("environmentPrefix") + '/tickets/user/'+id;
 		    $.ajax({
 		      url: putanja,
 		      context: this,

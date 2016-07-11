@@ -8,6 +8,7 @@ export default class Nav extends React.Component {
             collapsed: true,
         };
         this.navigation = this.navigation.bind(this);
+        
     }
 
     toggleCollapse() {
@@ -16,8 +17,13 @@ export default class Nav extends React.Component {
     }
 
     logout(){
+        var tempEnvironmentPrefix;
+        if(! localStorage.getItem("environmentPrefix") == ''){
+            tempEnvironmentPrefix = localStorage.getItem("environmentPrefix");
+        }
         localStorage.clear();
         console.log('localstorage clear');
+        localStorage.setItem("environmentPrefix", tempEnvironmentPrefix);
     }
 
     navigation(){

@@ -34,7 +34,7 @@ export default class Login extends React.Component {
               mode: 'cors',
             }
 
-            var url = new Request('http://localhost:8080/login');
+            var url = new Request( localStorage.getItem("environmentPrefix") + '/login');
 
             fetch(url, init)
             .then((response) => response.json())

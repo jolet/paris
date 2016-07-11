@@ -19,7 +19,7 @@ export default class EditEvent extends React.Component {
 		  var url = $(location).attr('href');
       console.log(url);
 		  var id = url.substring(url.lastIndexOf('/') + 1);
-		  var putanja='http://localhost:8080/events/'+id;
+		  var putanja= localStorage.getItem("environmentPrefix") + '/events/'+id;
 		    $.ajax({
 		      url: putanja,
 		      context: this,

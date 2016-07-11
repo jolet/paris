@@ -20,7 +20,7 @@ export default class extends React.Component {
     urlId = urlId.substr(0, urlId.indexOf("?"));
     console.log(urlId);
     $.ajax({
-      url: 'http://localhost:8080/event/' + urlId,
+      url: localStorage.getItem("environmentPrefix") + '/event/' + urlId,
       context: this,
       dataType: 'json',
       type: 'GET'

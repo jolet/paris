@@ -11,7 +11,7 @@ export default class UserEvents extends React.Component {
 	  componentDidMount(){
 		  var url = $(location).attr('href');
 		  var id = url.substring(url.lastIndexOf('/') + 1);
-		  var putanja='http://localhost:8080/events/user/'+id;
+		  var putanja= localStorage.getItem("environmentPrefix") + '/events/user/'+id;
 		    $.ajax({
 		      url: putanja,
 		      context: this,

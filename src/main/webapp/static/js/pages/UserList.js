@@ -30,7 +30,7 @@ export default class UserList extends React.Component {
     //   });
 
     $.ajax({
-      url: 'http://localhost:8080/users',
+      url: localStorage.getItem("environmentPrefix") + '/users',
       context: this,
       dataType: 'json',
       type: 'GET',
