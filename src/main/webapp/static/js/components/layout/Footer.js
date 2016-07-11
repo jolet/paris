@@ -16,14 +16,14 @@ export default class Footer extends React.Component {
             version: '1.1'
         });
 
-        // $.ajax({
-        //     url: 'http://localhost:8080/changelog',
-        //     context: this,
-        //     dataType: 'json',
-        //     type: 'GET'
-        // }).done(function (data){
-        //     this.setState({version: data});
-        // });
+         $.ajax({
+             url: 'http://localhost:8080/changelog',
+             context: this,
+             dataType: 'json',
+             type: 'GET'
+         }).done(function (data){
+             this.setState({version: data});
+         });
     }
 
     render() {
