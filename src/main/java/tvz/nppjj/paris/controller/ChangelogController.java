@@ -16,11 +16,11 @@ public class ChangelogController {
 
     @Value("${appVersion:unknown}")
     String appVersion;
-    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm");
+
     @CrossOrigin
     @RequestMapping("/changelog")
     public String getAppVersion(){
 
-        return appVersion + " " + LocalDateTime.now().format(dateTimeFormatter);
+        return appVersion;
     }
 }
