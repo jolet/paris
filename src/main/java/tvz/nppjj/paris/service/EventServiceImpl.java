@@ -1,8 +1,11 @@
 package tvz.nppjj.paris.service;
 
+import static org.assertj.core.api.Assertions.filter;
+
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +24,9 @@ import tvz.nppjj.paris.repository.EventRepository;
 public class EventServiceImpl implements EventService {
     private static final int ENTITIES_PER_PAGE = 2;
 
+    @SuppressWarnings("deprecation")
+    private static final Date DEFAULT_DATE = new Date(1970,1,1);;
+
     @Autowired
     private EventRepository  eventRepository;
     
@@ -37,8 +43,45 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<EventDto> getFilteredEvents(String name, Long categoryId, Date date) {
-        return transformEventListToDtoList(
-                eventRepository.findByNameContainingOrDateAfterOrCategoryIdIs(name, date, categoryId));
+        List<EventDto> allEventDto = getAllEvents();
+        
+        List<EventDto> eventsFiltered = allEventDto.stream()
+//                 .filter(eventDto -> 
+//                         eventDto.getName().contains(name) ||
+//                         eventDto.getCategory().getId().equals(categoryId) ||
+//                         eventDto.getDate().after(date))
+                
+                .filter(eventDto -> {
+                    if(!name.isEmpty()){
+                        return eventDto.getName().contains(name);
+                        }
+                    return false;
+                    })
+                .filter(eventDto -> {
+                    if(categoryId != null ){
+                        return eventDto.getCategory().getId().equals(categoryId);
+                    }
+                    return false;
+                })
+                .filter(eventDto -> {
+                    if(date != null ){
+                        return eventDto.getDate().after(date);
+                    }
+                    return false;
+                })
+                
+//                .filter(eventDto -> eventDto.getName().contains(name))
+//                .filter(eventDto -> eventDto.getCategory().getId().equals(categoryId))
+//                .filter(eventDto -> eventDto.getDate().after(date))
+                
+                .collect(Collectors.toList());
+        
+        System.out.println("------------------------------------------");
+        System.out.println(eventsFiltered.size());
+        System.out.println("------------------------------------------");
+        
+        return  eventsFiltered;
+//        return transformEventListToDtoList(eventRepository.findByNameContainingOrDateAfterOrCategoryIdIs(name, date, categoryId));
     }
 
      @Override

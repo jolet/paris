@@ -1,6 +1,8 @@
 package tvz.nppjj.paris.controller;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -41,14 +43,16 @@ public class EventController {
     @CrossOrigin
     @RequestMapping(value = "/eventsFilter", method = RequestMethod.GET)
     public @ResponseBody List<EventDto> getFilteredEvents(
-            @RequestParam(value = "name", required = false, defaultValue = "") String name,
+            @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "categoryId", required = false) Long categoryId,
             @RequestParam(value = "date", required = false) Date date) {
+        
+        System.out.println("date: "+date);
 
-        if (date == null)
-            date = DEFAULT_DATE;
+//        if (date == null)
+//            date = DEFAULT_DATE;
 
-        if (name == "" && categoryId == null && date.equals(DEFAULT_DATE)) {
+        if (name == null && categoryId == null && date==null) {
             return eventService.getAllEvents();
         } else {
             return eventService.getFilteredEvents(name, categoryId, date);
