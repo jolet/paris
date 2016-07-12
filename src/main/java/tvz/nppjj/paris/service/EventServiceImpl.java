@@ -22,19 +22,19 @@ import tvz.nppjj.paris.repository.EventRepository;
 
 @Service
 public class EventServiceImpl implements EventService {
-    private static final int ENTITIES_PER_PAGE = 2;
+    private static final int  ENTITIES_PER_PAGE = 2;
 
     @SuppressWarnings("deprecation")
-    private static final Date DEFAULT_DATE = new Date(1970,1,1);;
+    private static final Date DEFAULT_DATE      = new Date(1970, 1, 1);;
 
     @Autowired
-    private EventRepository  eventRepository;
-    
-    @Autowired
-    private UserService userService;
+    private EventRepository   eventRepository;
 
     @Autowired
-    private CategoryService  categoryService;
+    private UserService       userService;
+
+    @Autowired
+    private CategoryService   categoryService;
 
     @Override
     public List<EventDto> getAllEvents() {
@@ -44,51 +44,50 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<EventDto> getFilteredEvents(String name, Long categoryId, Date date) {
         List<EventDto> allEventDto = getAllEvents();
-        
+
         List<EventDto> eventsFiltered = allEventDto.stream()
-//                 .filter(eventDto -> 
-//                         eventDto.getName().contains(name) ||
-//                         eventDto.getCategory().getId().equals(categoryId) ||
-//                         eventDto.getDate().after(date))
-                
-                .filter(eventDto -> {
-                    if(!name.isEmpty()){
-                        return eventDto.getName().contains(name);
-                        }
-                    return false;
-                    })
-                .filter(eventDto -> {
-                    if(categoryId != null ){
-                        return eventDto.getCategory().getId().equals(categoryId);
-                    }
-                    return false;
-                })
-                .filter(eventDto -> {
-                    if(date != null ){
-                        return eventDto.getDate().after(date);
-                    }
-                    return false;
-                })
-                
-//                .filter(eventDto -> eventDto.getName().contains(name))
+                .filter(eventDto -> eventDto.getName().contains(name)
+                        || eventDto.getCategory().getId().equals(categoryId) || eventDto.getDate().after(date))
+
+                // .filter(eventDto -> {
+                // if(!name.isEmpty()){
+                // return eventDto.getName().contains(name);
+                // }
+                // return false;
+                // })
+                // .filter(eventDto -> {
+                // if(categoryId != null ){
+                // return eventDto.getCategory().getId().equals(categoryId);
+                // }
+                // return false;
+                // })
+                // .filter(eventDto -> {
+                // if(date != null ){
+                // return eventDto.getDate().after(date);
+                // }
+                // return false;
+                // })
+
+//                .filter(eventDto -> !name.isEmpty() ? eventDto.getName().contains(name) : false)
 //                .filter(eventDto -> eventDto.getCategory().getId().equals(categoryId))
 //                .filter(eventDto -> eventDto.getDate().after(date))
-                
+
                 .collect(Collectors.toList());
-        
+
         System.out.println("------------------------------------------");
         System.out.println(eventsFiltered.size());
         System.out.println("------------------------------------------");
-        
-        return  eventsFiltered;
-//        return transformEventListToDtoList(eventRepository.findByNameContainingOrDateAfterOrCategoryIdIs(name, date, categoryId));
+
+        return eventsFiltered;
+        // return transformEventListToDtoList(eventRepository.findByNameContainingOrDateAfterOrCategoryIdIs(name, date,
+        // categoryId));
     }
 
-     @Override
-     public List<EventDto> getEventsByUserId(Long idUser) {
-    
-     return transformEventListToDtoList(eventRepository.findEventByUserId(idUser));
-     }
+    @Override
+    public List<EventDto> getEventsByUserId(Long idUser) {
+
+        return transformEventListToDtoList(eventRepository.findEventByUserId(idUser));
+    }
 
     @Override
     public PaginationDto<EventDto> getAllEventsWithPagination(Integer pageIndex) {

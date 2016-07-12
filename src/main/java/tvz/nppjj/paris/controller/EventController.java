@@ -25,14 +25,14 @@ import tvz.nppjj.paris.service.EventService;
 @RestController
 public class EventController {
 
-//    private static final Date DEFAULT_DATE = (Date) Date
-//            .from(LocalDate.of(1970, 1, 1).atStartOfDay(ZoneId.systemDefault()).toInstant());
+    // private static final Date DEFAULT_DATE = (Date) Date
+    // .from(LocalDate.of(1970, 1, 1).atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-     @SuppressWarnings("deprecation")
-     private Date DEFAULT_DATE = new Date(1970,1,1);
-    
+    @SuppressWarnings("deprecation")
+    private Date         DEFAULT_DATE = new Date(1970, 1, 1);
+
     @Autowired
-    private EventService      eventService;
+    private EventService eventService;
 
     @CrossOrigin
     @RequestMapping(value = "/events", method = RequestMethod.GET)
@@ -43,16 +43,16 @@ public class EventController {
     @CrossOrigin
     @RequestMapping(value = "/eventsFilter", method = RequestMethod.GET)
     public @ResponseBody List<EventDto> getFilteredEvents(
-            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "name", required = false, defaultValue = "") String name,
             @RequestParam(value = "categoryId", required = false) Long categoryId,
             @RequestParam(value = "date", required = false) Date date) {
-        
-        System.out.println("date: "+date);
 
-//        if (date == null)
-//            date = DEFAULT_DATE;
+        System.out.println("date: " + date);
 
-        if (name == null && categoryId == null && date==null) {
+        // if (date == null)
+        // date = DEFAULT_DATE;
+
+        if (name == "" && categoryId == null && date == null) {
             return eventService.getAllEvents();
         } else {
             return eventService.getFilteredEvents(name, categoryId, date);
@@ -76,11 +76,11 @@ public class EventController {
         return eventService.getEventById(id);
     }
 
-     @CrossOrigin
-     @RequestMapping(value = "/events/user/{id}", method = RequestMethod.GET)
-     public List<EventDto> getEventByUserId(@PathVariable("id") Long idUser) {
-     return eventService.getEventsByUserId(idUser);
-     }
+    @CrossOrigin
+    @RequestMapping(value = "/events/user/{id}", method = RequestMethod.GET)
+    public List<EventDto> getEventByUserId(@PathVariable("id") Long idUser) {
+        return eventService.getEventsByUserId(idUser);
+    }
 
     @CrossOrigin // (origins = "http://localhost:8100")
     @RequestMapping(value = "/events/save", method = RequestMethod.POST)
