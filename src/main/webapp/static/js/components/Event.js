@@ -39,7 +39,7 @@ export default class Event extends React.Component {
             <p>{event.description}</p>
           </div>
           <div className="col-sm-2" id="eventListLinks">
-            <Link className="btn btn-success btn-sm" to={"event/" + event.id} >Više o eventu</Link>
+            <Link className="btn btn-success btn-sm" to={"events/" + event.id} >Više o eventu</Link>
             <button className="btn btn-success btn-sm" onClick={this.openModal}>Kupi ulaznic</button>
           </div>
         </div>

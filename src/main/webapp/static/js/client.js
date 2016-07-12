@@ -28,7 +28,7 @@ ReactDOM.render(
       <Route path="about" name="about" component={About}></Route>
       <Route path="newevent" name="newevent" component={NewEvent}></Route>
       <Route path="registration" name="registration" component={Registration}></Route>
-      <Route path="event/:id" name="eventDetails" component={EventDetails} ></Route>
+      <Route path="events/:id" name="eventDetails" component={EventDetails} ></Route>
       <Route path="buyTicket/:id" name="buyTicket" component={BuyTicket}></Route>
       <Route path="user/:id" name="userProfile" component={UserProfile}></Route>
       <Route path="users" name="userList" component={UserList}></Route>

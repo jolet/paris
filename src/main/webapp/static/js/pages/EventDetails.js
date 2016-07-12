@@ -6,21 +6,22 @@ export default class extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {response:[]};
-    this.state = {showModal: false};
+    this.state = {response:[],
+      showModal: false,
+      totalCost: 0};
+
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.state = {totalCost: 0};
   }
 
   componentDidMount(){
     this.setState({showModal: false});
     var urlId = window.location.href.substr(window.location.href.lastIndexOf("/")+1);
     urlId = urlId.substr(0, urlId.indexOf("?"));
-    console.log(urlId);
+
     $.ajax({
-      url: localStorage.getItem("environmentPrefix") + '/event/' + urlId,
+      url: localStorage.getItem("environmentPrefix") + '/events/' + urlId,
       context: this,
       dataType: 'json',
       type: 'GET'
@@ -47,23 +48,32 @@ export default class extends React.Component {
   }
   
   render() {
+    const event = this.state.response;
+    console.log(Object.getOwnPropertyNames(event).length);
+    const loadingMsg = "Loading...";
+
+    if (Object.getOwnPropertyNames(event).length > 1){
+      eventTitle = event.name;
+      eventLoc = event.location;
+      eventDesc = event.description;
+      eventDate = new Date(event.date);
+    }else{
+      var eventTitle = loadingMsg;
+      var eventDesc = loadingMsg;
+      var eventDate = new Date();
+      var eventLoc = loadingMsg;
+    }
+
 
     return (
         <div class="event-details row">
           <img class="col span_6_of_12" src="http://placehold.it/480x480"/>
           <div class="event-details-text col span_6_of_12">
-            <h1>Lorem Ipsum</h1>
-            <p><i class="icon-clock"></i>20/04/2016, 16:00 h</p>
-            <p><i class="icon-location"></i>Trg bana Josipa Jelačića 8, Zagreb</p>
+            <h1>{eventTitle}</h1>
+            <p><i class="icon-clock"></i>{eventDate.toLocaleDateString()}, {showLeadingZero(eventDate.getHours())}:{showLeadingZero(eventDate.getMinutes())}</p>
+            <p><i class="icon-location"></i>{eventLoc}</p>
             <pre>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Sed ased turpis id quam lobortis tincidunt a in urna.
-              Nunc eu sagittis justo, nec dignissim mauris.
-              Pellentesque lacinia sit amet nulla quis eleifend.
-              Etiam neque dui, placerat eget pellentesque sit amet, blandit id nibh.
-              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices osuere cubilia Curae;
-              Vestibulum tempus nulla et purus sagittis euismod.
-              Donec justo ex, aliquam eget dui eu, tempor iaculis neque.
+              {eventDesc}
             </pre>
             <hr/>
             <h2>Ulaznice</h2>
@@ -129,3 +139,7 @@ export default class extends React.Component {
   }
 }
 
+
+function showLeadingZero (number) {
+  return number > 9 ? number.toString() : ("0") + number;
+}
