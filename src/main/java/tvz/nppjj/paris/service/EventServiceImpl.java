@@ -20,7 +20,7 @@ import tvz.nppjj.paris.repository.EventRepository;
 
 @Service
 public class EventServiceImpl implements EventService {
-    private static final int ENTITIES_PER_PAGE = 2;
+    private static final int ENTITIES_PER_PAGE = 5;
 
     @Autowired
     private EventRepository  eventRepository;
