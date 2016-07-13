@@ -43,6 +43,7 @@ public class TicketServiceTest {
 
     @Mock
     private UserService      userService;
+    
 
     @InjectMocks
     private TicketService    ticketService;
@@ -75,7 +76,7 @@ public class TicketServiceTest {
             }
         });
         
-        when(user.getAccount().subtract(ticketCommand.getPrice())).thenReturn(new BigDecimal("200"));
+        //when(user.getAccount().subtract(ticketCommand.getPrice())).thenReturn(new BigDecimal("200"));
         
         
         BigDecimal newAccount = user.getAccount().subtract(ticketCommand.getPrice());
