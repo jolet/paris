@@ -21,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 
 import tvz.nppjj.paris.init.WebNppjjParisApplication;
 import tvz.nppjj.paris.model.dto.RegistrationCommand;
+import tvz.nppjj.paris.model.exception.ParisException;
 import tvz.nppjj.paris.repository.TicketRepository;
 import tvz.nppjj.paris.repository.UserRepository;
 
@@ -54,9 +55,6 @@ public class RegistrationControllerTest {
     @Before
     public void setUp() {
         registrationApiUrl = "http://localhost:" + port + "/register/";
-
-        // reset DB since transactions are not working
-        resetDb();
     }
 
     @Test
@@ -75,10 +73,12 @@ public class RegistrationControllerTest {
     }
 
     @Test
-    public void testRegisterUser_whenUserAlreadyExists_thenBadRequestIsReturned() throws Exception {
+    public void testRegisterUser_whenUserAlreadyExists_thenBadRequestIsReturned() {
         // prepare
-        assertThat(userRepository.findByEmail("CAFE@BABE.COM")).isNull();
+        String notYetSavedEmail = "SUPERCAFE@BABE.COM";
+        assertThat(userRepository.findByEmail(notYetSavedEmail)).isNull();
         HttpEntity<RegistrationCommand> registrationRequest = createRegistrationRequest();
+        registrationRequest.getBody().setEmail(notYetSavedEmail);
 
         // act
         ResponseEntity<Void> firstResponseEntity = restTemplate.postForEntity(registrationApiUrl, registrationRequest,
@@ -120,11 +120,6 @@ public class RegistrationControllerTest {
         registrationCommand.setPassword("SuperSecurePassword");
         registrationCommand.setPhoneNumber("666 999");
         return registrationCommand;
-    }
-
-    private void resetDb() {
-        ticketRepository.deleteAll();
-        userRepository.deleteAll();
     }
 
 }
