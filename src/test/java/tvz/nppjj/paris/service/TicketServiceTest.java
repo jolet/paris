@@ -134,6 +134,7 @@ public class TicketServiceTest {
         event.setPrice(eventDto.getPrice());
 
         event.setCategory(eventDto.getCategory());
+        event.incrementNumberOfTicketsBought();
 
         return event;
     }
