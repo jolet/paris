@@ -41,6 +41,9 @@ public class EventServiceTest {
     @Mock
     CategoryService      categoryService;
 
+    @Mock
+    UserService userService;
+
     @InjectMocks
     private EventService eventService;
 
