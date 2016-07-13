@@ -134,7 +134,7 @@ export default class NewEvent extends React.Component {
                     <div className="row">
                         <div className="form-group col-sm-4">
                             Grad:
-                            <input pattern="[A-Za-z]{2,}" title="Samo slova dopuštena" type="text" name="city" id="city" className="form-control" required onChange={this.handleChange.bind(this, 'city')}/>
+                            <input pattern="[A-Za-z ]{2,}" title="Samo slova dopuštena" type="text" name="city" id="city" className="form-control" required onChange={this.handleChange.bind(this, 'city')}/>
                         </div>
                     </div>
 
@@ -163,7 +163,7 @@ export default class NewEvent extends React.Component {
                     <div className="row">
                         <div className="form-group col-sm-3 col-sm-offset">
                             Broj ulaznica:
-                            <input type="number" min={0} name="ticketNumber" className="form-control" onChange={this.handleChange.bind(this, 'ticketNumber')}/>
+                            <input type="number" min={0} name="ticketNumber" className="form-control" required onChange={this.handleChange.bind(this, 'ticketNumber')}/>
                         </div>
                     </div>
 

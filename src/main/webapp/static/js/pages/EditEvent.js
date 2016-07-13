@@ -109,7 +109,7 @@ export default class EditEvent extends React.Component {
                  <div className="row">
                      <div className="form-group col-sm-4">
                          Grad:
-                         <input placeholder={this.state.response.city} pattern="[A-Za-z]{2,}" title="Samo slova dopuštena" type="text" name="city" id="city" className="form-control" onChange={this.handleChange.bind(this, 'city')}/>
+                         <input placeholder={this.state.response.city} pattern="[A-Za-z ]{2,}" title="Samo slova dopuštena" type="text" name="city" id="city" className="form-control" onChange={this.handleChange.bind(this, 'city')}/>
                      </div>
                  </div>
 
