@@ -47,11 +47,6 @@ public class EventController {
             @RequestParam(value = "categoryId", required = false) Long categoryId,
             @RequestParam(value = "date", required = false) Date date) {
 
-        System.out.println("date: " + date);
-
-        // if (date == null)
-        // date = DEFAULT_DATE;
-
         if (name == null && categoryId == null && date == null) {
             return eventService.getAllEvents();
         } else {
@@ -69,6 +64,16 @@ public class EventController {
         }
         return eventService.getAllEventsWithPagination(pageIndex);
     }
+    
+    
+    @CrossOrigin // (origins = "http://localhost:8100")
+    @RequestMapping(value = "/events/update", method = RequestMethod.POST)
+    public void updateEvent(@Valid @RequestBody EventCommand eventCommand) {
+        eventService.saveEvent(eventCommand);
+
+    }
+    
+    
     
     
 
