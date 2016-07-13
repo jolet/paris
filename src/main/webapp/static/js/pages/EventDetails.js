@@ -4,15 +4,34 @@ import { Modal } from 'react-bootstrap';
 
 export default class extends React.Component {
 
+
+
   constructor(props){
     super(props);
-    this.state = {response:[],
+    const loadingMsg = "Loading...";
+    var res = {name: loadingMsg,
+      description: loadingMsg,
+      date: 0,
+      location: loadingMsg,
+      picture: "",
+      price: 0
+    };
+
+    this.state = {response: res,
       showModal: false,
-      totalCost: 0};
+      totalCost: 0,
+      ticketVIP: 0,
+      price: 0,
+      amount: 1
+    };
+
+
 
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
+    this.handleTicketTypeChange = this.handleTicketTypeChange.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   componentDidMount(){
@@ -26,8 +45,10 @@ export default class extends React.Component {
       dataType: 'json',
       type: 'GET'
     }).done(function (data) {
-      this.setState({response: data});
+      this.setState({response: data, totalCost: data.price, ticketVIP: (data.price + data.price * 0.2)});
       console.log(JSON.stringify(this.state.response));
+
+
     })
   }
   openModal(){
@@ -37,60 +58,83 @@ export default class extends React.Component {
       location.href = '/#/login';
     }
     this.setState({showModal: true});
+    this.setState({price: this.state.response.price});
+
   }
   closeModal(){
     this.setState({showModal: false});
   }
 
-  handleChange(event){
-    this.setState({totalCost: event.target.value * 180})
+  handleAmountChange(event){
+    if(event.target.value < 1){
+      event.target.value = 1;
+    }
+    this.setState({amount: event.target.value, totalCost: (event.target.value * this.state.price)});
+  }
+  handleTicketTypeChange(event){
+    this.setState({price: event.target.value, totalCost: (event.target.value * this.state.amount)});
+  }
+
+  submit(){
+    event.preventDefault();
+
+    var data = {
+      'idEvent': this.state.response.id,
+      'price': this.state.price,
+      'idUser': localStorage.getItem("id")
+    };
+
+    $.ajax({
+      url: localStorage.getItem("environmentPrefix") + '/tickets/save',
+      context: this,
+      dataType: 'json',
+      type: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=utf-8'
+      },
+      data: JSON.stringify(data)
+    }).done(function (data) {
+      console.log(data);
+
+
+    })
 
   }
-  
+
   render() {
     const event = this.state.response;
-    console.log(Object.getOwnPropertyNames(event).length);
-    const loadingMsg = "Loading...";
 
-    if (Object.getOwnPropertyNames(event).length > 1){
-      eventTitle = event.name;
-      eventLoc = event.location;
-      eventDesc = event.description;
-      eventDate = new Date(event.date);
-    }else{
-      var eventTitle = loadingMsg;
-      var eventDesc = loadingMsg;
-      var eventDate = new Date();
-      var eventLoc = loadingMsg;
-    }
+    // console.log(event);
+    var eventDate = event.date != 0 ? new Date(event.date) : new Date();
 
 
     return (
         <div class="event-details row">
           <img class="col span_6_of_12" src="http://placehold.it/480x480"/>
           <div class="event-details-text col span_6_of_12">
-            <h1>{eventTitle}</h1>
+            <h1>{event.name}</h1>
             <p><i class="icon-clock"></i>{eventDate.toLocaleDateString()}, {showLeadingZero(eventDate.getHours())}:{showLeadingZero(eventDate.getMinutes())}</p>
-            <p><i class="icon-location"></i>{eventLoc}</p>
+            <p><i class="icon-location"></i>{event.location}</p>
             <pre>
-              {eventDesc}
+              {event.description}
             </pre>
             <hr/>
             <h2>Ulaznice</h2>
             <table>
               <tbody>
-                <tr>
-                    <th>Tip ulaznice</th>
-                    <th>Cijena</th>
-                </tr>
-                <tr>
-                  <td>VIP</td>
-                  <td>280 kn</td>
-                </tr>
-                <tr>
-                  <td>Regularna ulaznica</td>
-                  <td>120 kn</td>
-                </tr>
+              <tr>
+                <th>Tip ulaznice</th>
+                <th>Cijena</th>
+              </tr>
+              <tr>
+                <td>VIP</td>
+                <td>{this.state.ticketVIP} kn</td>
+              </tr>
+              <tr>
+                <td>Regularna ulaznica</td>
+                <td>{event.price} kn</td>
+              </tr>
               </tbody>
             </table>
             <button id="btnBuy" onClick={this.openModal}><i class="icon-tags"></i>Kupi</button>
@@ -100,39 +144,42 @@ export default class extends React.Component {
             <Modal.Header>
               <Modal.Title>Kupovina karte</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-              <table>
-                <tbody>
-                <tr>
-                  <td>
-                    <label for="ticketCategory">Tip karte:</label>
-                  </td>
-                  <td>
-                    <select id="ticketCategory">
-                      <option value="reg">Regular</option>
-                      <option value="vip">Vip</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label for="ticketAmount">Količina:</label>
-                  </td>
-                  <td>
-                    <input type="number" id="ticketAmount" defaultValue="1" onChange={this.handleChange}/>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Sveukupno:</td>
-                  <td id="ticketTotalBillAmount">{this.state.totalCost}kn</td>
-                </tr>
-                </tbody>
-              </table>
-            </Modal.Body>
-            <Modal.Footer>
-              <button>Potvrdi kupnju</button>
-              <button onClick={this.closeModal}>Odustani</button>
-            </Modal.Footer>
+            <form onSubmit={this.submit}>
+              <Modal.Body>
+
+                <table>
+                  <tbody>
+                  <tr>
+                    <td>
+                      <label for="ticketCategory">Tip karte:</label>
+                    </td>
+                    <td>
+                      <select id="ticketCategory" onChange={this.handleTicketTypeChange}>
+                        <option value={event.price}>Regular</option>
+                        <option value={this.state.ticketVIP}>Vip</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="ticketAmount">Količina:</label>
+                    </td>
+                    <td>
+                      <input type="number" id="ticketAmount" defaultValue="1" onChange={this.handleAmountChange}/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sveukupno:</td>
+                    <td id="ticketTotalBillAmount">{this.state.totalCost.toFixed(2)}kn</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </Modal.Body>
+              <Modal.Footer>
+                <button type="submit">Potvrdi kupnju</button>
+                <button onClick={this.closeModal}>Odustani</button>
+              </Modal.Footer>
+            </form>
           </Modal>
         </div>
     );
