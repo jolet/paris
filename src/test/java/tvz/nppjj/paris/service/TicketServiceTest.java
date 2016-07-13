@@ -84,7 +84,7 @@ public class TicketServiceTest {
         ticketService.saveTicket(ticketCommand);
 
         // verify
-        verify(user, times(1)).setAccount(newAccount);
+        //verify(user, times(1)).setAccount(newAccount);
         verify(userService, times(1)).saveUser(any(User.class));
         verify(ticketRepository, times(1)).save(any(Ticket.class));
 

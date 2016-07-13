@@ -53,7 +53,7 @@ public class Event {
     private Long numberOfViews;
 
     @Column(name = "NUMBER_OF_TICKETS_BOUGHT")
-    private Long numberOfTicketsBought;
+    private long numberOfTicketsBought;
     
     // getters and setters
     public Long getId() {
