@@ -21,7 +21,7 @@ export default class UserEvent extends React.Component {
 		            <img src={userevent.picture} />
 		          </div>
 		          <div className="col-sm-5">
-		            <h4><strong>{userevent.name}</strong></h4>
+		          <Link to={"events/" + userevent.id} ><h4><strong>{userevent.name}</strong></h4></Link>  
 		            <p>{userevent.description}</p>
 		          </div>
 		          <div className="col-sm-2" id="eventListLinks">
