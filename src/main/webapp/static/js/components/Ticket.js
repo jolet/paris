@@ -35,7 +35,7 @@ export default class Ticket extends React.Component {
       </div>
           
       <div className="form-group col-sm-5">
-	     <img className="homepage-imgs" src="http://crooksandliars.com/files/primary_image/15/05/carlos-santana.jpg"/>
+	     <img className="homepage-imgs" src={ticket.event.picture}/>
 	     </div> 
 	     <div className="form-group col-sm-4">
          <Link to={"events/" + ticket.event.id} ><h2>{ticket.event.name}</h2></Link> 

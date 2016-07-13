@@ -46,32 +46,38 @@ export default class EditEvent extends React.Component {
           console.log("Forma poslana");
           console.log(this.state);
 
-          // var headers = new Headers({
-          //    "Content-type": "application/json",
-          //    "Authorization": localStorage.getItem("token")
-          //    });
-          // var body = JSON.stringify({
-          //   email: this.state.email,
-          //   password: this.state.password,
-          //   phoneNumber: this.state.phoneNumber,
-          // });
-          //
-          // var init = {
-          //   method: 'POST',
-          //   headers: headers,
-          //   body: body,
-          //   mode: 'cors',
-          // }
-          //
-          // var url = new Request('http://localhost:8080/register');
-          //
-          // fetch(url, init).then(function(response){
-          //   console.log(response);
-          //   if(response.status == 200 && response.ok == true){
-          //
-          //     location.href = '/#/login';
-          //   }
-          // });
+           var headers = new Headers({
+              "Content-type": "application/json"
+              });
+           var body = JSON.stringify({
+        	   name: this.state.name,
+               location: this.state.location,
+               city: this.state.city,
+               date: this.state.date,
+               description: this.state.description,
+               picture: this.state.picture,
+               price: this.state.price,
+               time: this.state.time,
+               website: this.state.website,
+               ticketNumber: this.state.ticketNumber
+           });
+          
+           var init = {
+             method: 'POST',
+             headers: headers,
+             body: body,
+             mode: 'cors',
+           }
+          
+           var url = new Request(localStorage.getItem("environmentPrefix") + '/events/update');
+          
+           fetch(url, init).then(function(response){
+             console.log(response);
+             if(response.status == 200 && response.ok == true){
+          
+               location.href = '/#/events';
+             }
+           });
         }
 
   render() {
