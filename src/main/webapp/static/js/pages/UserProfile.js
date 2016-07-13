@@ -73,7 +73,7 @@ console.log(this.state);
     		   <div className="row">
     		    
   		     <div className="form-group col-sm-5">
-  		   &nbsp;   &nbsp;<button type="button" onClick={this.handleClick} class="btn btn-primary btn-md">Kupljene karte</button>
+  		   &nbsp;   &nbsp;<button id="btn-karte" type="button" onClick={this.handleClick} class="btn btn-primary btn-md">Kupljene karte</button>
   		     </div> 
   		   </div>   
      		 

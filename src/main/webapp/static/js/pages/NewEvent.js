@@ -120,7 +120,7 @@ export default class NewEvent extends React.Component {
                         </div>
                         <div className="form-group col-sm-4 col-sm-offset-3">
                             Vrijeme početka:
-                            <input type="time" name="time" required className="form-control" onChange={this.handleChange.bind(this, 'time')}/>
+                            <input type="time"  name="startTime" required className="form-control" onChange={this.handleChange.bind(this, 'time')}/>
                         </div>
                     </div>
 
