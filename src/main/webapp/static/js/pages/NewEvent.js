@@ -17,6 +17,7 @@ export default class NewEvent extends React.Component {
             picture: '',
             price: '',
             idCategory: '1',
+            idUser: '',
             time: '',
             website: '',
             ticketNumber: '',
@@ -63,7 +64,8 @@ export default class NewEvent extends React.Component {
             time: this.state.time,
             website: this.state.website,
             ticketNumber: this.state.ticketNumber,
-            idCategory: parseInt(this.state.idCategory)
+            idCategory: parseInt(this.state.idCategory),
+            idUser: parseInt(localStorage.getItem("id"))
         });
 
         var init = {
