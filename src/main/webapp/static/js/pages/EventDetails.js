@@ -81,7 +81,7 @@ export default class extends React.Component {
     var data = {
       'idEvent': this.state.response.id,
       'price': this.state.price,
-      'idUser': localStorage.getItem("id")
+      'idUser': parseInt(localStorage.getItem("id")),
     };
 
     $.ajax({
@@ -96,7 +96,7 @@ export default class extends React.Component {
       data: JSON.stringify(data)
     }).done(function (data) {
       console.log(data);
-
+      this.closeModal();
 
     })
 
@@ -137,14 +137,14 @@ export default class extends React.Component {
               </tr>
               </tbody>
             </table>
-            <button id="btnBuy" onClick={this.openModal}><i class="icon-tags"></i>Kupi</button>
+            <button id="btnBuy" onClick={this.openModal}><i class="icon-tags"></i>Kupii</button>
           </div>
           <Modal show={this.state.showModal}
                  onHide={this.closeModal}>
             <Modal.Header>
               <Modal.Title>Kupovina karte</Modal.Title>
             </Modal.Header>
-            <form onSubmit={this.submit}>
+            <form>
               <Modal.Body>
 
                 <table>
@@ -176,7 +176,7 @@ export default class extends React.Component {
                 </table>
               </Modal.Body>
               <Modal.Footer>
-                <button type="submit">Potvrdi kupnju</button>
+                <button onClick={this.submit}>Potvrdi kupnju</button>
                 <button onClick={this.closeModal}>Odustani</button>
               </Modal.Footer>
             </form>
