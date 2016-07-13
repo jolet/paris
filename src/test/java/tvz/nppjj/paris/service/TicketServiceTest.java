@@ -58,8 +58,6 @@ public class TicketServiceTest {
         // prepare
         User user = new User();
         user.setAccount(new BigDecimal("500.00"));
-        Ticket ticket = new Ticket();
-        ticket.setPrice(new BigDecimal("300.00"));
         TicketCommand ticketCommand = createTicketcommand();
         when((eventService.getEventById(anyLong()))).thenReturn(Mockito.mock(EventDto.class));
         when(userService.getUserById(anyLong())).thenReturn(Mockito.mock(User.class));
@@ -69,7 +67,6 @@ public class TicketServiceTest {
             public Ticket answer(InvocationOnMock invocation) throws Throwable {
                 Ticket ticket = invocation.getArgument(0);
                 // assert
-                assertThat(ticket.getCode()).isEqualTo(ticketCommand.getCode());
                 assertThat(ticket.getEvent()).isNotNull();
                 assertThat(ticket.getUser()).isNotNull();
                 assertThat(ticket.getIsValidated()).isEqualTo(ticketCommand.getIsValidated());
@@ -78,10 +75,10 @@ public class TicketServiceTest {
             }
         });
         
-        when(user.getAccount().subtract(ticket.getPrice())).thenReturn(any(BigDecimal.class));
+        when(user.getAccount().subtract(ticketCommand.getPrice())).thenReturn(new BigDecimal("200"));
         
         
-        BigDecimal newAccount = user.getAccount().subtract(ticket.getPrice());
+        BigDecimal newAccount = user.getAccount().subtract(ticketCommand.getPrice());
         
         assertThat(newAccount).isGreaterThanOrEqualTo(BigDecimal.ZERO);
 
@@ -120,11 +117,11 @@ public class TicketServiceTest {
 
     private TicketCommand createTicketcommand() {
         TicketCommand command = new TicketCommand();
-        command.setCode("jdsusikis/jkdskijuds/sodk");
         command.setPrice(new BigDecimal("125.55"));
         command.setIsValidated(false);
         command.setIdEvent(1L);
         command.setIdUser(2L);
+        command.setPrice(new BigDecimal("300"));
         return command;
     }
 
