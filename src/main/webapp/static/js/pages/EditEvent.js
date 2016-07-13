@@ -83,11 +83,11 @@ export default class EditEvent extends React.Component {
                  <div className="row">
                      <div className="form-group col-sm-4">
                          Naziv događaja:
-                         <input pattern="[A-Za-z0-9-_]{5,150}" placeholder={this.state.response.name} title="Broj znakova mora biti viši od 5! Smiju se koristiti slova i brojevi te znakovi - i _" type="text" name="name" id="name" className="form-control" required onChange={this.handleChange.bind(this, 'name')}/>
+                         <input pattern="[A-Za-z0-9-_]{5,150}" placeholder={this.state.response.name} title="Broj znakova mora biti viši od 5! Smiju se koristiti slova i brojevi te znakovi - i _" type="text" name="name" id="name" className="form-control" onChange={this.handleChange.bind(this, 'name')}/>
                      </div>
                      <div className="form-group col-sm-4 col-sm-offset-3">
                          Datum početka:
-                         <input type="date" name="date" placeholder={this.state.response.name} id="date" className="form-control" required onChange={this.handleChange.bind(this, 'date')} />
+                         <input type="date" name="date" placeholder={this.state.response.name} id="date" className="form-control"  onChange={this.handleChange.bind(this, 'date')} />
                      </div>
                  </div>
 
@@ -95,28 +95,28 @@ export default class EditEvent extends React.Component {
                  <div className="col-sm-4"></div>
                      <div className="form-group col-sm-4 col-sm-offset-3">
                          Vrijeme početka:
-                         <input type="time" name="startTime" required className="form-control" onChange={this.handleChange.bind(this, 'time')}/>
+                         <input type="time" name="startTime"  className="form-control" onChange={this.handleChange.bind(this, 'time')}/>
                      </div>
                  </div>
 
                  <div className="row">
                      <div className="form-group col-sm-4">
                          Adresa:
-                         <input type="text" name="location" placeholder={this.state.response.location} id="location" className="form-control"  required onChange={this.handleChange.bind(this, 'location')}/>
+                         <input type="text" name="location" placeholder={this.state.response.location} id="location" className="form-control" onChange={this.handleChange.bind(this, 'location')}/>
                      </div>
                  </div>
 
                  <div className="row">
                      <div className="form-group col-sm-4">
                          Grad:
-                         <input placeholder={this.state.response.city} pattern="[A-Za-z]{2,}" title="Samo slova dopuštena" type="text" name="city" id="city" className="form-control" required onChange={this.handleChange.bind(this, 'city')}/>
+                         <input placeholder={this.state.response.city} pattern="[A-Za-z]{2,}" title="Samo slova dopuštena" type="text" name="city" id="city" className="form-control" onChange={this.handleChange.bind(this, 'city')}/>
                      </div>
                  </div>
 
                  <div className="row">
                      <div className="form-group col-sm-6">
                          Opis događaja:<br />
-                         <textarea name="description" placeholder={this.state.response.description} id="description" rows={5} className="form-control" defaultValue={""}  required onChange={this.handleChange.bind(this, 'description')}/>
+                         <textarea name="description" placeholder={this.state.response.description} id="description" rows={5} className="form-control" defaultValue={""}  onChange={this.handleChange.bind(this, 'description')}/>
                      </div>
                  </div>
 
@@ -145,7 +145,7 @@ export default class EditEvent extends React.Component {
                  <div className="row">
                      <div className="form-group col-sm-3 col-sm-offset">
                          Cijena ulaznice:
-                         <input type="number" step="any" placeholder={this.state.response.price} min={0} name="price" id="price" className="form-control" required onChange={this.handleChange.bind(this, 'price')} />
+                         <input type="number" step="any" placeholder={this.state.response.price} min={0} name="price" id="price" className="form-control" onChange={this.handleChange.bind(this, 'price')} />
                      </div>
                  </div>
 
