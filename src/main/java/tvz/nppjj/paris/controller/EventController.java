@@ -28,8 +28,8 @@ public class EventController {
     // private static final Date DEFAULT_DATE = (Date) Date
     // .from(LocalDate.of(1970, 1, 1).atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-    @SuppressWarnings("deprecation")
-    private Date         DEFAULT_DATE = new Date(1970, 1, 1);
+//    @SuppressWarnings("deprecation")
+//    private Date         DEFAULT_DATE = new Date(1970, 1, 1);
 
     @Autowired
     private EventService eventService;
@@ -43,7 +43,7 @@ public class EventController {
     @CrossOrigin
     @RequestMapping(value = "/eventsFilter", method = RequestMethod.GET)
     public @ResponseBody List<EventDto> getFilteredEvents(
-            @RequestParam(value = "name", required = false, defaultValue = "") String name,
+            @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "categoryId", required = false) Long categoryId,
             @RequestParam(value = "date", required = false) Date date) {
 
@@ -52,7 +52,7 @@ public class EventController {
         // if (date == null)
         // date = DEFAULT_DATE;
 
-        if (name == "" && categoryId == null && date == null) {
+        if (name == null && categoryId == null && date == null) {
             return eventService.getAllEvents();
         } else {
             return eventService.getFilteredEvents(name, categoryId, date);
@@ -69,6 +69,8 @@ public class EventController {
         }
         return eventService.getAllEventsWithPagination(pageIndex);
     }
+    
+    
 
     @CrossOrigin
     @RequestMapping(value = "/events/{id}", method = RequestMethod.GET)
