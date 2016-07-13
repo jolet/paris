@@ -49,9 +49,10 @@ public class TicketServiceImpl implements TicketService {
         Ticket ticket = new Ticket();
 
         ticket.setPrice(ticketCommand.getPrice());
-        ticket.setIsValidated(ticketCommand.getIsValidated());
+        ticket.setIsValidated(false);
 
         Event event = transformEventDtoToEvent(eventService.getEventById(ticketCommand.getIdEvent()));
+        event.setId(ticketCommand.getIdEvent());
         ticket.setEvent(event);
 
         User user = userService.getUserById(ticketCommand.getIdUser());
@@ -92,6 +93,8 @@ public class TicketServiceImpl implements TicketService {
         event.setDescription(eventDto.getDescription());
         event.setPicture(eventDto.getPicture());
         event.setPrice(eventDto.getPrice());
+        event.setNumberOfTicketsBought(eventDto.getNumberOfTicketsBought());
+        event.setNumberOfViews(eventDto.getNumberOfViews());
 
         event.setCategory(eventDto.getCategory());
 

@@ -10,7 +10,7 @@ public class TicketCommand {
     @Range(min = 0, message = "Enter price...(0 or more)")
     private BigDecimal price;
 
-    private Boolean    isValidated;
+    private boolean    isValidated;
 
     private Long       idUser;
 
@@ -34,7 +34,7 @@ public class TicketCommand {
     /**
      * @return the isValidated
      */
-    public Boolean getIsValidated() {
+    public boolean getIsValidated() {
         return isValidated;
     }
 
@@ -42,7 +42,7 @@ public class TicketCommand {
      * @param isValidated
      *            the isValidated to set
      */
-    public void setIsValidated(Boolean isValidated) {
+    public void setIsValidated(boolean isValidated) {
         this.isValidated = isValidated;
     }
 

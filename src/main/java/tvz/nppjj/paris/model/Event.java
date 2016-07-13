@@ -56,6 +56,16 @@ public class Event {
     private long numberOfTicketsBought;
     
     // getters and setters
+
+
+    public void setNumberOfViews(long numberOfViews) {
+        this.numberOfViews = numberOfViews;
+    }
+
+    public void setNumberOfTicketsBought(long numberOfTicketsBought) {
+        this.numberOfTicketsBought = numberOfTicketsBought;
+    }
+
     public Long getId() {
         return id;
     }
