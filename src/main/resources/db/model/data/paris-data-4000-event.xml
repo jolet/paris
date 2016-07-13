@@ -13,6 +13,8 @@
    	        <column name="PICTURE" value="//"/>
             <column name="ID_CATEGORY" value="1"/>
             <column name="ID_USER" value="1"/>
+            <column name="NUMBER_OF_VIEWS" value="0"/>
+            <column name="NUMBER_OF_TICKETS_BOUGHT" value="0"/>
         </insert>
         <insert schemaName="${schema.paris}" tableName="EVENT">
             <column name="NAME" value="Humanitarni koncert"/>
@@ -24,6 +26,8 @@
             <column name="PICTURE" value="//"/>
             <column name="ID_CATEGORY" value="2"/>
             <column name="ID_USER" value="2"/>
+            <column name="NUMBER_OF_VIEWS" value="0"/>
+            <column name="NUMBER_OF_TICKETS_BOUGHT" value="0"/>
         </insert>
          <insert schemaName="${schema.paris}" tableName="EVENT">
             <column name="NAME" value="Inception"/>
@@ -35,6 +39,8 @@
             <column name="PICTURE" value="//"/>
             <column name="ID_CATEGORY" value="3"/>
             <column name="ID_USER" value="2"/>
+             <column name="NUMBER_OF_VIEWS" value="0"/>
+             <column name="NUMBER_OF_TICKETS_BOUGHT" value="0"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

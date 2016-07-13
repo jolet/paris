@@ -68,7 +68,16 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public EventDto getEventById(Long id) {
-        return transformEventToEventDto(eventRepository.findOne(id));
+        Event event = eventRepository.findOne(id);
+        event.incrementNumberOfViews();
+        eventRepository.save(event);
+
+        return transformEventToEventDto(event);
+    }
+
+    @Override
+    public void saveEvent(Event event) {
+        eventRepository.save(event);
     }
 
     @Override
@@ -123,6 +132,8 @@ public class EventServiceImpl implements EventService {
         eventDto.setPicture(event.getPicture());
         eventDto.setDescription(event.getDescription());
         eventDto.setCategory(event.getCategory());
+        eventDto.setNumberOfViews(event.getNumberOfViews());
+        eventDto.setNumberOfTicketsBought(event.getNumberOfTicketsBought());
         return eventDto;
 
     }

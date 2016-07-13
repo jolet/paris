@@ -49,9 +49,11 @@ public class Event {
     @JoinColumn(name = "ID_USER")
     private User   user;
     
+    @Column(name = "NUMBER_OF_VIEWS")
+    private Long numberOfViews;
 
-   
-    
+    @Column(name = "NUMBER_OF_TICKETS_BOUGHT")
+    private Long numberOfTicketsBought;
     
     // getters and setters
     public Long getId() {
@@ -134,4 +136,19 @@ public class Event {
      this.user = user;
     }
 
+    public Long getNumberOfViews() {
+        return numberOfViews;
+    }
+
+    public void incrementNumberOfViews() {
+        this.numberOfViews++;
+    }
+
+    public Long getNumberOfTicketsBought() {
+        return numberOfTicketsBought;
+    }
+
+    public void incrementNumberOfTicketsBought() {
+        this.numberOfTicketsBought++;
+    }
 }

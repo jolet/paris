@@ -52,7 +52,8 @@ public class TicketServiceImpl implements TicketService {
         ticket.setPrice(ticketCommand.getPrice());
         ticket.setIsValidated(ticketCommand.getIsValidated());
 
-        ticket.setEvent(transformEventDtoToEvent(eventService.getEventById(ticketCommand.getIdEvent())));
+        Event event = transformEventDtoToEvent(eventService.getEventById(ticketCommand.getIdEvent()));
+        ticket.setEvent(event);
 
         User user = userService.getUserById(ticketCommand.getIdUser());
 
@@ -69,6 +70,9 @@ public class TicketServiceImpl implements TicketService {
             user.setAccount(newAccount);
             userService.saveUser(user);
             ticketRepository.save(ticket);
+
+            event.incrementNumberOfTicketsBought();
+            eventService.saveEvent(event);
         } else {
             throw new ParisException("Not enough money on account!");
         }

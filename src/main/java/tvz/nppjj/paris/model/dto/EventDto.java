@@ -3,6 +3,7 @@ package tvz.nppjj.paris.model.dto;
 import java.math.BigDecimal;
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -32,6 +33,10 @@ public class EventDto {
     private BigDecimal price;
 
     private Category   category;
+
+    private Long       numberOfViews;
+
+    private Long       numberOfTicketsBought;
 
     public Long getId() {
         return id;
@@ -105,4 +110,19 @@ public class EventDto {
         this.category = category;
     }
 
+    public Long getNumberOfViews() {
+        return numberOfViews;
+    }
+
+    public void setNumberOfViews(Long numberOfViews) {
+        this.numberOfViews = numberOfViews;
+    }
+
+    public Long getNumberOfTicketsBought() {
+        return numberOfTicketsBought;
+    }
+
+    public void setNumberOfTicketsBought(Long numberOfTicketsBought) {
+        this.numberOfTicketsBought = numberOfTicketsBought;
+    }
 }
