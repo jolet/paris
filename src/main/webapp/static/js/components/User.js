@@ -13,7 +13,11 @@ export default class User extends React.Component {
   click(){
     console.log("obrisat cu usera s id " + this.props.user.id);
 
-    var headers = new Headers({"Content-type": "application/json"});
+    var headers = new Headers({
+      "Content-type": "application/json",
+      "Authorization": localStorage.getItem("token")
+    });
+
     var body = JSON.stringify({
       id: this.props.user.id,
     });
