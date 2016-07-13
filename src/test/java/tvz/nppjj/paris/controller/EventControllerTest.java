@@ -24,6 +24,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestTemplate;
 
 import tvz.nppjj.paris.init.WebNppjjParisApplication;
+import tvz.nppjj.paris.model.Event;
+import tvz.nppjj.paris.model.Ticket;
 import tvz.nppjj.paris.model.dto.EventCommand;
 import tvz.nppjj.paris.repository.EventRepository;
 import tvz.nppjj.paris.repository.TicketRepository;

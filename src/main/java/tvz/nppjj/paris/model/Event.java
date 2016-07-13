@@ -50,7 +50,7 @@ public class Event {
     private User   user;
     
     @Column(name = "NUMBER_OF_VIEWS")
-    private Long numberOfViews;
+    private long numberOfViews;
 
     @Column(name = "NUMBER_OF_TICKETS_BOUGHT")
     private long numberOfTicketsBought;

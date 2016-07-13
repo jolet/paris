@@ -1,5 +1,8 @@
 package tvz.nppjj.paris.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
