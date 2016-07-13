@@ -48,7 +48,6 @@ public class TicketServiceImpl implements TicketService {
 
         Ticket ticket = new Ticket();
 
-        ticket.setCode(ticketCommand.getCode());
         ticket.setPrice(ticketCommand.getPrice());
         ticket.setIsValidated(ticketCommand.getIsValidated());
 
@@ -103,7 +102,6 @@ public class TicketServiceImpl implements TicketService {
 
         TicketDto ticketDto = new TicketDto();
         ticketDto.setId(ticket.getId());
-        ticketDto.setCode(BarcodeHelper.generateBase64Barcode(String.valueOf(ticket.getId())));
         ticketDto.setIdUser(ticket.getUser().getId());
         ticketDto.setIsValidated(ticket.getIsValidated());
         ticketDto.setPrice(ticket.getPrice());

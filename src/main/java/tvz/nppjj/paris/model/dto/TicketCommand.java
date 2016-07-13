@@ -7,9 +7,6 @@ import org.hibernate.validator.constraints.Range;
 
 public class TicketCommand {
 
-    @NotBlank(message = "Enter QR code!")
-    private String     code;
-
     @Range(min = 0, message = "Enter price...(0 or more)")
     private BigDecimal price;
 
@@ -18,21 +15,6 @@ public class TicketCommand {
     private Long       idUser;
 
     private Long       idEvent;
-
-    /**
-     * @return the code
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * @param code
-     *            the code to set
-     */
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     /**
      * @return the price

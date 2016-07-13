@@ -9,8 +9,6 @@ import tvz.nppjj.paris.model.Event;
 
 public class TicketDto {
 
-    @NotBlank(message = "Enter QR code!")
-    private String     code;
 
     @Range(min = 0, message = "Enter price...(0 or more)")
     private BigDecimal price;
@@ -22,14 +20,6 @@ public class TicketDto {
     private Event      event;
 
     private Long       id;
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public BigDecimal getPrice() {
         return price;

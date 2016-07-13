@@ -6,9 +6,6 @@
    <column autoIncrement="true" name="ID_TICKET" type="BIGINT">
     <constraints primaryKey="true" primaryKeyName="PK_TICKET"/>
    </column>
-   <column name="CODE" type="VARCHAR(100)">
-    <constraints nullable="false"/>
-   </column>
    <column name="PRICE" type="DECIMAL(18,2)">
     <constraints nullable="false"/>
    </column>

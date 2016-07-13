@@ -19,9 +19,6 @@ public class Ticket {
     @GeneratedValue
     private Long       id;
 
-    @Column(name = "CODE")
-    private String     code;
-
     @Column(name = "PRICE")
     private BigDecimal price;
 
@@ -44,14 +41,6 @@ public class Ticket {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public BigDecimal getPrice() {
