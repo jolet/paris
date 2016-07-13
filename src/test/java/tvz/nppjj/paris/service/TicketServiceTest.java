@@ -25,6 +25,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import tvz.nppjj.paris.init.WebNppjjParisApplication;
 import tvz.nppjj.paris.model.Category;
 import tvz.nppjj.paris.model.Event;
+import tvz.nppjj.paris.model.Role;
 import tvz.nppjj.paris.model.Ticket;
 import tvz.nppjj.paris.model.User;
 import tvz.nppjj.paris.model.dto.EventDto;
@@ -43,7 +44,6 @@ public class TicketServiceTest {
 
     @Mock
     private UserService      userService;
-    
 
     @InjectMocks
     private TicketService    ticketService;
@@ -61,7 +61,7 @@ public class TicketServiceTest {
         user.setAccount(new BigDecimal("500.00"));
         TicketCommand ticketCommand = createTicketcommand();
         when((eventService.getEventById(anyLong()))).thenReturn(Mockito.mock(EventDto.class));
-        when(userService.getUserById(anyLong())).thenReturn(Mockito.mock(User.class));
+        when(userService.getUserById(anyLong())).thenReturn(createMySuperUser());
         when(ticketRepository.save(any(Ticket.class))).thenAnswer(new Answer<Ticket>() {
 
             @Override
@@ -75,12 +75,9 @@ public class TicketServiceTest {
                 return ticket;
             }
         });
-        
-        //when(user.getAccount().subtract(ticketCommand.getPrice())).thenReturn(new BigDecimal("200"));
-        
-        
+
         BigDecimal newAccount = user.getAccount().subtract(ticketCommand.getPrice());
-        
+
         assertThat(newAccount).isGreaterThanOrEqualTo(BigDecimal.ZERO);
 
         // act
@@ -139,6 +136,28 @@ public class TicketServiceTest {
         event.setCategory(eventDto.getCategory());
 
         return event;
+    }
+
+    private User createMySuperUser() {
+        Role role = new Role();
+        role.setName("User");
+        BigDecimal acc = new BigDecimal(10);
+        User testUser = new User();
+        testUser.setUsername("ejosip");
+        testUser.setPassword("lozinka");
+        testUser.setAccount(acc);
+        testUser.setEmail("moje@moje.com");
+        testUser.setId(569l);
+        testUser.setPhone_number("123454");
+        testUser.setRole(role);
+        testUser.setAccount(new BigDecimal("500"));
+        return testUser;
+    }
+
+    private Role createMockRole() {
+        Role mockRole = new Role();
+        mockRole.setName("mockRole");
+        return mockRole;
     }
 
 }
