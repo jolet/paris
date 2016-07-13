@@ -101,7 +101,7 @@ public class EventControllerTest {
         BigDecimal price = new BigDecimal("456.23");
 
         EventCommand command = new EventCommand();
-
+        
         command.setName("kjfdnkjdn");
         command.setDate(date);
         command.setCity("dcsdcsaa");
@@ -110,6 +110,7 @@ public class EventControllerTest {
         command.setPicture("//");
         command.setPrice(price);
         command.setIdCategory(2L);
+        command.setIdUser(1L);
 
         return command;
     }
