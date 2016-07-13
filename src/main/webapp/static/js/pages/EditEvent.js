@@ -59,7 +59,9 @@ export default class EditEvent extends React.Component {
                price: this.state.price,
                time: this.state.time,
                website: this.state.website,
-               ticketNumber: this.state.ticketNumber
+               ticketNumber: this.state.ticketNumber,
+               idCategory: parseInt(this.state.idCategory),
+               idUser: parseInt(localStorage.getItem("id"))
            });
           
            var init = {
