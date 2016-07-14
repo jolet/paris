@@ -18,27 +18,17 @@ export default class EventUDButtons extends React.Component {
             "Authorization": localStorage.getItem("token")
         });
 
-        var body = JSON.stringify({
-            id: this.props.event.id
-        });
-
         var init = {
-            method: 'DELETE',
+            method: 'GET',
             headers: headers,
-            body: body,
             mode: 'cors',
         }
 
-        var url = new Request('http://localhost:8080/events');
+        var url = new Request(localStorage.getItem("environmentPrefix") + '/events/delete/' + this.props.event.id);
 
         fetch(url, init)
-            .then((response) => response.json())
-            .then((responseData) => {
-                if(responseData.status == 500){
-                    alert(responseData.message);
-                }else{
-                    location.href = '/#/events';
-                }
+            .then(() => {
+                    location.reload();
             });
     }
 
