@@ -60,7 +60,7 @@ export default class EditEvent extends React.Component {
                time: this.state.time,
                website: this.state.website,
                ticketNumber: this.state.ticketNumber,
-               idCategory: parseInt(this.state.idCategory),
+               idCategory: 2,
                idUser: parseInt(localStorage.getItem("id"))
            });
           
@@ -91,7 +91,7 @@ export default class EditEvent extends React.Component {
                  <div className="row">
                      <div className="form-group col-sm-4">
                          Naziv događaja:
-                         <input pattern="[A-Za-z0-9-_]{5,150}" placeholder={this.state.response.name} title="Broj znakova mora biti viši od 5! Smiju se koristiti slova i brojevi te znakovi - i _" type="text" name="name" id="name" className="form-control" onChange={this.handleChange.bind(this, 'name')}/>
+                         <input pattern="[A-Za-z0-9-_ ]{5,150}" placeholder={this.state.response.name} title="Broj znakova mora biti viši od 5! Smiju se koristiti slova i brojevi te znakovi - i _" type="text" name="name" id="name" className="form-control" onChange={this.handleChange.bind(this, 'name')}/>
                      </div>
                      <div className="form-group col-sm-4 col-sm-offset-3">
                          Datum početka:
