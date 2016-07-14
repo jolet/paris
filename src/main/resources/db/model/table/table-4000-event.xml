@@ -39,9 +39,8 @@
    <column name="NUMBER_OF_TICKETS_BOUGHT" type="BIGINT">
     <constraints nullable="false"/>
    </column>
-   <column name="ACTIVE" type="BOOLEAN">
-   	<constraints nullable="false"/>
-   	<addDefaultValue defaultValueBoolean="true" />
+   <column name="ACTIVE" type="BOOLEAN" defaultValue="TRUE">
+    <constraints nullable="false"/>
    </column>
   </createTable>
  </changeSet>
