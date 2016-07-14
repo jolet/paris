@@ -102,6 +102,7 @@ public class EventServiceImpl implements EventService {
             if (event == null) {
                 throw new ParisException("Event id " + eventCommand.getId() + " ne postoji  u bazi!");
             } else {
+                event.setId(eventCommand.getId());
                 event.setName(eventCommand.getName());
                 event.setLocation(eventCommand.getLocation());
                 event.setCity(eventCommand.getCity());
