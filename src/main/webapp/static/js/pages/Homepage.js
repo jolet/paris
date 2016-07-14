@@ -44,6 +44,9 @@ export default class Homepage extends React.Component {
                 <hr /><br />
                 <div className="row">
 
+                    <div className="col-sm-1">
+                    </div>
+
                     {this.state.response.map((eventsAPI, i) => <HomepageEvent key={i} event={eventsAPI} />)}
 
                 </div>
