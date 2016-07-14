@@ -24,6 +24,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestTemplate;
 
 import tvz.nppjj.paris.init.WebNppjjParisApplication;
+import tvz.nppjj.paris.init.config.filter.JwtFilter;
+import tvz.nppjj.paris.init.config.filter.JwtSignature;
 import tvz.nppjj.paris.model.Event;
 import tvz.nppjj.paris.model.Ticket;
 import tvz.nppjj.paris.model.dto.EventCommand;
@@ -63,9 +65,9 @@ public class EventControllerTest {
     @Test
     public final void testSaveEvent_ifEvantCommandValid_thenNewEventIsSaved() throws ParseException {
         long eventCount = eventRepository.count();
-        HttpEntity<EventCommand> registrationRequest = createEventSaveRequest();
+        HttpEntity<EventCommand> saveEventRequest = createEventSaveRequest();
 
-        ResponseEntity<Void> responseEntity = restTemplate.postForEntity(registrationApiUrl, registrationRequest,
+        ResponseEntity<Void> responseEntity = restTemplate.postForEntity(registrationApiUrl, saveEventRequest,
                 Void.class);
 
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -91,6 +93,7 @@ public class EventControllerTest {
         EventCommand eventCommand = createEventCommand();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.add("Authorization", JwtSignature.createTestJwtToken());
         HttpEntity<EventCommand> request = new HttpEntity<EventCommand>(eventCommand, headers);
         return request;
     }

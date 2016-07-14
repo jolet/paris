@@ -25,10 +25,15 @@ public enum JwtSignature {
         return key;
     }
 
+    public static String createTestJwtToken() {
+        return "Bearer " + createJwtToken(new UserDto());
+    }
+
     public static String createJwtToken(UserDto userDto) {
         String jwtToken = Jwts.builder().setSubject(userDto.getEmail()).claim("roles", userDto.getRole())
                 .setIssuedAt(new Date()).signWith(SignatureAlgorithm.HS256, KEY.getValue()).compact();
         LOG.info("Created new jwt signature: " + jwtToken);
         return jwtToken;
     }
+
 }
