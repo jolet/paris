@@ -24,7 +24,7 @@ export default class User extends React.Component {
       mode: 'cors',
     }
 
-    var url = new Request( localStorage.getItem("environmentPrefix") + '/users/delete' + this.props.user.id);
+    var url = new Request( localStorage.getItem("environmentPrefix") + '/users/delete/' + this.props.user.id);
 
     fetch(url, init)
         .then(() => {
