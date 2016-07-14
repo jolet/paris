@@ -18,28 +18,18 @@ export default class User extends React.Component {
       "Authorization": localStorage.getItem("token")
     });
 
-    var body = JSON.stringify({
-      id: this.props.user.id,
-    });
-
     var init = {
-      method: 'DELETE',
+      method: 'GET',
       headers: headers,
-      body: body,
       mode: 'cors',
     }
 
-    var url = new Request('http://localhost:8080/users');
+    var url = new Request( localStorage.getItem("environmentPrefix") + '/users/delete' + this.props.user.id);
 
     fetch(url, init)
-    .then((response) => response.json())
-    .then((responseData) => {
-      if(responseData.status == 500){
-        alert(responseData.message);
-      }else{
-        location.href = '/#/users';
-      }
-    });
+        .then(() => {
+          location.reload();
+        });
   }
 
   render() {
@@ -47,15 +37,15 @@ export default class User extends React.Component {
     const {user} = this.props;
 
     return (
-      <tr>
-        <td>{user.id}</td>
-        <td>{user.username}</td>
-        <td>{user.email}</td>
-        <td>{user.role}</td>
-        <td>{user.phoneNumber}</td>
-        <td><Link to={'editUser/' + user.id} class="btn btn-warning">Uredi</Link></td>
-        <td><button onClick={this.click} to="#" class="btn btn-danger">Obriši</button></td>
-      </tr>
+        <tr>
+          <td>{user.id}</td>
+          <td>{user.username}</td>
+          <td>{user.email}</td>
+          <td>{user.role}</td>
+          <td>{user.phoneNumber}</td>
+          <td><Link to={'editUser/' + user.id} class="btn btn-warning">Uredi</Link></td>
+          <td><button onClick={this.click} to="#" class="btn btn-danger">Obriši</button></td>
+        </tr>
     );
   }
 }
