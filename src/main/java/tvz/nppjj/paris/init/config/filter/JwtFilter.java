@@ -24,7 +24,7 @@ public class JwtFilter extends GenericFilterBean {
 
         final String authHeader = request.getHeader("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            throw new ParisException("Missing or invalid Authorization header - Nemas to pravo!");
+            throw new ParisException("Missing or invalid Authorization header - Nemas to pravo!\n Attempted token: [" + authHeader+"]");
         }
 
         final String token = authHeader.substring(7); // The part after "Bearer "
@@ -34,7 +34,7 @@ public class JwtFilter extends GenericFilterBean {
                     .getBody();
             request.setAttribute("claims", claims);
         } catch (final UnsupportedJwtException e) {
-            throw new ServletException("Invalid token.");
+            throw new ServletException("Invalid token. Attempted token: [" + authHeader + "]");
         }
 
         chain.doFilter(req, res);
