@@ -74,7 +74,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public EventDto getEventById(Long id) {
-        Event event = eventRepository.findOne(id);
+        Event event = eventRepository.findByIdAndActiveTrue(id);
         event.incrementNumberOfViews();
         eventRepository.save(event);
 

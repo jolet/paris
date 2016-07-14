@@ -9,6 +9,8 @@ import tvz.nppjj.paris.model.Event;
 public interface EventRepository extends JpaRepository<Event, Long> {
 
     List<Event> findByName(String name);
+    
+    Event findByIdAndActiveTrue(Long id);
 
     List<Event> findByDate(Date date);
 
