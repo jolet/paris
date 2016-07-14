@@ -33,12 +33,18 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<EventDto> getAllEvents() {
-        return transformEventListToDtoList(eventRepository.findAll());
+        return transformEventListToDtoList(eventRepository.findByActiveTrue());
+    }
+
+    @Override
+    public void saveEvent(Event event) {
+        eventRepository.save(event);
+
     }
 
     @Override
     public List<EventDto> getFilteredEvents(String name, Long categoryId, Date date) {
-        List<EventDto> allEventDto = getAllEvents();
+        List<EventDto> allEventDto = transformEventListToDtoList(eventRepository.findByActiveTrue());
 
         List<EventDto> eventsFiltered = allEventDto.stream()
                 .filter(eventDto -> name == null || eventDto.getName().contains(name))
@@ -76,8 +82,14 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public void saveEvent(Event event) {
+    public void deleteEvent(long id) {
+        Event event = eventRepository.findOne(id);
+
+        event.setId(id);
+        event.setActive(false);
+
         eventRepository.save(event);
+
     }
 
     @Override

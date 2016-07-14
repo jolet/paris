@@ -44,19 +44,21 @@ public class Event {
     @ManyToOne
     @JoinColumn(name = "ID_CATEGORY")
     private Category   category;
-    
+
     @ManyToOne
     @JoinColumn(name = "ID_USER")
-    private User   user;
-    
+    private User       user;
+
     @Column(name = "NUMBER_OF_VIEWS")
-    private long numberOfViews;
+    private long       numberOfViews;
 
     @Column(name = "NUMBER_OF_TICKETS_BOUGHT")
-    private long numberOfTicketsBought;
-    
-    // getters and setters
+    private long       numberOfTicketsBought;
 
+    @Column(name = "ACTIVE")
+    private boolean    active;
+
+    // getters and setters
 
     public void setNumberOfViews(long numberOfViews) {
         this.numberOfViews = numberOfViews;
@@ -139,11 +141,11 @@ public class Event {
     }
 
     public User getUser() {
-      return user;
+        return user;
     }
-    
+
     public void setUser(User user) {
-     this.user = user;
+        this.user = user;
     }
 
     public Long getNumberOfViews() {
@@ -160,5 +162,9 @@ public class Event {
 
     public void incrementNumberOfTicketsBought() {
         this.numberOfTicketsBought++;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

@@ -1,8 +1,6 @@
 package tvz.nppjj.paris.controller;
 
 import java.sql.Date;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -25,12 +23,6 @@ import tvz.nppjj.paris.service.EventService;
 @RestController
 public class EventController {
 
-    // private static final Date DEFAULT_DATE = (Date) Date
-    // .from(LocalDate.of(1970, 1, 1).atStartOfDay(ZoneId.systemDefault()).toInstant());
-
-//    @SuppressWarnings("deprecation")
-//    private Date         DEFAULT_DATE = new Date(1970, 1, 1);
-
     @Autowired
     private EventService eventService;
 
@@ -41,9 +33,14 @@ public class EventController {
     }
 
     @CrossOrigin
+    @RequestMapping(value = "/events/delete/{id}", method = RequestMethod.GET)
+    public void deleteEvent(@PathVariable("id") long idEvent) {
+        eventService.deleteEvent(idEvent);
+    }
+
+    @CrossOrigin
     @RequestMapping(value = "/eventsFilter", method = RequestMethod.GET)
-    public @ResponseBody List<EventDto> getFilteredEvents(
-            @RequestParam(value = "name", required = false) String name,
+    public @ResponseBody List<EventDto> getFilteredEvents(@RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "categoryId", required = false) Long categoryId,
             @RequestParam(value = "date", required = false) Date date) {
 
@@ -64,18 +61,13 @@ public class EventController {
         }
         return eventService.getAllEventsWithPagination(pageIndex);
     }
-    
-    
+
     @CrossOrigin // (origins = "http://localhost:8100")
     @RequestMapping(value = "/events/update", method = RequestMethod.POST)
     public void updateEvent(@Valid @RequestBody EventCommand eventCommand) {
         eventService.saveEvent(eventCommand);
 
     }
-    
-    
-    
-    
 
     @CrossOrigin
     @RequestMapping(value = "/events/{id}", method = RequestMethod.GET)
