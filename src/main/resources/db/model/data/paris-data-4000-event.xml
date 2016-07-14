@@ -15,7 +15,7 @@
             <column name="ID_USER" value="1"/>
             <column name="NUMBER_OF_VIEWS" value="0"/>
             <column name="NUMBER_OF_TICKETS_BOUGHT" value="0"/>
-            <column name="ACTIVE" VALUE="true"/>
+            <column name="ACTIVE" value="true"/>
         </insert>
         <insert schemaName="${schema.paris}" tableName="EVENT">
             <column name="NAME" value="Humanitarni koncert"/>
@@ -29,7 +29,7 @@
             <column name="ID_USER" value="2"/>
             <column name="NUMBER_OF_VIEWS" value="0"/>
             <column name="NUMBER_OF_TICKETS_BOUGHT" value="0"/>
-            <column name="ACTIVE" VALUE="true"/>
+            <column name="ACTIVE" value="true"/>
         </insert>
          <insert schemaName="${schema.paris}" tableName="EVENT">
             <column name="NAME" value="Inception"/>
@@ -43,7 +43,7 @@
             <column name="ID_USER" value="2"/>
              <column name="NUMBER_OF_VIEWS" value="0"/>
              <column name="NUMBER_OF_TICKETS_BOUGHT" value="0"/>
-             <column name="ACTIVE" VALUE="true"/>
+             <column name="ACTIVE" value="true"/>
         </insert>
         <insert schemaName="${schema.paris}" tableName="EVENT">
             <column name="NAME" value="Waka movie"/>
@@ -61,7 +61,7 @@
             <column name="ID_USER" value="2"/>
             <column name="NUMBER_OF_VIEWS" value="20"/>
             <column name="NUMBER_OF_TICKETS_BOUGHT" value="20"/>
-            <column name="ACTIVE" VALUE="true"/>
+            <column name="ACTIVE" value="true"/>
         </insert>
         <insert schemaName="${schema.paris}" tableName="EVENT">
             <column name="NAME" value="Hidden"/>
@@ -79,7 +79,7 @@
             <column name="ID_USER" value="2"/>
             <column name="NUMBER_OF_VIEWS" value="0"/>
             <column name="NUMBER_OF_TICKETS_BOUGHT" value="0"/>
-            <column name="ACTIVE" VALUE="true"/>
+            <column name="ACTIVE" value="true"/>
         </insert>
         <insert schemaName="${schema.paris}" tableName="EVENT">
             <column name="NAME" value="Lost"/>
@@ -97,7 +97,7 @@
             <column name="ID_USER" value="2"/>
             <column name="NUMBER_OF_VIEWS" value="0"/>
             <column name="NUMBER_OF_TICKETS_BOUGHT" value="0"/>
-            <column name="ACTIVE" VALUE="true"/>
+            <column name="ACTIVE" value="true"/>
         </insert>
     </changeSet>
 </databaseChangeLog>
