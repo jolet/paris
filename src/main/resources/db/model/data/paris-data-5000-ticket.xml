@@ -11,6 +11,13 @@
             <column name="ID_USER" value="3"/>
             <column name="ID_EVENT" value="1"/>
         </insert>
+        <insert schemaName="${schema.paris}" tableName="TICKET">
+
+            <column name="PRICE" value="11.51"/>
+            <column name="IS_VALIDATED" value="TRUE"/>
+            <column name="ID_USER" value="3"/>
+            <column name="ID_EVENT" value="2"/>
+        </insert>
          <insert schemaName="${schema.paris}" tableName="TICKET">
 
             <column name="PRICE" value="11.51"/>

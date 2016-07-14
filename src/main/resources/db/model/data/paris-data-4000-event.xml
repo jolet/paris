@@ -10,7 +10,7 @@
             <column name="ADDRESS" value="Stade de France"/>
             <column name="DESCRIPTION" value="Utakmica Eura 2016."/>
             <column name="PRICE" value="51.55"/>
-   	        <column name="PICTURE" value="//"/>
+   	        <column name="PICTURE" value="http://lorempixel.com/640/480/sports/1/"/>
             <column name="ID_CATEGORY" value="1"/>
             <column name="ID_USER" value="1"/>
             <column name="NUMBER_OF_VIEWS" value="0"/>
@@ -23,7 +23,7 @@
             <column name="ADDRESS" value="Slavonska avenija 7"/>
             <column name="DESCRIPTION" value="Koncert u svrhu skupljanja sredstava za siromašne"/>
             <column name="PRICE" value="11.51"/>
-            <column name="PICTURE" value="//"/>
+            <column name="PICTURE" value="http://lorempixel.com/640/480/nightlife/"/>
             <column name="ID_CATEGORY" value="2"/>
             <column name="ID_USER" value="2"/>
             <column name="NUMBER_OF_VIEWS" value="0"/>
@@ -36,11 +36,62 @@
             <column name="ADDRESS" value="Branimirova"/>
             <column name="DESCRIPTION" value="Prikazivanje filma s glavnom ulogom Leonarda Di Capria"/>
             <column name="PRICE" value="111.11"/>
-            <column name="PICTURE" value="//"/>
+            <column name="PICTURE" value="http://lorempixel.com/640/480/people/1/"/>
             <column name="ID_CATEGORY" value="3"/>
             <column name="ID_USER" value="2"/>
              <column name="NUMBER_OF_VIEWS" value="0"/>
              <column name="NUMBER_OF_TICKETS_BOUGHT" value="0"/>
+        </insert>
+        <insert schemaName="${schema.paris}" tableName="EVENT">
+            <column name="NAME" value="Waka movie"/>
+            <column name="DATE" value="2016-07-20"/>
+            <column name="CITY" value="Zagreb"/>
+            <column name="ADDRESS" value="Branimirova"/>
+            <column name="DESCRIPTION"
+                    value="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Pellentesque pharetra tempor porta.
+                Mauris scelerisque felis eu nisl efficitur feugiat. Phasellus sollicitudin metus at
+                tellus imperdiet euismod. Quisque nec aliquet leo."/>
+            <column name="PRICE" value="100.00"/>
+            <column name="PICTURE" value="http://lorempixel.com/640/480/people/1/"/>
+            <column name="ID_CATEGORY" value="3"/>
+            <column name="ID_USER" value="2"/>
+            <column name="NUMBER_OF_VIEWS" value="20"/>
+            <column name="NUMBER_OF_TICKETS_BOUGHT" value="20"/>
+        </insert>
+        <insert schemaName="${schema.paris}" tableName="EVENT">
+            <column name="NAME" value="Hidden"/>
+            <column name="DATE" value="2016-07-22"/>
+            <column name="CITY" value="Zagreb"/>
+            <column name="ADDRESS" value="Branimirova"/>
+            <column name="DESCRIPTION"
+                    value="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Pellentesque pharetra tempor porta.
+                Mauris scelerisque felis eu nisl efficitur feugiat. Phasellus sollicitudin metus at
+                tellus imperdiet euismod. Quisque nec aliquet leo."/>
+            <column name="PRICE" value="80.00"/>
+            <column name="PICTURE" value="http://lorempixel.com/640/480/people/3/"/>
+            <column name="ID_CATEGORY" value="3"/>
+            <column name="ID_USER" value="2"/>
+            <column name="NUMBER_OF_VIEWS" value="0"/>
+            <column name="NUMBER_OF_TICKETS_BOUGHT" value="0"/>
+        </insert>
+        <insert schemaName="${schema.paris}" tableName="EVENT">
+            <column name="NAME" value="Lost"/>
+            <column name="DATE" value="2016-07-22"/>
+            <column name="CITY" value="Zagreb"/>
+            <column name="ADDRESS" value="Branimirova"/>
+            <column name="DESCRIPTION"
+                    value="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Pellentesque pharetra tempor porta.
+                Mauris scelerisque felis eu nisl efficitur feugiat. Phasellus sollicitudin metus at
+                tellus imperdiet euismod. Quisque nec aliquet leo."/>
+            <column name="PRICE" value="30.00"/>
+            <column name="PICTURE" value="http://lorempixel.com/640/480/people/2/"/>
+            <column name="ID_CATEGORY" value="3"/>
+            <column name="ID_USER" value="2"/>
+            <column name="NUMBER_OF_VIEWS" value="0"/>
+            <column name="NUMBER_OF_TICKETS_BOUGHT" value="0"/>
         </insert>
     </changeSet>
 </databaseChangeLog>
