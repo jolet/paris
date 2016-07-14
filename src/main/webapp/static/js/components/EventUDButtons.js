@@ -10,7 +10,7 @@ export default class EventUDButtons extends React.Component {
     }
 
     clickDelete(event){
-        console.log(this.state);
+
         console.log("obrisat cu event s id " + this.props.event.id);
 
         var headers = new Headers({
@@ -28,7 +28,7 @@ export default class EventUDButtons extends React.Component {
 
         fetch(url, init)
             .then(() => {
-                    location.reload();
+                location.reload();
             });
     }
 
