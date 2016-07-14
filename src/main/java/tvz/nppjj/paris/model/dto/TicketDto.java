@@ -9,6 +9,7 @@ import tvz.nppjj.paris.model.Event;
 
 public class TicketDto {
 
+    private String code;
 
     @Range(min = 0, message = "Enter price...(0 or more)")
     private BigDecimal price;
@@ -59,5 +60,13 @@ public class TicketDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }
