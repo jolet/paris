@@ -34,14 +34,8 @@ console.log(this.state);
 
 	  
     return (
-    		<div class="panel panel-info">
-    		
-    		<div class="panel-heading"><b>{localStorage.getItem('username')}</b></div>
-    		
-    		<br/>
-    		
-    		 
-    	
+    		<div class="col span_12_of_12">
+				<h1>Moje ulaznice</h1>
     		 <div class="row tickets-ticket">
              { this.state.response.map((ticketAPI, i) => <Ticket key={i} ticket={ticketAPI} />)  }
            </div>

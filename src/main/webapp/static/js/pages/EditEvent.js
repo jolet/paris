@@ -19,6 +19,7 @@ export default class EditEvent extends React.Component {
 		  var url = $(location).attr('href');
       console.log(url);
 		  var id = url.substring(url.lastIndexOf('/') + 1);
+          this.setState({eventId: id.substring(0, id.indexOf('?'))});
 		  var putanja= localStorage.getItem("environmentPrefix") + '/events/'+id;
 		    $.ajax({
 		      url: putanja,
@@ -50,6 +51,7 @@ export default class EditEvent extends React.Component {
               "Content-type": "application/json"
               });
            var body = JSON.stringify({
+               id: this.state.eventId,
         	   name: this.state.name,
                location: this.state.location,
                city: this.state.city,
@@ -117,7 +119,7 @@ export default class EditEvent extends React.Component {
                  <div className="row">
                      <div className="form-group col-sm-4">
                          Grad:
-                         <input placeholder={this.state.response.city} pattern="[A-Za-z ]{2,}" title="Samo slova dopuštena" type="text" name="city" id="city" className="form-control" onChange={this.handleChange.bind(this, 'city')}/>
+                         <input placeholder={this.state.response.city} pattern="[A-Za-z ]{2,}" title="Samo slova dopuštena " type="text" name="city" id="city" className="form-control" onChange={this.handleChange.bind(this, 'city')}/>
                      </div>
                  </div>
 
