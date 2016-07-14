@@ -47,7 +47,7 @@ public class EventServiceImpl implements EventService {
         List<EventDto> allEventDto = transformEventListToDtoList(eventRepository.findByActiveTrue());
 
         List<EventDto> eventsFiltered = allEventDto.stream()
-                .filter(eventDto -> name == null || eventDto.getName().toLowerCase().contains(name.toLowerCase()))
+                .filter(eventDto -> name == null || eventDto.getName().contains(name))
                 .filter(eventDto -> categoryId == null || eventDto.getCategory().getId().equals(categoryId))
                 .filter(eventDto -> date == null || eventDto.getDate().after(date) || eventDto.getDate().equals(date))
                 .collect(Collectors.toList());
@@ -59,7 +59,7 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<EventDto> getEventsByUserId(Long idUser) {
 
-        return transformEventListToDtoList(eventRepository.findEventByUserId(idUser));
+        return transformEventListToDtoList(eventRepository.findEventByUserIdAndActiveTrue(idUser));
     }
 
     @Override
