@@ -8,46 +8,62 @@ export default class extends React.Component {
     constructor(props){
         super(props);
         const loadingMsg = "Loading...";
-        var res = {name: loadingMsg,
-            description: loadingMsg,
+        var data = {name: loadingMsg,
             date: 0,
             location: loadingMsg,
-            picture: "",
-            price: 0
+            code: "",
+            price: 0,
+            ticketType: ""
         };
 
-        this.state = {response: res,
-            totalCost: 0,
-            ticketVIP: 0,
-            price: 0,
-            amount: 1
-        };
+        this.state = {data: data};
     }
 
     componentDidMount(){
         var urlId = window.location.href.substr(window.location.href.lastIndexOf("/")+1);
         urlId = urlId.substr(0, urlId.indexOf("?"));
 
-        // $.ajax({
-        //     url: localStorage.getItem("environmentPrefix") + '/events/' + urlId,
-        //     context: this,
-        //     dataType: 'json',
-        //     type: 'GET'
-        // }).done(function (data) {
-        //     this.setState({response: data, totalCost: data.price, ticketVIP: (data.price + data.price * 0.2)});
-        //     console.log(JSON.stringify(this.state.response));
-        //
-        //
-        // })
+        $.ajax({
+            url: localStorage.getItem("environmentPrefix") + '/tickets/' + urlId,
+            context: this,
+            dataType: 'json',
+            type: 'GET'
+        }).done(function (data) {
+            this.setState({response: data});
+            console.log(JSON.stringify(data));
+            var ticketType = data.price == data.event.price ? "Regular" : "VIP";
+
+            this.setState({
+                name: data.event.name,
+                location: data.event.location,
+                code: data.code,
+                price: data.price,
+                ticketType: ticketType,
+                date: data.event.date
+            });
+
+
+        })
     }
-
-
-
 
     render() {
 
+        var eventDate = new Date(this.state.date);
+
         return (
-            <p>Hello</p>
+            <div class="row" id="ticketDetails">
+                <div class="col span_8_of_12" id="ticketDetailsText">
+                    <h1>{this.state.name}</h1>
+                    <p>{this.state.location}</p>
+                    <p>{eventDate.toLocaleDateString()}, {showLeadingZero(eventDate.getHours())}:{showLeadingZero(eventDate.getMinutes())}</p>
+                    <p>Tip ulaznice: {this.state.ticketType}</p>
+                    <p>Cijena: {this.state.price}</p>
+                </div>
+                <div class="col span_4_of_12">
+                    <img src={"data:image/png;base64," + this.state.code}/>
+                </div>
+            </div>
+
         );
     }
 }

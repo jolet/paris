@@ -157,3 +157,15 @@ input:required:hover, textarea:required:hover, select:required:hover {
 #eventListLinks a{
 	margin-top: 5px;
 }
+
+#ticketDetails{
+	font-family: 'Roboto Condensed', sans-serif;
+    border: 1px dashed #d3d3d3;
+}
+#ticketDetails img{
+	width: 200px;
+	height: 200px;
+}
+#ticketDetailsText{
+    padding-left: 15px;
+}
