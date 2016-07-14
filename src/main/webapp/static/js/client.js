@@ -37,6 +37,7 @@ ReactDOM.render(
       <Route path="userTickets/:id" name="userTickets" component={UserTickets}></Route>
       <Route path="userEvents/:id" name="userEvents" component={UserEvents}></Route>
       <Route path="editEvent/:id" name="editEvent" component={EditEvent}></Route>
+      <Route path="ticket/:id" name="ticketDetails" component={TicketDetails} ></Route>
      </Route>
   </Router>,
 app);
