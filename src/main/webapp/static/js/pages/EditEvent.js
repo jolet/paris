@@ -48,7 +48,8 @@ export default class EditEvent extends React.Component {
           console.log(this.state);
 
            var headers = new Headers({
-              "Content-type": "application/json"
+              "Content-type": "application/json",
+               "Authorization": localStorage.getItem("token")
               });
            var body = JSON.stringify({
                id: this.state.eventId,
