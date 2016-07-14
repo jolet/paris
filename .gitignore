@@ -35,3 +35,4 @@ nppjj-paris.log
 # merge (meld)
 *.orig
 deployments/*
+out/*

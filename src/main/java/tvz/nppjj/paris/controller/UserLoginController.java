@@ -33,11 +33,4 @@ public class UserLoginController {
 
     }
 
-    // TODO: remove after jwt integration
-    @CrossOrigin
-    @RequestMapping(value = "/jwt", method = RequestMethod.POST)
-    public String jwtTest() {
-        return "jwt request OK";
-    }
-
 }

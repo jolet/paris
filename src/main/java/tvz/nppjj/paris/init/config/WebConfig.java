@@ -25,7 +25,15 @@ public class WebConfig {
     public FilterRegistrationBean jwtFilter() {
         final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new JwtFilter());
-        registrationBean.addUrlPatterns("/jwt");
+        // allowed: /changelog, /events, /events/:id, /eventspage , /login, /register /category, /eventsfilter
+        registrationBean.addUrlPatterns(
+                "/events/delete",
+                "/events/update",
+                "/events/user",
+                "/events/save",
+                "/tickets",
+                "/users"
+                );
         return registrationBean;
     }
 
